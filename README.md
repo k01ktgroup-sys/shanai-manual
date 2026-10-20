@@ -10,11 +10,24 @@
 | `assets/style.css` | 全マニュアル共通のデザイン |
 | `assets/manual.js` | チェックボックスの保存・印刷ボタン・検索 |
 
-## 見る方法
+## 公開URL（GitHub Pages）
 
-- パソコンで `index.html` をダブルクリックすると、ブラウザで開けます。
-- 各拠点から見られるようにするには、フォルダごと社内サーバーや
-  WEB公開サービス（GitHub Pages、Netlify など）に置いてください。
+- マニュアル一覧： https://k01ktgroup-sys.github.io/smartphone-manual/
+- 機種変更マニュアル： https://k01ktgroup-sys.github.io/smartphone-manual/kishuhenko/
+- 保存場所： https://github.com/k01ktgroup-sys/smartphone-manual
+
+※ URLを知っている人は誰でも見られます。パスワードなどの秘密情報は書かないでください。
+（検索エンジンには載らないよう設定しています）
+
+## 書きかえたあと公開に反映する方法
+
+このフォルダで次のコマンドを実行します（1〜2分で反映されます）。
+
+```
+git add -A
+git commit -m "変更内容のメモ"
+git push
+```
 
 ## 本社で書きかえが必要な箇所（機種変更マニュアル）
 
