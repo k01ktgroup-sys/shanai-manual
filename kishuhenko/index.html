@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>機種変更マニュアル</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="../index.html">📘 社内<span>マニュアル</span></a>
+    <span class="spacer"></span>
+    <button class="btn-ghost no-print" id="print-page" type="button">🖨 印刷</button>
+    <a class="btn-ghost no-print" href="../index.html">一覧へ</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>スマホ機種変更マニュアル</h1>
+    <p>古いスマホ（SCV46）から新しいスマホ（Galaxy A25 5G）へ、データを引き継ぐ手順です。<br>上から順番に進めてください。</p>
+    <div class="meta">
+      <span class="chip">au</span><span class="chip">所要時間 約1〜2時間</span><span class="chip">2026年10月版</span>
+    </div>
+  </div>
+
+  <ul class="toc no-print">
+    <li><a href="#s0"><b>はじめに</b>準備するもの</a></li>
+    <li><a href="#s1"><b>STEP 1</b>古いスマホでバックアップ</a></li>
+    <li><a href="#s2"><b>STEP 2</b>データを新しいスマホへ</a></li>
+    <li><a href="#s3"><b>STEP 3</b>SIMカードの入れかえ</a></li>
+    <li><a href="#s4"><b>STEP 4</b>LINEの引き継ぎ</a></li>
+    <li><a href="#s5"><b>STEP 5</b>最後のチェック</a></li>
+  </ul>
+
+  <!-- ============================ はじめに ============================ -->
+  <section class="section" id="s0">
+    <h2><span class="num">0</span>はじめに<span class="time">約5分</span></h2>
+
+    <div class="box info">
+      <span class="ttl">色の見方</span>
+      <p><span class="who old">古いスマホ</span> で操作する手順はオレンジ、<span class="who new">新しいスマホ</span> で操作する手順は青で表示しています。</p>
+      <p>画面の <span style="color:var(--tap);font-weight:700">赤い枠</span> がタップ（指で押す）する場所です。</p>
+    </div>
+
+    <h3>用意するもの</h3>
+    <div class="items">
+      <div><span class="ic">📱</span>古いスマホ<br><small>SCV46</small></div>
+      <div><span class="ic">📲</span>新しいスマホ<br><small>Galaxy A25 5G</small></div>
+      <div><span class="ic">🔌</span>充電器<br><small>2台とも50%以上 充電しておく</small></div>
+      <div><span class="ic">📄</span>パスワード一覧表<br><small>本社から届いたもの</small></div>
+      <div><span class="ic">📶</span>事業所のWi-Fi<br><small>名前とパスワードは一覧表に記載</small></div>
+      <div><span class="ic">📎</span>SIMピン<br><small>新しいスマホの箱に入っています</small></div>
+    </div>
+
+    <div class="box warn">
+      <span class="ttl">⚠ 大切なお約束</span>
+      <ul>
+        <li><b>古いスマホは、すべて終わるまで消したり初期化したりしないでください。</b></li>
+        <li>パスワード一覧表は、他の人に見せないでください。作業が終わったら本社の指示どおりに保管・返却してください。</li>
+        <li>わからなくなったら、無理に進めずにページ下の「困ったとき」を見るか、本社へ連絡してください。</li>
+      </ul>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c0-1"><span>用意するものが全部そろった</span></label></li>
+    </ul>
+  </section>
+
+  <!-- ============================ STEP 1 ============================ -->
+  <section class="section" id="s1">
+    <h2><span class="num">STEP<br>1</span>古いスマホでバックアップ<span class="time">約15分</span></h2>
+    <p class="lead">データが消えないように、古いスマホで「保存（バックアップ）」をしておきます。Wi-Fiにつないでから始めてください。</p>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">1</span>写真のバックアップを確認 <span class="who old">古いスマホ</span></h3>
+        <ol>
+          <li><span class="k">フォト</span> アプリを開きます。</li>
+          <li>右上の <b>丸いアイコン（自分の写真や頭文字）</b> をタップします。</li>
+          <li><b>「バックアップ完了」</b> と出ていればOKです。</li>
+        </ol>
+        <div class="box warn"><p>「バックアップをオンにする」と出たら、それをタップしてください。完了するまでWi-Fiにつないだまま待ちます（写真が多いと数時間かかることがあります）。</p></div>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who old">古いスマホ</span></figcaption>
+        <div class="phone old">
+          <div class="sb"><span>10:00</span><span>📶 🔋</span></div>
+          <div class="app">Google フォト<span style="margin-left:auto" class="avatar tap"></span></div>
+          <div class="body">
+            <div class="row" style="background:#e6f5ec;border-radius:8px"><span class="ico">☁</span><div><b>バックアップ完了</b><small>すべての写真を保存しました</small></div></div>
+            <div class="grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="tabs"><span class="on">フォト</span><span>検索</span><span>共有</span><span>ライブラリ</span></div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">2</span>LINEのトークを保存 <span class="who old">古いスマホ</span></h3>
+        <ol>
+          <li><span class="k">LINE</span> を開き、下の <span class="k">ホーム</span> をタップします。</li>
+          <li>右上の <span class="k">⚙ 設定</span> → <span class="k">トークのバックアップ</span> をタップします。</li>
+          <li><span class="k">今すぐバックアップ</span> をタップします。</li>
+          <li>「PINコード」を求められたら、<b>一覧表に書いてある6けたの数字</b> を入力します。</li>
+        </ol>
+        <div class="box info"><p>「前回のバックアップ：今日の日付」になればOKです。</p></div>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who old">古いスマホ</span></figcaption>
+        <div class="phone old">
+          <div class="sb"><span>10:05</span><span>📶 🔋</span></div>
+          <div class="app">← トークのバックアップ</div>
+          <div class="body">
+            <div class="muted">前回のバックアップ</div>
+            <div><b>2026/10/20 10:05</b></div>
+            <span class="pill line tap">今すぐバックアップ</span>
+            <div class="row"><div>Googleアカウント<small>（本社の一覧表のアカウント）</small></div></div>
+            <div class="row"><div>自動バックアップ<small>オン</small></div></div>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">3</span>＋メッセージを保存 <span class="who old">古いスマホ</span></h3>
+        <ol>
+          <li><span class="k">＋メッセージ</span> を開き、右下の <span class="k">マイページ</span> をタップします。</li>
+          <li><span class="k">設定</span> → <span class="k">メッセージ</span> → <span class="k">バックアップ・復元</span> をタップします。</li>
+          <li><span class="k">バックアップ</span> をタップし、保存先は <b>Googleドライブ</b> を選びます。</li>
+        </ol>
+        <p class="muted" style="font-size:15px;color:var(--sub)">※ 表示される言葉が少し違うことがあります。似たボタンを選んでください。</p>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who old">古いスマホ</span></figcaption>
+        <div class="phone old">
+          <div class="sb"><span>10:10</span><span>📶 🔋</span></div>
+          <div class="app">← バックアップ・復元</div>
+          <div class="body">
+            <div class="row tap"><span class="ico">⬆</span><div><b>バックアップ</b><small>メッセージを保存します</small></div></div>
+            <div class="row"><span class="ico">⬇</span><div>復元<small>保存したメッセージを戻します</small></div></div>
+            <div class="row"><span class="ico">☁</span><div>保存先<small>Googleドライブ</small></div></div>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c1-1"><span>フォトが「バックアップ完了」になった</span></label></li>
+      <li><label><input type="checkbox" id="c1-2"><span>LINEのバックアップが今日の日付になった</span></label></li>
+      <li><label><input type="checkbox" id="c1-3"><span>＋メッセージのバックアップをした</span></label></li>
+    </ul>
+  </section>
+
+  <!-- ============================ STEP 2 ============================ -->
+  <section class="section" id="s2">
+    <h2><span class="num">STEP<br>2</span>データを新しいスマホへ移す<span class="time">約30〜60分</span></h2>
+    <p class="lead">「Smart Switch（スマートスイッチ）」という機能で、電話帳・写真・アプリなどをまとめて移します。<b>2台を近くに置き、充電器につないだまま</b> 行ってください。</p>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">1</span>新しいスマホの電源を入れる <span class="who new">新しいスマホ</span></h3>
+        <ol>
+          <li>右側面の <b>電源ボタンを長押し</b> します（画面がつくまで）。</li>
+          <li>「日本語」になっていることを確認して <span class="k">開始</span> をタップ。</li>
+          <li>同意の画面が出たら、内容を確認して <span class="k">同意する</span> → <span class="k">次へ</span>。</li>
+          <li>Wi-Fiの画面で <b>事業所のWi-Fi</b> を選び、一覧表のパスワードを入力します。</li>
+        </ol>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who new">新しいスマホ</span></figcaption>
+        <div class="phone">
+          <div class="sb"><span></span><span>🔋</span></div>
+          <div class="body center">
+            <div class="big" style="margin-top:80px">ようこそ！</div>
+            <div class="muted">日本語</div>
+          </div>
+          <div class="bottom"><span class="pill tap">開始</span></div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">2</span>「データをコピー」を選ぶ <span class="who new">新しいスマホ</span></h3>
+        <ol>
+          <li>「アプリとデータをコピー」の画面で <span class="k">次へ</span> をタップ。</li>
+          <li>「古い端末の種類」は <span class="k">Galaxy / Android</span> を選びます。</li>
+          <li>「古い端末の Smart Switch を開いてください」と出たら、そのまま置いておきます。</li>
+        </ol>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who new">新しいスマホ</span></figcaption>
+        <div class="phone">
+          <div class="sb"><span>10:20</span><span>📶 🔋</span></div>
+          <div class="body">
+            <div class="big">アプリとデータを<br>コピー</div>
+            <div class="muted">古い端末のデータを移せます</div>
+            <div class="row tap" style="margin-top:14px"><span class="ico">📱</span><div><b>Galaxy / Android</b></div></div>
+            <div class="row"><span class="ico">🍎</span><div>iPhone / iPad</div></div>
+          </div>
+          <div class="bottom split"><span class="muted">スキップ</span><span class="pill" style="margin:0;padding:6px 18px">次へ</span></div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">3</span>古いスマホで送信を始める <span class="who old">古いスマホ</span></h3>
+        <ol>
+          <li><span class="k">設定</span>（歯車のアイコン）を開きます。</li>
+          <li><span class="k">アカウントとバックアップ</span> → <span class="k">Smart Switch</span> をタップ。</li>
+          <li><span class="k">データを送信</span> → <span class="k">ワイヤレス</span> をタップ。</li>
+          <li>新しいスマホにつながると「許可しますか？」と出るので <span class="k">許可</span> をタップ。</li>
+        </ol>
+        <div class="box info"><p>Smart Switch の更新を求められたら <span class="k">更新</span> をタップしてください。</p></div>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who old">古いスマホ</span></figcaption>
+        <div class="phone old">
+          <div class="sb"><span>10:22</span><span>📶 🔋</span></div>
+          <div class="app">Smart Switch</div>
+          <div class="body">
+            <div class="big center" style="margin-top:30px">データ転送</div>
+            <span class="pill tap" style="margin-top:30px">データを送信</span>
+            <span class="pill light">データを受信</span>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">4</span>移すデータを選んで転送 <span class="who new">新しいスマホ</span></h3>
+        <ol>
+          <li>Googleアカウントのログインを求められたら、<b>一覧表のメールアドレスとパスワード</b> を入力します。</li>
+          <li>「コピーするデータ」は <b>全部にチェック</b> が入っていることを確認します。</li>
+          <li><span class="k">コピー</span>（または <span class="k">転送</span>）をタップします。</li>
+          <li>終わるまで待ちます。<b>途中で画面を閉じたり、2台を離したりしないでください。</b></li>
+          <li>「完了」と出たら <span class="k">次へ</span>。その後の設定は画面の案内に従って進めます。</li>
+        </ol>
+        <div class="box warn"><p>古いスマホに「ログインしようとしていますか？」と出たら <span class="k">はい</span> をタップしてください。</p></div>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who new">新しいスマホ</span></figcaption>
+        <div class="phone">
+          <div class="sb"><span>10:25</span><span>📶 🔋</span></div>
+          <div class="body">
+            <div class="big">コピーするデータ</div>
+            <div class="row"><span class="tick">✓</span>連絡先（電話帳）</div>
+            <div class="row"><span class="tick">✓</span>メッセージ</div>
+            <div class="row"><span class="tick">✓</span>画像・動画</div>
+            <div class="row"><span class="tick">✓</span>アプリ</div>
+            <div class="row"><span class="tick">✓</span>設定</div>
+          </div>
+          <div class="bottom"><span class="pill tap">コピー</span></div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="box hq">
+      <span class="ttl">📝 画面ロック（暗証番号）の設定について</span>
+      <p>途中で「画面ロック」を求められたら、<b>一覧表に書いてある番号</b> を設定してください。</p>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c2-1"><span>Smart Switch が「完了」になった</span></label></li>
+      <li><label><input type="checkbox" id="c2-2"><span>新しいスマホのホーム画面が出た</span></label></li>
+    </ul>
+  </section>
+
+  <!-- ============================ STEP 3 ============================ -->
+  <section class="section" id="s3">
+    <h2><span class="num">STEP<br>3</span>SIMカードを入れかえる<span class="time">約5分</span></h2>
+    <p class="lead">電話番号が入っている小さなカード（SIMカード）を新しいスマホへ移します。</p>
+
+    <div class="box hq">
+      <span class="ttl">📝 本社から新しいSIMカードが届いている場合</span>
+      <p>古いスマホのSIMではなく、<b>届いた新しいSIMカード</b> を新しいスマホに入れてください。</p>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">1</span>2台とも電源を切る <span class="who both">2台とも</span></h3>
+        <p>電源ボタンを長押し → <span class="k">電源OFF</span> をタップ。</p>
+      </div>
+    </div>
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">2</span>SIMカードを取り出して入れる <span class="who both">2台とも</span></h3>
+        <ol>
+          <li>スマホの側面にある <b>小さな穴</b> に、SIMピンをまっすぐ差し込むと、トレイが出てきます。</li>
+          <li>古いスマホのSIMカードを取り出し、<b>同じ向き</b> で新しいスマホのトレイにのせます（角が欠けている向きを合わせます）。</li>
+          <li>トレイをまっすぐ奥まで戻します。</li>
+        </ol>
+        <div class="box warn"><p>SIMカードの金色の部分にはさわらないでください。小さいので落とさないよう、机の上で作業してください。</p></div>
+      </div>
+    </div>
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">3</span>新しいスマホの電源を入れて確認 <span class="who new">新しいスマホ</span></h3>
+        <ol>
+          <li>画面の右上にアンテナのマーク 📶 が出るまで待ちます（1〜2分）。</li>
+          <li>同僚などに <b>電話をかけて</b>、つながることを確認します。</li>
+        </ol>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c3-1"><span>新しいスマホで電話がかけられた</span></label></li>
+    </ul>
+  </section>
+
+  <!-- ============================ STEP 4 ============================ -->
+  <section class="section" id="s4">
+    <h2><span class="num">STEP<br>4</span>LINEを引き継ぐ<span class="time">約10分</span></h2>
+    <p class="lead">LINEだけは別の手順が必要です。古いスマホに出る「QRコード」を新しいスマホで読み取ります。<br>（古いスマホはSIMが無くてもWi-Fiで動きます）</p>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">1</span>新しいスマホでLINEを開く <span class="who new">新しいスマホ</span></h3>
+        <ol>
+          <li><span class="k">LINE</span> アプリを開きます。<br><small>（見つからない場合は <span class="k">Playストア</span> で「LINE」とさがしてインストール）</small></li>
+          <li><span class="k">ログイン</span> → <span class="k">QRコードでログイン</span> → <span class="k">QRコードをスキャン</span> をタップ。</li>
+          <li>カメラの画面になったら、そのまま次へ進みます。</li>
+        </ol>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who new">新しいスマホ</span></figcaption>
+        <div class="phone">
+          <div class="sb"><span>11:00</span><span>📶 🔋</span></div>
+          <div class="body center">
+            <div class="big" style="margin-top:30px">ログイン方法を選択</div>
+            <span class="pill line tap" style="margin-top:40px">QRコードでログイン</span>
+            <span class="pill light">電話番号でログイン</span>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">2</span>古いスマホでQRコードを出す <span class="who old">古いスマホ</span></h3>
+        <ol>
+          <li><span class="k">LINE</span> → <span class="k">ホーム</span> → 右上の <span class="k">⚙ 設定</span> をタップ。</li>
+          <li><span class="k">かんたん引き継ぎQRコード</span> をタップします。</li>
+          <li>QRコードが表示されます。</li>
+        </ol>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who old">古いスマホ</span></figcaption>
+        <div class="phone old">
+          <div class="sb"><span>11:02</span><span>📶 🔋</span></div>
+          <div class="app">← かんたん引き継ぎQRコード</div>
+          <div class="body center">
+            <div class="muted" style="margin-top:10px">新しい端末で読み取ってください</div>
+            <div class="qr"></div>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">3</span>QRコードを読み取る <span class="who both">2台とも</span></h3>
+        <ol>
+          <li><span class="who new">新しいスマホ</span> のカメラを、古いスマホのQRコードに向けます。</li>
+          <li><span class="who old">古いスマホ</span> に「新しい端末でこのアカウントにログインしますか？」と出たら <span class="k">次へ</span> をタップし、画面ロックを解除します。</li>
+        </ol>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who new">新しいスマホ</span></figcaption>
+        <div class="phone">
+          <div class="sb"><span>11:03</span><span>📶 🔋</span></div>
+          <div class="app">QRコードリーダー</div>
+          <div class="body center">
+            <div class="cam"></div>
+            <div class="muted">古いスマホのQRコードを<br>枠の中に写してください</div>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">4</span>トーク履歴を戻す <span class="who new">新しいスマホ</span></h3>
+        <ol>
+          <li><span class="k">トーク履歴を復元</span> をタップします。</li>
+          <li><b>一覧表のPINコード（6けた）</b> を入力します。</li>
+          <li>友だちやトークが表示されれば完了です。</li>
+        </ol>
+        <div class="box info"><p>引き継ぎが終わると、古いスマホのLINEは使えなくなります。これは正常です。</p></div>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who new">新しいスマホ</span></figcaption>
+        <div class="phone">
+          <div class="sb"><span>11:05</span><span>📶 🔋</span></div>
+          <div class="body center">
+            <div class="big" style="margin-top:30px">トーク履歴を<br>復元しますか？</div>
+            <div class="muted">PINコードを入力</div>
+            <div class="dots"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="bottom"><span class="pill line tap">トーク履歴を復元</span></div>
+        </div>
+      </figure>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c4-1"><span>新しいスマホでLINEのトークが見られた</span></label></li>
+    </ul>
+  </section>
+
+  <!-- ============================ STEP 5 ============================ -->
+  <section class="section" id="s5">
+    <h2><span class="num">STEP<br>5</span>最後のチェック<span class="time">約10分</span></h2>
+    <p class="lead">新しいスマホで、ひとつずつアプリを開いて確認します。全部チェックが付いたら完了です。</p>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">1</span>＋メッセージを開く <span class="who new">新しいスマホ</span></h3>
+        <ol>
+          <li><span class="k">＋メッセージ</span> を開き、案内に沿って <span class="k">次へ</span>・<span class="k">許可</span> をタップします。</li>
+          <li>前のメッセージが無い場合は <span class="k">マイページ</span> → <span class="k">設定</span> → <span class="k">メッセージ</span> → <span class="k">バックアップ・復元</span> → <span class="k">復元</span> をタップします。</li>
+        </ol>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who new">新しいスマホ</span></figcaption>
+        <div class="phone">
+          <div class="sb"><span>11:20</span><span>📶 🔋</span></div>
+          <div class="app">← バックアップ・復元</div>
+          <div class="body">
+            <div class="row"><span class="ico">⬆</span><div>バックアップ<small>メッセージを保存します</small></div></div>
+            <div class="row tap"><span class="ico">⬇</span><div><b>復元</b><small>保存したメッセージを戻します</small></div></div>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">2</span>そのほかのアプリを確認 <span class="who new">新しいスマホ</span></h3>
+        <ul>
+          <li><span class="k">電話</span> → <span class="k">連絡先</span>：いつも使う人の名前があるか</li>
+          <li><span class="k">Gmail</span>：受信メールが見られるか</li>
+          <li><span class="k">フォト</span>：前の写真が見られるか（表示まで少し時間がかかることがあります）</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>✅ 完了チェックリスト</h3>
+    <ul class="check">
+      <li><label><input type="checkbox" id="c5-1"><span>電話がかけられる・受けられる</span></label></li>
+      <li><label><input type="checkbox" id="c5-2"><span>＋メッセージで送信・受信できる</span></label></li>
+      <li><label><input type="checkbox" id="c5-3"><span>電話帳（連絡先）が入っている</span></label></li>
+      <li><label><input type="checkbox" id="c5-4"><span>LINEのトークが見られる</span></label></li>
+      <li><label><input type="checkbox" id="c5-5"><span>Gmailが見られる</span></label></li>
+      <li><label><input type="checkbox" id="c5-6"><span>フォトで前の写真が見られる</span></label></li>
+    </ul>
+
+    <div class="box ok">
+      <span class="ttl">🎉 おつかれさまでした</span>
+      <ul>
+        <li>古いスマホは <b>初期化せず</b>、電源を切って本社の指示どおりに返却してください。</li>
+        <li>完了したら、本社 情報システム担当へ「機種変更が終わりました」と連絡してください。</li>
+      </ul>
+    </div>
+    <p class="no-print"><button class="btn-ghost" id="reset-check" type="button">チェックをすべて外す（次の人の作業用）</button></p>
+  </section>
+
+  <!-- ============================ 困ったとき ============================ -->
+  <section class="section" id="faq">
+    <h2><span class="num">？</span>困ったとき</h2>
+    <details>
+      <summary>Smart Switch が途中で止まった・つながらない</summary>
+      <div><p>2台をくっつけるくらい近くに置き、両方の画面をつけたままにしてください。それでもだめなら、2台とも再起動して STEP 2 の③からやり直してください。</p></div>
+    </details>
+    <details>
+      <summary>Googleのログインで「確認コード」や「本人確認」を求められた</summary>
+      <div><p>古いスマホに確認の通知が来ていないか見てください（<span class="k">はい</span> をタップ）。来ていない場合は本社へ連絡してください。</p></div>
+    </details>
+    <details>
+      <summary>LINEのPINコードが違うと言われた</summary>
+      <div><p>一覧表の数字をもう一度確認してください。<b>何度も試さずに</b>、2回まちがえたら本社へ連絡してください。</p></div>
+    </details>
+    <details>
+      <summary>電話がつながらない（圏外のまま）</summary>
+      <div><p>新しいスマホを再起動してください。直らない場合は、SIMカードの向きを確認して入れ直してください。</p></div>
+    </details>
+    <details>
+      <summary>電話帳の数が足りない</summary>
+      <div><p>古いスマホは消さずに本社へ連絡してください。本社で移し直します。</p></div>
+    </details>
+
+    <div class="box hq">
+      <span class="ttl">📞 連絡先：本社 情報システム担当</span>
+      <p>電話：000-0000-0000（平日 9:00〜17:00）</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">本社 情報システム担当 ／ <a href="../index.html">マニュアル一覧へ戻る</a></footer>
+<script src="../assets/manual.js"></script>
+</body>
+</html>

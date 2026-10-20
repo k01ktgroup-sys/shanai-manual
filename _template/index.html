@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>（マニュアル名）</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<!--
+  ▼ 新しいマニュアルの作り方 ▼
+  1. この「_template」フォルダをコピーし、英数字の名前に変える（例：wifi-settei）
+  2. 下の「（ ）」の部分を書きかえる
+  3. 手順（<div class="step"> … </div>）は、必要な数だけコピーして増やす
+  4. スクリーンショットは同じフォルダに「images」フォルダを作って入れ、
+     <figure class="shot"> の中を <img src="images/01.png" alt="説明"> にする
+  5. トップの index.html にカードを1つ追加する
+-->
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="../index.html">📘 社内<span>マニュアル</span></a>
+    <span class="spacer"></span>
+    <button class="btn-ghost no-print" id="print-page" type="button">🖨 印刷</button>
+    <a class="btn-ghost no-print" href="../index.html">一覧へ</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>（マニュアル名）</h1>
+    <p>（このマニュアルで何ができるかを1〜2行で）</p>
+    <div class="meta"><span class="chip">所要時間 約○分</span><span class="chip">○年○月版</span></div>
+  </div>
+
+  <ul class="toc no-print">
+    <li><a href="#s1"><b>STEP 1</b>（見出し）</a></li>
+    <li><a href="#s2"><b>STEP 2</b>（見出し）</a></li>
+  </ul>
+
+  <section class="section" id="s1">
+    <h2><span class="num">STEP<br>1</span>（見出し）<span class="time">約○分</span></h2>
+    <p class="lead">（このステップでやることの説明）</p>
+
+    <!-- 手順1つ分（画像あり） -->
+    <div class="step">
+      <div>
+        <h3><span class="n">1</span>（やること）</h3>
+        <ol>
+          <li><span class="k">（ボタン名）</span> をタップします。</li>
+          <li>（次の操作）</li>
+        </ol>
+      </div>
+      <figure class="shot">
+        <img src="images/01.png" alt="（画面の説明）">
+      </figure>
+    </div>
+
+    <!-- 手順1つ分（画像なし） -->
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">2</span>（やること）</h3>
+        <p>（説明）</p>
+        <div class="box warn"><span class="ttl">⚠ 注意</span><p>（注意すること）</p></div>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c1-1"><span>（できたことの確認）</span></label></li>
+    </ul>
+  </section>
+
+  <section class="section" id="s2">
+    <h2><span class="num">STEP<br>2</span>（見出し）</h2>
+    <div class="box ok"><span class="ttl">🎉 完了</span><p>（終わったあとにすること）</p></div>
+  </section>
+</main>
+
+<footer class="site-foot">本社 情報システム担当 ／ <a href="../index.html">マニュアル一覧へ戻る</a></footer>
+<script src="../assets/manual.js"></script>
+</body>
+</html>
