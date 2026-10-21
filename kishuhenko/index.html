@@ -22,7 +22,7 @@
     <h1>スマホ機種変更マニュアル</h1>
     <p>古いスマホ（SCV46）から新しいスマホ（Galaxy A25 5G）へ、データを引き継ぐ手順です。<br>上から順番に進めてください。</p>
     <div class="meta">
-      <span class="chip">au</span><span class="chip">所要時間 約1〜2時間</span><span class="chip">2026年10月版</span>
+      <span class="chip">au</span><span class="chip">所要時間 約1時間</span><span class="chip">2026年10月版</span>
     </div>
   </div>
 
@@ -30,7 +30,7 @@
     <li><a href="#s0"><b>はじめに</b>準備するもの</a></li>
     <li><a href="#s1"><b>STEP 1</b>古いスマホでバックアップ</a></li>
     <li><a href="#s2"><b>STEP 2</b>SIMカードを入れる</a></li>
-    <li><a href="#s3"><b>STEP 3</b>データを新しいスマホへ</a></li>
+    <li><a href="#s3"><b>STEP 3</b>新しいスマホの初期設定</a></li>
     <li><a href="#s4"><b>STEP 4</b>LINEの引き継ぎ</a></li>
     <li><a href="#s5"><b>STEP 5</b>最後のチェック</a></li>
   </ul>
@@ -130,7 +130,39 @@
 
     <div class="step">
       <div>
-        <h3><span class="n">3</span>LINEのトークを保存 <span class="who old">古いスマホ</span></h3>
+        <h3><span class="n">3</span>電話帳をGoogleに保存 <span class="who old">古いスマホ</span></h3>
+        <p>電話帳は、<b>Googleに保存されているものだけ</b> が新しいスマホに移ります。古いスマホの中だけに保存されている電話帳を、Googleへ移します。</p>
+        <ol>
+          <li><span class="k">連絡先</span> アプリを開きます。</li>
+          <li>左上の <span class="k">≡</span> → <span class="k">連絡先を管理</span> → <span class="k">連絡先を移動</span> をタップします。</li>
+          <li>「移動元」で <span class="k">端末</span> にチェックを入れます（「SIM」などほかの項目があれば、それにもチェック）。</li>
+          <li>「移動先」で <b>一覧表のGoogleアカウント</b> を選び、<span class="k">移動</span> をタップします。</li>
+        </ol>
+        <div class="box info"><p>「移動する連絡先がありません」と出た場合や、「端末」が表示されない場合は、すでにGoogleに保存されています。そのまま次へ進んでください。</p></div>
+        <div class="box warn">
+          <span class="ttl">同期がオンか確認</span>
+          <p><span class="k">設定</span> → <span class="k">アカウントとバックアップ</span> → <span class="k">アカウントを管理</span> → <b>Googleアカウント</b> → <span class="k">アカウントを同期</span> で、<b>「連絡先」がオン（青色）</b> になっていることを確認します。</p>
+        </div>
+      </div>
+      <figure class="shot">
+        <figcaption><span class="who old">古いスマホ</span></figcaption>
+        <div class="phone old">
+          <div class="sb"><span>10:08</span><span>📶 🔋</span></div>
+          <div class="app">← 連絡先を移動</div>
+          <div class="body">
+            <div class="muted">移動元</div>
+            <div class="row tap" style="margin-bottom:10px"><span class="tick">✓</span><div><b>端末</b><small>連絡先 120件</small></div></div>
+            <div class="muted">移動先</div>
+            <div class="row"><span class="ico">G</span><div>Google<small>（一覧表のGoogleアカウント）</small></div></div>
+          </div>
+          <div class="bottom"><span class="pill">移動</span></div>
+        </div>
+      </figure>
+    </div>
+
+    <div class="step">
+      <div>
+        <h3><span class="n">4</span>LINEのトークを保存 <span class="who old">古いスマホ</span></h3>
         <ol>
           <li><span class="k">LINE</span> を開き、下の <span class="k">ホーム</span> をタップします。</li>
           <li>右上の <span class="k">⚙ 設定</span> → <span class="k">トークのバックアップ</span> をタップします。</li>
@@ -161,7 +193,7 @@
 
     <div class="step">
       <div>
-        <h3><span class="n">4</span>＋メッセージを保存 <span class="who old">古いスマホ</span></h3>
+        <h3><span class="n">5</span>＋メッセージを保存 <span class="who old">古いスマホ</span></h3>
         <ol>
           <li><span class="k">＋メッセージ</span> を開き、右下の <span class="k">マイページ</span> をタップします。</li>
           <li><span class="k">設定</span> → <span class="k">メッセージ</span> → <span class="k">バックアップ・復元</span> をタップします。</li>
@@ -186,6 +218,7 @@
     <ul class="check">
       <li><label><input type="checkbox" id="c1-0"><span>古いスマホがWi-Fiにつながった</span></label></li>
       <li><label><input type="checkbox" id="c1-1"><span>フォトが「バックアップ完了」になった</span></label></li>
+      <li><label><input type="checkbox" id="c1-c"><span>電話帳をGoogleに移した（または、すでにGoogleに保存されていた）</span></label></li>
       <li><label><input type="checkbox" id="c1-2"><span>LINEのバックアップが今日の日付になった</span></label></li>
       <li><label><input type="checkbox" id="c1-3"><span>＋メッセージのバックアップをした</span></label></li>
     </ul>
@@ -338,8 +371,8 @@
 
   <!-- ============================ STEP 3 ============================ -->
   <section class="section" id="s3">
-    <h2><span class="num">STEP<br>3</span>データを新しいスマホへ移す<span class="time">約30〜60分</span></h2>
-    <p class="lead">「Smart Switch（スマートスイッチ）」という機能で、電話帳・写真・アプリなどをまとめて移します。<b>2台を近くに置き、充電器につないだまま</b> 行ってください。</p>
+    <h2><span class="num">STEP<br>3</span>新しいスマホの初期設定<span class="time">約20分</span></h2>
+    <p class="lead">古いスマホを使って、Googleアカウントや Wi-Fi の設定を新しいスマホに移します。<b>2台を近くに置き、充電器につないだまま</b> 行ってください。</p>
 
     <div class="step">
       <div>
@@ -456,89 +489,42 @@
 
     <div class="step">
       <div>
-        <h3><span class="n">5</span>古いスマホで Smart Switch を開く <span class="who old">古いスマホ</span></h3>
-        <p style="font-size:16px;color:var(--sub)">※ ④のあと、古いスマホで Smart Switch が自動で開いた場合や、「データを送信」の画面が出た場合は ⑤ へ進みます。</p>
+        <h3><span class="n">5</span>「アプリとデータのコピー」は「コピーしない」 <span class="who new">新しいスマホ</span></h3>
         <ol>
-          <li><span class="k">設定</span>（歯車のアイコン）を開きます。</li>
-          <li><span class="k">アカウントとバックアップ</span> → <span class="k">Smart Switch</span> をタップ。</li>
-          <li>2つの選択肢のうち、<span class="k">古いデバイスからデータを移行</span> をタップします。</li>
-          <li>「Smart Switch をダウンロードしますか？」と出たら <span class="k">ダウンロード</span>（または <span class="k">インストール</span>）をタップします。</li>
-          <li>ダウンロードが終わると Smart Switch が開きます。開かないときは <span class="k">開く</span> をタップします。</li>
+          <li>新しいスマホに「アプリとデータのコピー」と出ます。</li>
+          <li>左下の <span class="k">コピーしない</span> をタップします。</li>
         </ol>
-        <div class="box info"><p>古いスマホで操作していても、<b>「古いデバイスからデータを移行」で正しい</b> です。「外部ストレージ転送」は選ばないでください。</p></div>
         <div class="box warn">
-          <span class="ttl">ダウンロードについて</span>
-          <ul>
-            <li>Wi-Fiにつながっていることを確認してから行ってください（数分かかります）。</li>
-            <li>「更新」と出た場合も、同じように <span class="k">更新</span> をタップしてください。</li>
-            <li>「Samsungアカウント」のログインを求められて進めない場合は、いったん戻り、<span class="k">Playストア</span> で「Smart Switch」とさがして <span class="k">インストール</span>（または <span class="k">更新</span>）してください。</li>
-          </ul>
+          <p><span class="k">次へ</span> はタップしないでください（会社のスマホでは、この方法は使えない設定になっています）。</p>
+          <p>まちがえて <span class="k">次へ</span> を押した場合は、左下の <span class="k">&lt;</span> でこの画面まで戻ってください。古いスマホに「セキュリティポリシーによって制限されています」と出たら <span class="k">OK</span> をタップします。</p>
         </div>
-      </div>
-      <figure class="shot">
-        <figcaption><span class="who old">古いスマホ</span></figcaption>
-        <div class="phone old">
-          <div class="sb"><span>10:21</span><span>🔋</span></div>
-          <div class="app">← Smart Switch</div>
-          <div class="body">
-            <div class="row tap" style="margin-top:10px"><span class="ico">📲</span><div><b>古いデバイスからデータを移行</b></div></div>
-            <div class="row"><span class="ico">💾</span><div>外部ストレージ転送</div></div>
-          </div>
-        </div>
-      </figure>
-    </div>
-
-    <div class="step">
-      <div>
-        <h3><span class="n">6</span>古いスマホで送信を始める <span class="who old">古いスマホ</span></h3>
-        <ol>
-          <li><span class="k">データを送信</span> をタップします。</li>
-          <li>つなぎ方は <span class="k">ワイヤレス</span> をタップします。</li>
-          <li>新しいスマホにつながると「許可しますか？」と出るので <span class="k">許可</span> をタップします。</li>
-        </ol>
-        <div class="box warn"><p><span class="k">データを受信</span> はまちがいです。必ず <b>「送信」</b> を選んでください。</p></div>
-      </div>
-      <figure class="shot">
-        <figcaption><span class="who old">古いスマホ</span></figcaption>
-        <div class="phone old">
-          <div class="sb"><span>10:22</span><span>📶 🔋</span></div>
-          <div class="app">Smart Switch</div>
-          <div class="body">
-            <div class="big center" style="margin-top:30px">データ転送</div>
-            <span class="pill tap" style="margin-top:30px">データを送信</span>
-            <span class="pill light">データを受信</span>
-          </div>
-        </div>
-      </figure>
-    </div>
-
-    <div class="step">
-      <div>
-        <h3><span class="n">7</span>移すデータを選んで転送 <span class="who new">新しいスマホ</span></h3>
-        <ol>
-          <li>Googleアカウントのログインを求められたら、<b>一覧表のメールアドレスとパスワード</b> を入力します。</li>
-          <li>「コピーするデータ」は <b>全部にチェック</b> が入っていることを確認します。</li>
-          <li><span class="k">コピー</span>（または <span class="k">転送</span>）をタップします。</li>
-          <li>終わるまで待ちます。<b>途中で画面を閉じたり、2台を離したりしないでください。</b></li>
-          <li>「完了」と出たら <span class="k">次へ</span>。その後の設定は画面の案内に従って進めます。</li>
-        </ol>
-        <div class="box warn"><p>古いスマホに「ログインしようとしていますか？」と出たら <span class="k">はい</span> をタップしてください。</p></div>
       </div>
       <figure class="shot">
         <figcaption><span class="who new">新しいスマホ</span></figcaption>
         <div class="phone">
-          <div class="sb"><span>10:25</span><span>📶 🔋</span></div>
-          <div class="body">
-            <div class="big">コピーするデータ</div>
-            <div class="row"><span class="tick">✓</span>連絡先（電話帳）</div>
-            <div class="row"><span class="tick">✓</span>メッセージ</div>
-            <div class="row"><span class="tick">✓</span>画像・動画</div>
-            <div class="row"><span class="tick">✓</span>アプリ</div>
-            <div class="row"><span class="tick">✓</span>設定</div>
+          <div class="sb"><span></span><span>📶 🔋</span></div>
+          <div class="body center">
+            <div style="color:#1a5fb4;font-size:18px;margin-top:10px">→←</div>
+            <div class="big" style="margin-top:4px">アプリとデータの<br>コピー</div>
+            <div class="muted">アプリ、写真、連絡先などをコピーできます。</div>
           </div>
-          <div class="bottom"><span class="pill tap">コピー</span></div>
+          <div class="bottom split"><span class="tap lbl-left" style="background:#eef0f3;border-radius:99px;padding:5px 12px">コピーしない</span><span class="pill" style="margin:0;padding:6px 18px">次へ</span></div>
         </div>
       </figure>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">6</span>残りの設定をする <span class="who new">新しいスマホ</span></h3>
+        <ol>
+          <li>Googleアカウントのパスワードを求められたら、<b>一覧表のパスワード</b> を入力します。</li>
+          <li>「Googleサービス」などの画面は、内容を確認して <span class="k">同意する</span>（または <span class="k">次へ</span>）をタップします。</li>
+          <li>「画面ロック」を求められたら、下の本社記入欄のとおりに設定します。</li>
+          <li>そのほかの画面（おすすめアプリなど）は、<span class="k">次へ</span> か <span class="k">スキップ</span> で進めてOKです。</li>
+          <li><b>ホーム画面</b> が出たら初期設定は完了です。</li>
+        </ol>
+        <div class="box info"><p>Wi-Fi の設定は古いスマホから移っています。画面の右上に Wi-Fi のマークが出ていることを確認してください。</p></div>
+      </div>
     </div>
 
     <div class="box hq">
@@ -547,7 +533,7 @@
     </div>
 
     <ul class="check">
-      <li><label><input type="checkbox" id="c2-1"><span>Smart Switch が「完了」になった</span></label></li>
+      <li><label><input type="checkbox" id="c2-1"><span>「アプリとデータのコピー」で「コピーしない」を選んだ</span></label></li>
       <li><label><input type="checkbox" id="c2-2"><span>新しいスマホのホーム画面が出た</span></label></li>
     </ul>
   </section>
@@ -559,9 +545,9 @@
 
     <div class="step">
       <div>
-        <h3><span class="n">1</span>新しいスマホでLINEを開く <span class="who new">新しいスマホ</span></h3>
+        <h3><span class="n">1</span>新しいスマホにLINEを入れて開く <span class="who new">新しいスマホ</span></h3>
         <ol>
-          <li><span class="k">LINE</span> アプリを開きます。<br><small>（見つからない場合は <span class="k">Playストア</span> で「LINE」とさがしてインストール）</small></li>
+          <li><span class="k">Playストア</span> を開き、上の検索欄に「LINE」と入れて <span class="k">インストール</span> をタップします。終わったら <span class="k">開く</span> をタップします。</li>
           <li><span class="k">ログイン</span> → <span class="k">QRコードでログイン</span> → <span class="k">QRコードをスキャン</span> をタップ。</li>
           <li>カメラの画面になったら、そのまま次へ進みます。</li>
         </ol>
@@ -660,7 +646,7 @@
       <div>
         <h3><span class="n">1</span>＋メッセージを開く <span class="who new">新しいスマホ</span></h3>
         <ol>
-          <li><span class="k">＋メッセージ</span> を開き、案内に沿って <span class="k">次へ</span>・<span class="k">許可</span> をタップします。</li>
+          <li><span class="k">＋メッセージ</span> を開き（見つからない場合は <span class="k">Playストア</span> で「+メッセージ」とさがしてインストール）、案内に沿って <span class="k">次へ</span>・<span class="k">許可</span> をタップします。</li>
           <li>前のメッセージが無い場合は <span class="k">マイページ</span> → <span class="k">設定</span> → <span class="k">メッセージ</span> → <span class="k">バックアップ・復元</span> → <span class="k">復元</span> をタップします。</li>
         </ol>
       </div>
@@ -681,10 +667,11 @@
       <div>
         <h3><span class="n">2</span>そのほかのアプリを確認 <span class="who new">新しいスマホ</span></h3>
         <ul>
-          <li><span class="k">電話</span> → <span class="k">連絡先</span>：いつも使う人の名前があるか</li>
+          <li><span class="k">電話</span> → <span class="k">連絡先</span>：いつも使う人の名前があるか（表示されるまで数分かかることがあります）</li>
           <li><span class="k">Gmail</span>：受信メールが見られるか</li>
           <li><span class="k">フォト</span>：前の写真が見られるか（表示まで少し時間がかかることがあります）</li>
         </ul>
+        <div class="box info"><p>通話履歴（電話をかけた・受けた記録）は新しいスマホには移りません。</p></div>
       </div>
     </div>
 
@@ -712,7 +699,11 @@
   <section class="section" id="faq">
     <h2><span class="num">？</span>困ったとき</h2>
     <details>
-      <summary>Smart Switch が途中で止まった・つながらない</summary>
+      <summary>「Smart Switchの使用は、セキュリティポリシーによって制限されています」と出た</summary>
+      <div><p>古いスマホで <span class="k">OK</span> をタップし、新しいスマホは左下の <span class="k">&lt;</span> で「アプリとデータのコピー」の画面まで戻って <span class="k">コピーしない</span> をタップしてください（STEP 3 の⑤）。</p></div>
+    </details>
+    <details>
+      <summary>QRコードを読み取ったあと、先に進まない</summary>
       <div><p>2台をくっつけるくらい近くに置き、両方の画面をつけたままにしてください。それでもだめなら、2台とも再起動して STEP 3 の③からやり直してください。</p></div>
     </details>
     <details>
@@ -729,7 +720,7 @@
     </details>
     <details>
       <summary>電話帳の数が足りない</summary>
-      <div><p>古いスマホは消さずに本社へ連絡してください。本社で移し直します。</p></div>
+      <div><p>古いスマホで STEP 1 の③（電話帳をGoogleに保存）をもう一度行い、数分待ってから新しいスマホの連絡先を見てください。それでも足りない場合は、古いスマホは消さずに本社へ連絡してください。</p></div>
     </details>
 
     <div class="box hq">
