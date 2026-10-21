@@ -543,11 +543,15 @@
         <h3><span class="n">6</span>画面ロックを設定する <span class="who new">新しいスマホ</span></h3>
         <ol>
           <li>新しいスマホに「端末を保護」と出ます。</li>
-          <li><span class="k">PIN</span> をタップします。</li>
-          <li><b>下の本社記入欄の番号</b> を入力して <span class="k">続行</span> をタップします。</li>
-          <li>確認のため、同じ番号をもう一度入力して <span class="k">OK</span> をタップします。</li>
+          <li><span class="k">PIN</span>（数字）・<span class="k">パスワード</span>（文字と数字）・<span class="k">パターン</span>（点を線でなぞる）の中から、<b>好きなものを1つ</b> タップします。</li>
+          <li>自分で決めた番号（またはパターン）を入力して <span class="k">続行</span> をタップします。</li>
+          <li>確認のため、同じものをもう一度入力して <span class="k">OK</span> をタップします。</li>
         </ol>
-        <div class="box warn"><p><span class="k">スキップ</span> は押さないでください。顔認証・指紋認証も設定しません。</p></div>
+        <div class="box warn">
+          <p><b>画面ロックはかならず設定してください。</b><span class="k">スキップ</span> は押さないでください。</p>
+          <p><span class="k">顔認証</span>・<span class="k">指紋認証</span> は選ばないでください。</p>
+          <p>決めた番号（パターン）は忘れないようにしてください。</p>
+        </div>
         <div class="box info"><p>このとき古いスマホには「新しいデバイス上でのセットアップの続行」と出たままです。<b>古いスマホはさわらず、そのまま近くに置いておきます。</b></p></div>
       </div>
       <figure class="shot">
@@ -562,18 +566,14 @@
           <div class="body">
             <div class="row">顔認証</div>
             <div class="row">指紋認証</div>
-            <div class="row tap"><b>PIN</b></div>
-            <div class="row">パスワード</div>
-            <div class="row">パターン</div>
+            <div class="row" style="border:2px solid var(--tap);border-radius:8px"><b>PIN</b></div>
+            <div class="row" style="border:2px solid var(--tap);border-radius:8px"><b>パスワード</b></div>
+            <div class="row" style="border:2px solid var(--tap);border-radius:8px"><b>パターン</b></div>
+            <div class="muted" style="color:var(--tap);font-weight:700">↑ この3つから1つ選ぶ</div>
           </div>
           <div class="bottom split"><span class="muted">スキップ</span><span></span></div>
         </div>
       </figure>
-    </div>
-
-    <div class="box hq">
-      <span class="ttl">📝 画面ロック（暗証番号）の設定について</span>
-      <p>新しいスマホの画面ロックは <b>PIN</b> にして、<b>一覧表に書いてある番号</b> を設定してください。</p>
     </div>
 
     <div class="step no-shot">
@@ -591,7 +591,7 @@
 
     <ul class="check">
       <li><label><input type="checkbox" id="c2-1"><span>「アプリとデータのコピー」で「コピーしない」を選んだ</span></label></li>
-      <li><label><input type="checkbox" id="c2-3"><span>新しいスマホの画面ロックをPINで設定した</span></label></li>
+      <li><label><input type="checkbox" id="c2-3"><span>新しいスマホの画面ロックを設定した（PIN・パスワード・パターンのどれか）</span></label></li>
       <li><label><input type="checkbox" id="c2-2"><span>新しいスマホのホーム画面が出た</span></label></li>
     </ul>
   </section>
