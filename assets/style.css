@@ -274,3 +274,23 @@ details > div { padding: 0 16px 12px; }
   .phone .tap { animation: none; }
   details { border: 0; } details > div { display: block; }
 }
+
+/* ---------- 説明用のイラスト（SVG） ---------- */
+.illust svg { width: 230px; height: auto; background: #fff; border-radius: 16px; border: 1px solid var(--line); display: block; margin: 0 auto; }
+.illust .t { font-family: "Yu Gothic UI", "Meiryo", sans-serif; font-size: 12px; fill: #1f2229; }
+.illust .t.b { font-weight: 700; font-size: 13px; }
+.illust .t.s { font-size: 11px; }
+.illust .t.sub { fill: #6b7280; }
+.illust .t.red { fill: #e5262a; font-weight: 700; }
+.illust .box-out { fill: #f1f3f6; stroke: #6b7280; stroke-width: 1.5; }
+.illust .box-in { fill: #fff; stroke: #1a5fb4; stroke-width: 1.5; }
+.illust .body { fill: #1f2229; }
+.illust .screen { fill: #dfe8f5; }
+.illust .tray { fill: #c9ced6; stroke: #8a919c; stroke-width: 1; }
+.illust .slot { fill: #eef0f3; stroke: #8a919c; }
+.illust .sim { fill: #fff; stroke: #1f2229; stroke-width: 1.5; }
+.illust .gold { fill: #e3b341; stroke: #a07a1c; }
+.illust .pin { fill: none; stroke: #4b5563; stroke-width: 2; }
+.illust .arrow { fill: none; stroke: #1f2229; stroke-width: 1.5; }
+.illust .ring { fill: none; stroke: #e5262a; stroke-width: 3; }
+@media print { .illust svg { width: 170px; } }
