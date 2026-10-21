@@ -7,7 +7,7 @@
 | 項目 | 場所 |
 |---|---|
 | 公開URL（一覧） | https://k01ktgroup-sys.github.io/shanai-manual/ |
-| パソコンの保存場所 | `Desktop\shanai-manual` |
+| パソコンの保存場所 | `Desktop\cloudcord\shanai-manual` |
 | GitHub（保存場所） | https://github.com/k01ktgroup-sys/shanai-manual |
 
 ---
@@ -65,7 +65,7 @@
 | | チェック項目 | ポイント |
 |---|---|---|
 | ☐ | **新しいチャットを開いた** | 左上の「＋ 新しいセッション」。1本のマニュアル＝1つのチャット |
-| ☐ | **環境（フォルダ）が「社内マニュアル」になっている** | 入力欄の下のフォルダ名をクリックして「社内マニュアル」（`Desktop\shanai-manual`）を選ぶ。「cloudcord」など別のフォルダになっていないか確認 |
+| ☐ | **環境（フォルダ）が「社内マニュアル」になっている** | 入力欄の下のフォルダ名をクリックして「社内マニュアル」（`Desktop\cloudcord\shanai-manual`）を選ぶ。「cloudcord」のままなど、別のフォルダになっていないか確認 |
 | ☐ | **WEB公開するなら、先頭に `/web-manual` を入れた** | 半角で `/web-manual` → スペース → 依頼内容。入力し始めると候補が出るので選んでもよい |
 | ☐ | **WEB公開しないなら、`/web-manual` を付けていない** | 付けるとWEBの社内マニュアルに入ってしまう |
 | ☐ | **続きの作業なら、どのマニュアルか書いた** | 例：`/web-manual 機種変更マニュアルの続きです。STEP3の後の画面を送ります` |
@@ -83,7 +83,7 @@
    - 決まったルールは「CLAUDE.md に追記して」と頼むと、次のチャットにも引き継がれる
 3. **作業メモ（CLAUDE.md）はバックアップする**
    - CLAUDE.md は GitHub に保存されません。パソコンが壊れると消えます
-   - `Desktop\shanai-manual` フォルダごと、OneDrive などに定期的にコピーする
+   - `Desktop\cloudcord\shanai-manual` フォルダごと、OneDrive などに定期的にコピーする
 4. **フォルダの場所や名前を勝手に変えない**
    - URLが変わって、配ったリンクが使えなくなる
    - 変えたいときは Claude に相談する
