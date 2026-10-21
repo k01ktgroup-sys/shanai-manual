@@ -1,5 +1,7 @@
 # 社内マニュアル（WEB版）
 
+📘 マニュアルの作り方・注意事項は **[GUIDE.md（作成ガイド）](GUIDE.md)** を見てください。
+
 ## 公開URL（GitHub Pages）
 
 - マニュアル一覧： https://k01ktgroup-sys.github.io/shanai-manual/
