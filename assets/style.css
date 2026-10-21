@@ -294,3 +294,13 @@ details > div { padding: 0 16px 12px; }
 .illust .arrow { fill: none; stroke: #1f2229; stroke-width: 1.5; }
 .illust .ring { fill: none; stroke: #e5262a; stroke-width: 3; }
 @media print { .illust svg { width: 170px; } }
+
+/* ---------- とても狭い画面への対応 ---------- */
+.phone { max-width: 100%; }
+.illust svg, .shot img { max-width: 100%; }
+@media (max-width: 380px) {
+  .wrap { padding: 0 10px; }
+  .section { padding: 16px 10px; }
+  .site-head .logo { font-size: 15px; }
+  #print-page { display: none; }
+}
