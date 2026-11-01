@@ -2,7 +2,7 @@
    社内マニュアル 共通スクリプト
    ・チェックボックスの状態をこの端末に保存（ページを閉じても残る）
    ・セクション内のチェックが全部付いたら目次に ✔ を表示
-   ・一覧ページの検索
+   ・一覧ページの検索・絞り込みは assets/top.js
    ========================================================= */
 (function () {
   var key = "manual-check:" + location.pathname;
@@ -50,14 +50,5 @@
   var printBtn = document.getElementById("print-page");
   if (printBtn) printBtn.addEventListener("click", function () { window.print(); });
 
-  /* 一覧ページの検索 */
-  var search = document.getElementById("search");
-  if (search) {
-    search.addEventListener("input", function () {
-      var q = search.value.trim().toLowerCase();
-      document.querySelectorAll(".cards .card").forEach(function (c) {
-        c.style.display = !q || c.textContent.toLowerCase().indexOf(q) >= 0 ? "" : "none";
-      });
-    });
-  }
+  /* 一覧ページの検索・絞り込みは assets/top.js */
 })();

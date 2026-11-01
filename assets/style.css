@@ -193,6 +193,26 @@ details > div { padding: 0 16px 12px; }
 .card .foot { margin-top: auto; padding-top: 8px; font-size: 13px; color: var(--sub); }
 .card.soon { opacity: .55; pointer-events: none; }
 
+/* ---------- 一覧ページの絞り込みボタン（会社の色：緑） ---------- */
+:root { --kt-green: #007237; --kt-green-soft: #e6f1ea; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --kt-green: #4fbf7f; --kt-green-soft: #18301f; } }
+:root[data-theme="dark"] { --kt-green: #4fbf7f; --kt-green-soft: #18301f; }
+.filters { display: grid; gap: 10px; margin: 14px 0 0; }
+.filters[hidden], .filter-note[hidden] { display: none; }
+.filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.filter-label { flex: 0 0 4.2em; font-size: 14px; font-weight: 700; color: var(--sub); }
+.filter-btn {
+  font: inherit; font-size: 15px; line-height: 1.3; min-height: 40px; padding: 7px 14px;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--text); cursor: pointer;
+}
+.filter-btn:hover { border-color: var(--kt-green); }
+.filter-btn[aria-pressed="true"] { background: var(--kt-green); border-color: var(--kt-green); color: #fff; font-weight: 700; }
+:root[data-theme="dark"] .filter-btn[aria-pressed="true"] { color: #10170f; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .filter-btn[aria-pressed="true"] { color: #10170f; } }
+.filter-btn:focus-visible { outline: 3px solid var(--kt-green-soft); outline-offset: 2px; }
+.filter-note { margin: 12px 0 0; padding: 10px 14px; border-radius: 12px; background: var(--kt-green-soft); color: var(--text); font-size: 15px; }
+@media (max-width: 480px) { .filter-label { flex-basis: 100%; } }
+
 .site-foot { color: var(--sub); font-size: 14px; padding: 24px 0 40px; text-align: center; }
 
 /* =========================================================

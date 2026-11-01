@@ -22,6 +22,11 @@
 
   <p><input id="search" class="search" type="search" placeholder="🔍 キーワードでさがす（例：LINE、機種変更）"></p>
 
+  <!-- 絞り込みボタン（中身は assets/top.js が作る。分類は総務部の管理画面 admin.html で決める） -->
+  <div id="filters" class="filters" hidden></div>
+  <p id="filter-note" class="filter-note" hidden>いまは絞り込みが使えません。下の一覧から選んでください。</p>
+  <p id="no-result" class="filter-note" hidden>あてはまるマニュアルがありません。ボタンの「全て」を押すと、すべて表示されます。</p>
+
   <div class="cards">
     <!-- ▼ マニュアルを追加するときは、この <a class="card"> … </a> をコピーして書きかえてください ▼ -->
     <a class="card" href="manuals/smartphone-kishuhenko/index.html">
@@ -70,5 +75,7 @@
 
 <footer class="site-foot">本社 情報システム担当</footer>
 <script src="assets/manual.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/top.js"></script>
 </body>
 </html>

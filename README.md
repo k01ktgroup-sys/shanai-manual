@@ -16,7 +16,8 @@
 ```
 shanai-manual/
 ├─ README.md            この説明書
-├─ index.html           マニュアル一覧（トップページ）
+├─ index.html           マニュアル一覧（トップページ。事業部・種類で絞り込める）
+├─ admin.html           総務部の管理画面（マニュアルごとの分類を決める。パスワードが必要）
 ├─ assets/              全マニュアル共通のデザイン（style.css）と動き（manual.js）
 ├─ _template/           新しいマニュアルのひな形
 └─ manuals/             マニュアル本体（1本＝1フォルダ）
@@ -33,6 +34,8 @@ shanai-manual/
    - 名前は「分野-内容」にします。例：`virusbuster-koshin`、`pc-printer-settei`
 2. 中の `index.html` を書きかえる
 3. トップの `index.html` のカードをコピーして、リンク先を `manuals/新しいフォルダ名/index.html` にする
+4. 公開したら、総務部の管理画面（`admin.html`）で、そのマニュアルの事業部と種類を選んで保存する
+   - 分類を決めるまでは、トップページで「全て」を選んだときだけ表示されます
 
 ### Claude に頼む場合
 

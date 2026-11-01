@@ -103,7 +103,8 @@ shanai-manual\
 ├─ GUIDE.md             この作成ガイド
 ├─ README.md            フォルダの説明書（追加方法・更新方法）
 ├─ CLAUDE.md            Claude 用の共通ルール（非公開）
-├─ index.html           マニュアル一覧
+├─ index.html           マニュアル一覧（事業部・種類で絞り込める）
+├─ admin.html           総務部の管理画面（マニュアルの分類を決める）
 ├─ assets\              共通デザイン
 ├─ _template\           新しいマニュアルのひな形
 └─ manuals\             マニュアル本体（1本＝1フォルダ）
