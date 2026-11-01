@@ -86,6 +86,7 @@
   }
 
   if (box) {
+    box.innerHTML = "";   // 保存したページを開いたときなど、前のボタンが残っていても2重にしない
     box.appendChild(buildRow("事業部", "dept", DEPTS));
     box.appendChild(buildRow("種類", "type", TYPES));
     box.addEventListener("click", function (ev) {
