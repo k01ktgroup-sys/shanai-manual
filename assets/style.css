@@ -212,6 +212,8 @@ details > div { padding: 0 16px 12px; }
 .filter-btn:focus-visible { outline: 3px solid var(--kt-green-soft); outline-offset: 2px; }
 .filter-note { margin: 12px 0 0; padding: 10px 14px; border-radius: 12px; background: var(--kt-green-soft); color: var(--text); font-size: 15px; }
 @media (max-width: 480px) { .filter-label { flex-basis: 100%; } }
+.site-foot .admin-link { margin-top: 8px; font-size: 13px; }
+.site-foot .admin-link a { color: var(--sub); }
 
 .site-foot { color: var(--sub); font-size: 14px; padding: 24px 0 40px; text-align: center; }
 
