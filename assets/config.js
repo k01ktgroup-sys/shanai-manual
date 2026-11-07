@@ -4,4 +4,4 @@ window.MANUAL_API_URL = "https://script.google.com/macros/s/AKfycbwwqH6cTANgyw4o
 
 /* 絞り込みの選択肢（_gas/コード.js の DEPTS・TYPES と同じにする） */
 window.MANUAL_DEPTS = ["本部", "事務", "訪問介護", "居宅介護", "訪問入浴", "福祉用具", "訪問看護"];
-window.MANUAL_TYPES = ["パソコン", "スマホ", "その他"];
+window.MANUAL_TYPES = ["パソコン", "スマホ", "ケアプラン連携システム", "その他"];
