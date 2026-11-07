@@ -41,6 +41,7 @@
   .pc.web tr.on td { background: #2e7d32; color: #fff; }
   .pc tr.ok td { background: #eefbea; } .pc tr.ye td { background: #fff7cc; } .pc tr.ng td { background: #ffe1e1; }
   .pc .note { color: #6b7280; font-size: 11px; }
+  .pc .grp { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
   @media (max-width: 480px) { .pc .hide-s { display: none; } }
   /* 赤い枠と丸数字（手順の番号と同じ） */
   .pc .hl { outline: 2px solid #d0342c; outline-offset: 1px; border-radius: 2px; }
@@ -82,13 +83,13 @@
 
   <ul class="toc no-print">
     <li><a href="#s0"><b>はじめに</b>流れと自分の作業</a></li>
+    <li><a href="#s-init"><b>事前設定</b>最初に1回だけ</a></li>
     <li><a href="#s-login"><b>共通</b>連携システムにログイン</a></li>
     <li><a href="#s1"><b>作業 ①</b>居宅：提供票を送る</a></li>
     <li><a href="#s2"><b>作業 ②</b>サービス：提供票を取り込む</a></li>
     <li><a href="#s3"><b>作業 ③</b>サービス：実績を送る</a></li>
     <li><a href="#s4"><b>作業 ④</b>居宅：実績を取り込む</a></li>
     <li><a href="#s-one"><b>別の方法</b>1か所だけ送る</a></li>
-    <li><a href="#s-init"><b>最初に1回</b>初期設定</a></li>
     <li><a href="#s9"><b>困ったとき</b>連絡先</a></li>
   </ul>
 
@@ -114,7 +115,7 @@
 
     <div class="box info"><span class="ttl">💡 用意するもの</span>
       <ul>
-        <li>ほのぼのNEXT と、ケアプランデータ連携システムが入ったパソコン（初期設定が済んでいるもの）</li>
+        <li>ほのぼのNEXT と、ケアプランデータ連携システムが入ったパソコン（ほのぼのの <a href="#s-init">事前設定</a> が済んでいるもの）</li>
         <li>連携システムの <b>個人ユーザー</b> と <b>事業所ユーザー</b> のID・パスワード（本社から渡された一覧表。このページには書きません）</li>
         <li>自分の事業所と相手の事業所の <b>事業所番号（10桁）</b></li>
       </ul>
@@ -129,6 +130,202 @@
         <li>画面の絵は、実際の画面を簡単に再現した <b>見本</b> です。<span class="m">1</span> <span class="m">2</span> … と赤い枠は、その手順の説明の番号と同じです。</li>
       </ul>
     </div>
+  </section>
+
+  <!-- ===================== 事前設定（最初に1回だけ） ===================== -->
+  <section class="section" id="s-init">
+    <h2><span class="num">事前<br>設定</span>ほのぼのの事前設定（最初に1回だけ）</h2>
+    <p class="lead">初めて連携するとき・パソコンや担当の職員が変わったときに、ほのぼので行います。毎月の作業の前に、済んでいるか確認してください。</p>
+    <div class="box warn"><span class="ttl">⚠ 先に読んでください</span>
+      <ul>
+        <li>手順 1（権限）は、ほのぼのの <b>管理者権限</b> を持つ職員が行います。</li>
+        <li>手順 3（動作設定）は <b>職員ごと</b> の設定です。ログインする職員が変わったら、その職員でも設定します。</li>
+      </ul>
+    </div>
+
+    <h3 class="sub-h"><span class="role kyo">居宅</span> の事前設定</h3>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">1</span>権限：「居宅・事業所連携」を有効にする（管理者）</h3>
+        <ol>
+          <li><span class="k">切替</span> → 「システム管理メニュー」→「システム管理」→「セキュリティ管理」を開きます。</li>
+          <li>「個人権限設定」（または「グループ権限設定」）で、使う職員の <b>「居宅・事業所連携」</b> を有効にして保存します。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">2</span>初期設定マスタ：「様式H」にする</h3>
+        <ol>
+          <li>メニューバーの <span class="k">設定</span> → 「初期設定マスタ」→ <span class="m">1</span> 「利用票」のタブを開きます。</li>
+          <li><span class="m">2</span> 画面下の「提供事業所連携設定」で <b>「様式H」</b> を選びます。</li>
+          <li><span class="m">3</span> <span class="k">保存</span> を押します。</li>
+        </ol>
+        <div class="pc" role="img" aria-label="初期設定マスタの利用票タブで、提供事業所連携設定を様式Hにして保存">
+          <div class="wt">初期設定マスタ</div>
+          <div class="bd">
+            <div class="row"><span class="tab">利用状況</span><span class="tab">ケアマネ</span><span class="tab">請求</span><span class="grp"><span class="m">1</span><span class="tab on hl">利用票</span></span><span class="tab">居宅介護支援費請求</span></div>
+            <div class="row"><span class="grp"><span class="m">3</span><span class="b p hl">保存</span></span><span class="b">閉じる</span></div>
+            <div class="row" style="justify-content:flex-end"><span class="lbl bl">提供事業所連携設定</span><span class="grp"><span class="m">2</span><span class="in sel hl">様式H</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">3</span>動作設定：出力先・取込元のフォルダ（ルートフォルダ）を決める</h3>
+        <ol>
+          <li><span class="k">ケアマネ</span> → <span class="k">利用・提供票</span> → <span class="k">提供事業所</span> → <span class="k">提供事業所連携</span> を押します。</li>
+          <li><span class="m">1</span> 「計画出力」のタブで、<span class="m">2</span> <span class="k">マスタ他</span> を押します。</li>
+          <li><span class="m">3</span> 出てきた「その他の機能」の画面で <span class="k">動作設定</span> を押します。</li>
+          <li><span class="m">4</span> 「フォルダ」の欄に、出力先・取込元にするフォルダ（例：<span class="fn">D:\提供票連携</span>）を入れ、<span class="m">5</span> <span class="k">確定</span> を押します。</li>
+        </ol>
+        <div class="pc" role="img" aria-label="提供事業所連携Hの計画出力タブ、マスタ他、動作設定">
+          <div class="wt">提供事業所連携H</div>
+          <div class="bd">
+            <div class="row"><span class="grp"><span class="m">1</span><span class="tab on hl">計画出力</span></span><span class="tab">実績取込</span><span style="flex:1"></span><span class="b">全選択</span><span class="b o">CSV出力</span><span class="b y">フォルダ</span><span class="grp"><span class="m">2</span><span class="b v hl">ﾏｽﾀ他</span></span><span class="b">閉じる</span></div>
+            <div style="border:1px solid #b7c3d3;background:#eef6ff;padding:6px;margin:0 6%">
+              <div class="note">その他の機能</div>
+              <div class="row"><span class="grp"><span class="m">3</span><span class="b y hl">動作設定</span></span><span class="b y">事業所設定</span><span class="b y">削除ﾌｧｲﾙ作成</span><span class="b y">ｻﾃﾗｲﾄ枝番設定</span><span class="b y">暗号化設定</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="pc" role="img" aria-label="提供事業所連携H動作設定。フォルダを入れて確定">
+          <div class="wt">提供事業所連携H動作設定</div>
+          <div class="bd">
+            <div class="row" style="justify-content:flex-end"><span class="grp"><span class="m">5</span><span class="b hl">確定</span></span><span class="b">閉じる</span></div>
+            <div class="note" style="color:#2f5fb3">出力先・取込元となるルートフォルダを指定してください。</div>
+            <div class="row"><span class="lbl">フォルダ</span><span class="m">4</span><span class="in hl" style="flex:1">D:\提供票連携</span></div>
+            <div class="note" style="text-align:right">※職員単位で保存</div>
+          </div>
+        </div>
+        <div class="box info"><span class="ttl">💡 フォルダの中身</span><p>このフォルダの下に、ほのぼのが自動で「月 → 居宅の番号 → サービス事業所の番号 → yotei（予定）／jisseki（実績）」のフォルダを作ります。送信準備ツールの「保存場所」には、<b>ここで決めたフォルダ</b>（例：提供票連携）を選びます。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">4</span>事業所設定：連携するサービス事業所にチェックする</h3>
+        <ol>
+          <li>手順 3 と同じく、「計画出力」→ <span class="k">マスタ他</span> を押し、<span class="m">1</span> <span class="k">事業所設定</span> を押します。</li>
+          <li><span class="m">2</span> 左上で <b>自分の居宅</b> を選びます。</li>
+          <li><span class="m">3</span> データ連携をするサービス事業所にチェックを付けます。<span class="k">利用歴のある事業所を選択</span> を押すと、利用票に登録されている事業所に自動でチェックが付きます。</li>
+          <li><span class="m">4</span> <span class="k">保存</span> を押します。</li>
+        </ol>
+        <div class="pc" role="img" aria-label="その他の機能の事業所設定ボタン">
+          <div class="wt">その他の機能</div>
+          <div class="bd"><div class="row"><span class="b y">動作設定</span><span class="grp"><span class="m">1</span><span class="b y hl">事業所設定</span></span><span class="b y">削除ﾌｧｲﾙ作成</span><span class="b y">ｻﾃﾗｲﾄ枝番設定</span><span class="b y">暗号化設定</span></div></div>
+        </div>
+        <div class="pc" role="img" aria-label="提供事業所連携H事業所設定。自分の居宅を選び、連携する事業所にチェックして保存">
+          <div class="wt">提供事業所連携H事業所設定</div>
+          <div class="bd">
+            <div class="row"><span class="grp"><span class="m">2</span><span class="in sel hl">（自分の居宅）</span></span><span class="b y">利用歴のある事業所を選択</span><span style="flex:1"></span><span class="grp"><span class="m">4</span><span class="b p hl">保存</span></span><span class="b">閉じる</span></div>
+            <div class="row" style="align-items:flex-start"><span class="m">3</span>
+              <table style="flex:1">
+                <tr><th style="width:18%">運用対象</th><th style="width:28%" class="hide-s">事業所番号</th><th>事業所名</th><th style="width:22%" class="hide-s">事業種別</th></tr>
+                <tr><td class="hl">☑ 対象</td><td class="hide-s">1100000011</td><td>見本：A訪問介護</td><td class="hide-s">訪問介護</td></tr>
+                <tr><td>□ 対象</td><td class="hide-s">1100000012</td><td>見本：B訪問入浴</td><td class="hide-s">訪問入浴</td></tr>
+                <tr><td class="hl">☑ 対象</td><td class="hide-s">1100000017</td><td>見本：C福祉用具</td><td class="hide-s">福祉用具貸与</td></tr>
+              </table>
+            </div>
+            <div class="note" style="text-align:right">※事業所単位で保存</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">5</span>必要なときだけ：サテライト枝番設定</h3>
+        <p>相手のサービス事業所に <b>サテライト事業所</b>（本体と同じ事業所番号の事業所）があるときだけ行います。本体の事業所には不要です。</p>
+        <ol>
+          <li>「計画出力」→ <span class="k">マスタ他</span> → <span class="k">ｻﾃﾗｲﾄ枝番設定</span> を押します。</li>
+          <li><span class="k">行追加</span> を押してサテライトの事業所を選び、枝番に 1 以上の数字を入れて保存します。</li>
+        </ol>
+        <div class="box warn"><span class="ttl">⚠ 枝番の数字は相手と同じに</span><p>枝番の数字と事業所の組み合わせは、相手のサービス事業所の設定と同じにする必要があります。相手と相談して決めてください。</p></div>
+      </div>
+    </div>
+
+    <h3 class="sub-h"><span class="role svc">サービス</span> の事前設定</h3>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">1</span>権限：「居宅・事業所連携」を有効にする（管理者）</h3>
+        <p>居宅の手順 1 と同じです（<span class="k">切替</span> → システム管理メニュー → システム管理 → セキュリティ管理 → 個人権限設定／グループ権限設定）。</p>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">2</span>初期設定マスタ：「様式H」にする</h3>
+        <ol>
+          <li>メニューバーの <span class="k">設定</span> → 「初期設定マスタ」→ <span class="m">1</span> 「請求」→「計画転送」を開きます。</li>
+          <li><span class="m">2</span> 「居宅支援連携設定」で <b>「様式H」</b> を選び、<span class="m">3</span> <span class="k">保存</span> を押します。</li>
+        </ol>
+        <div class="pc" role="img" aria-label="初期設定マスタの請求、計画転送で、居宅支援連携設定を様式Hにして保存">
+          <div class="wt">初期設定マスタ</div>
+          <div class="bd">
+            <div class="row"><span class="tab">利用状況</span><span class="grp"><span class="m">1</span><span class="tab on hl">請求 ／ 計画転送</span></span><span class="tab">利用票</span></div>
+            <div class="row"><span class="grp"><span class="m">3</span><span class="b p hl">保存</span></span><span class="b">閉じる</span></div>
+            <div class="row" style="justify-content:flex-end"><span class="lbl bl">居宅支援連携設定</span><span class="grp"><span class="m">2</span><span class="in sel hl">様式H</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">3</span>動作設定：実績出力先・計画取込元のフォルダを決める</h3>
+        <ol>
+          <li><span class="k">利用状況</span> → <span class="k">提供票</span> → <span class="k">居宅支援連携</span> を押します（<span class="k">請求</span> → <span class="k">算定</span> → <span class="k">提供票</span> からでも同じです）。</li>
+          <li><span class="m">1</span> 「計画取込」のタブで <span class="m">2</span> <span class="k">マスタ他</span> → <span class="m">3</span> <span class="k">動作設定</span> を押します。</li>
+          <li><span class="m">4</span> 「フォルダ」の欄に、出力先・取込元にするフォルダを入れて、<span class="m">5</span> <span class="k">確定</span>。</li>
+        </ol>
+        <div class="pc" role="img" aria-label="居宅支援連携Hの計画取込タブ、マスタ他、動作設定">
+          <div class="wt">居宅支援連携H</div>
+          <div class="bd">
+            <div class="row"><span class="grp"><span class="m">1</span><span class="tab on hl">計画取込</span></span><span class="tab">実績出力</span><span style="flex:1"></span><span class="b y">フォルダ</span><span class="b">CSV取込</span><span class="grp"><span class="m">2</span><span class="b v hl">ﾏｽﾀ他</span></span><span class="b">閉じる</span></div>
+            <div style="border:1px solid #b7c3d3;background:#eef6ff;padding:6px;margin:0 6%">
+              <div class="note">その他の機能</div>
+              <div class="row"><span class="grp"><span class="m">3</span><span class="b y hl">動作設定</span></span><span class="b y">事業所設定</span><span class="b y">ｻﾃﾗｲﾄ枝番設定</span><span class="b y">暗号化設定</span></div>
+            </div>
+            <div class="row"><span class="lbl">フォルダ</span><span class="m">4</span><span class="in hl" style="flex:1">D:\提供票連携</span><span class="grp"><span class="m">5</span><span class="b hl">確定</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">4</span>事業所設定：連携する居宅にチェックする</h3>
+        <ol>
+          <li>「計画取込」→ <span class="k">マスタ他</span> → <span class="k">事業所設定</span> を押します。</li>
+          <li>左上で <b>自分の事業所</b> を選び、データ連携をする <b>居宅介護支援事業所</b> にチェックを付けて、<span class="k">保存</span> を押します。</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">5</span>必要なときだけ：サテライト枝番</h3>
+        <ul>
+          <li>自分の事業所がサテライト事業所のときは、初めて計画を取り込むときに「サテライト枝番_事業所選択」の画面が自動で出ます。<b>自分の事業所</b> を選びます（次からは出ません）。</li>
+          <li>居宅から届いた枝番が前と変わって、予定が正しく取り込めないときは、「計画取込」→ <span class="k">マスタ他</span> → <span class="k">ｻﾃﾗｲﾄ枝番設定</span> で前の行を選んで <span class="k">行削除</span> し、もう一度取り込みます。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box info"><span class="ttl">💡 暗号化設定は使いません</span><p>「暗号化設定」を登録すると、ファイルが <span class="fn">.NDS</span> という形になり、ケアプランデータ連携システムや送信準備ツールで扱えません。居宅・サービスとも登録しないでください（CSVのまま使います）。</p></div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="ci-1"><span>権限が有効になっている</span></label></li>
+      <li><label><input type="checkbox" id="ci-2"><span>初期設定マスタが「様式H」になっている</span></label></li>
+      <li><label><input type="checkbox" id="ci-3"><span>動作設定でフォルダを決めた（自分の職員でログインして）</span></label></li>
+      <li><label><input type="checkbox" id="ci-4"><span>事業所設定で、連携する相手にチェックした</span></label></li>
+    </ul>
   </section>
 
   <!-- ===================== 共通：ログイン ===================== -->
@@ -148,7 +345,7 @@
           <div class="wt">ケアプランデータ連携システム</div>
           <div class="bd">
             <div class="row"><span class="m">1</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl bl">ユーザーID</span><span class="in">（一覧表のID）</span><span class="lbl bl">パスワード</span><span class="in">●●●●●●</span></span></div>
-            <div class="row" style="justify-content:center"><span class="m">2</span><span class="b hl">ログイン</span></div>
+            <div class="row" style="justify-content:center"><span class="grp"><span class="m">2</span><span class="b hl">ログイン</span></span></div>
           </div>
         </div>
         <div class="box info"><span class="ttl">💡 事業所ユーザーを使うとき</span><p><span class="k">一括送信</span> を押したときや、途中で事業所のログイン画面が出たときは、<b>事業所ユーザー</b>（電子請求用の ID・パスワード）を入れます。IDがわからない・期限が切れたときは総務部へ連絡してください。</p></div>
@@ -190,7 +387,7 @@
         <div class="pc" role="img" aria-label="提供事業所連携の計画出力画面。処理年月と支援事業所を確認し、一括出力を押す">
           <div class="wt">提供事業所連携</div>
           <div class="bd">
-            <div class="row"><span class="m">1</span><span class="tab on hl">計画出力（介護）</span><span class="tab">計画出力（予防）</span><span class="tab">実績取込</span><span class="m">3</span><span class="b y hl">一括出力</span><span class="b o">CSV出力</span><span class="b y">フォルダ</span><span class="b v">ﾏｽﾀ他</span><span class="b">閉じる</span></div>
+            <div class="row"><span class="grp"><span class="m">1</span><span class="tab on hl">計画出力（介護）</span></span><span class="tab">計画出力（予防）</span><span class="tab">実績取込</span><span class="grp"><span class="m">3</span><span class="b y hl">一括出力</span></span><span class="b o">CSV出力</span><span class="b y">フォルダ</span><span class="b v">ﾏｽﾀ他</span><span class="b">閉じる</span></div>
             <div class="row"><span class="m">2</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl">処理年月</span><span class="in">R 8/12</span><span class="lbl">支援事業所</span><span class="in sel">（自分の居宅）</span></span></div>
             <table><tr><th style="width:12%">利用票</th><th class="hide-s">利用者番号</th><th>利用者名</th></tr><tr><td>☑</td><td class="hide-s">0001</td><td>見本 太郎</td></tr></table>
           </div>
@@ -226,7 +423,7 @@
           <div class="bd">
             <div class="row"><span class="m">1</span><span class="in sel hl" style="flex:1">提供票（予定）を送る：居宅 → サービス事業所</span></div>
             <div class="bar" style="background:#2e67a5">1　ほのぼので保存した場所を選びます</div>
-            <div class="row"><span class="in" style="flex:1">（選んだ場所が出ます）</span><span class="m">2</span><span class="b lt hl">保存場所を選ぶ</span></div>
+            <div class="row"><span class="in" style="flex:1">（選んだ場所が出ます）</span><span class="grp"><span class="m">2</span><span class="b lt hl">保存場所を選ぶ</span></span></div>
             <div class="bar" style="background:#77539e">2　何月分を、どの事業所から送るか確認します</div>
             <div class="row"><span class="m">3</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl bl">何月分</span><span class="in">202612</span><span class="lbl bl">自事業所番号</span><span class="in">1000000000</span></span></div>
             <div class="row"><span class="m">4</span><span class="b big pu hl" style="flex:1">送り先を一覧に出す</span></div>
@@ -258,7 +455,7 @@
               <tr class="ye"><td>□</td><td>見本：B訪問入浴</td><td class="hide-s">1100000022</td><td>出力回が複数</td></tr>
               <tr class="ng"><td>□</td><td>見本：Cデイ</td><td class="hide-s">1100000033</td><td>不足</td></tr>
             </table>
-            <div class="row"><span class="m">1</span><span class="note">送る行にチェック</span><span class="b lt">緑の行を選ぶ</span><span class="b lt">チェックを外す</span><span class="m">2</span><span class="b lt hl">名前を覚える</span><span class="b lt">困ったとき</span></div>
+            <div class="row"><span class="m">1</span><span class="note">送る行にチェック</span><span class="b lt">緑の行を選ぶ</span><span class="b lt">チェックを外す</span><span class="grp"><span class="m">2</span><span class="b lt hl">名前を覚える</span></span><span class="b lt">困ったとき</span></div>
           </div>
         </div>
       </div>
@@ -302,7 +499,7 @@
           <div class="wt">ケアプランデータ連携システム</div>
           <div class="bd">
             <div class="menu"><span>トップ</span><span>受信一覧</span><span>送信一覧</span><span>新規作成</span><span>下書き一覧</span><span class="on hl">一括送信 <span class="m" style="font-size:10px">1</span></span></div>
-            <div class="row"><span class="m">2</span><span class="b hl">ファイルを選択</span><span class="note">（または、ファイルを引っぱって入れる）</span></div>
+            <div class="row"><span class="grp"><span class="m">2</span><span class="b hl">ファイルを選択</span></span><span class="note">（または、ファイルを引っぱって入れる）</span></div>
           </div>
         </div>
       </div>
@@ -325,7 +522,7 @@
               <tr><td>1100000022</td><td class="fn">UP…_202612_….csv ほか</td><td>成功</td></tr>
             </table>
             <div class="row"><span class="m">1</span><span class="note">↑ 送り先・ファイル・件数を確認</span></div>
-            <div class="row" style="justify-content:center"><span class="m">2</span><span class="b hl">一括送信</span></div>
+            <div class="row" style="justify-content:center"><span class="grp"><span class="m">2</span><span class="b hl">一括送信</span></span></div>
           </div>
         </div>
         <div class="box warn"><span class="ttl">⚠ 「失敗」「中断」が出たとき</span><p>その行の原因を確認します（時間外・ファイルの種類・事業所ユーザーの認証など）。成功した分まで <b>全部を送り直さない</b> でください（二重に届きます）。</p></div>
@@ -378,7 +575,7 @@
               <tr class="on"><td>2026/12/01 10:00</td><td>見本：A居宅</td><td>未</td></tr>
               <tr><td>2026/12/01 09:30</td><td>見本：B居宅</td><td>未</td></tr>
             </table>
-            <div class="row"><span class="m">4</span><span class="b hl">データ取得</span><span class="m">5</span><span class="b hl">一括取得</span><span style="flex:1"></span><span class="m">2</span><span class="b hl">更新</span></div>
+            <div class="row"><span class="grp"><span class="m">4</span><span class="b hl">データ取得</span></span><span class="grp"><span class="m">5</span><span class="b hl">一括取得</span></span><span style="flex:1"></span><span class="grp"><span class="m">2</span><span class="b hl">更新</span></span></div>
           </div>
         </div>
         <div class="box info"><span class="ttl">💡 ファイル名の見分け方</span><p>提供票（予定）：<span class="fn">UPPLAN_</span>・<span class="fn">UPSIKYU_</span>・<span class="fn">UPHOSOKU_</span> で始まる3つ／実績：<span class="fn">UPJSK_</span> で始まるもの。フォルダ名の日時は「受け取った日時」で、サービスの月ではありません。</p></div>
@@ -402,7 +599,7 @@
         <div class="pc" role="img" aria-label="居宅支援連携の計画取込画面">
           <div class="wt">居宅支援連携</div>
           <div class="bd">
-            <div class="row"><span class="m">1</span><span class="tab on hl">計画取込</span><span class="tab">実績出力</span><span class="m">3</span><span class="b y hl">フォルダ</span><span class="b">CSV取込</span><span class="b">転送</span><span class="b v">ﾏｽﾀ他</span><span class="b">閉じる</span></div>
+            <div class="row"><span class="grp"><span class="m">1</span><span class="tab on hl">計画取込</span></span><span class="tab">実績出力</span><span class="grp"><span class="m">3</span><span class="b y hl">フォルダ</span></span><span class="b">CSV取込</span><span class="b">転送</span><span class="b v">ﾏｽﾀ他</span><span class="b">閉じる</span></div>
             <div class="row"><span class="m">2</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl">支援事業所番号</span><span class="in sel">（送ってきた居宅）</span><span class="lbl">処理年月</span><span class="in">R 8/12</span><span class="lbl">提供事業所</span><span class="in sel">（自分の事業所）</span></span></div>
           </div>
         </div>
@@ -429,7 +626,7 @@
         </ol>
         <div class="pc" role="img" aria-label="CSV取込と転送">
           <div class="wt">居宅支援連携</div>
-          <div class="bd"><div class="row"><span class="tab on">計画取込</span><span class="tab">実績出力</span><span class="b y">フォルダ</span><span class="m">1</span><span class="b hl">CSV取込</span><span class="m">2</span><span class="b hl">転送</span><span class="b">閉じる</span></div></div>
+          <div class="bd"><div class="row"><span class="tab on">計画取込</span><span class="tab">実績出力</span><span class="b y">フォルダ</span><span class="grp"><span class="m">1</span><span class="b hl">CSV取込</span></span><span class="grp"><span class="m">2</span><span class="b hl">転送</span></span><span class="b">閉じる</span></div></div>
         </div>
       </div>
     </div>
@@ -446,8 +643,8 @@
         <div class="pc" role="img" aria-label="提供票の計画取込">
           <div class="wt">提供票 ／ 計画取込</div>
           <div class="bd">
-            <div class="row"><span class="b g">複写</span><span class="b p">保存</span><span class="m">1</span><span class="b y hl">計画取込</span><span class="b">居宅支援連携</span></div>
-            <div class="row"><span class="m">2</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl">提供月</span><span class="in">R 8/12</span><span class="note">☑ 見本 太郎</span></span><span class="m">3</span><span class="b hl">取込</span><span class="b">閉じる</span></div>
+            <div class="row"><span class="b g">複写</span><span class="b p">保存</span><span class="grp"><span class="m">1</span><span class="b y hl">計画取込</span></span><span class="b">居宅支援連携</span></div>
+            <div class="row"><span class="m">2</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl">提供月</span><span class="in">R 8/12</span><span class="note">☑ 見本 太郎</span></span><span class="grp"><span class="m">3</span><span class="b hl">取込</span></span><span class="b">閉じる</span></div>
           </div>
         </div>
       </div>
@@ -481,7 +678,7 @@
         <div class="pc" role="img" aria-label="居宅支援連携の実績出力画面">
           <div class="wt">居宅支援連携</div>
           <div class="bd">
-            <div class="row"><span class="tab">計画取込</span><span class="m">1</span><span class="tab on hl">実績出力</span><span class="m">3</span><span class="b hl">取込</span><span class="m">4</span><span class="b o hl">CSV出力</span><span class="b y">フォルダ</span><span class="b">閉じる</span></div>
+            <div class="row"><span class="tab">計画取込</span><span class="grp"><span class="m">1</span><span class="tab on hl">実績出力</span></span><span class="grp"><span class="m">3</span><span class="b hl">取込</span></span><span class="grp"><span class="m">4</span><span class="b o hl">CSV出力</span></span><span class="b y">フォルダ</span><span class="b">閉じる</span></div>
             <div class="row"><span class="m">2</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl">提供年月</span><span class="in">R 8/12</span><span class="lbl">提供事業所</span><span class="in sel">（自分の事業所）</span><span class="lbl">支援事業所番号</span><span class="in sel">（送り先の居宅）</span></span></div>
           </div>
         </div>
@@ -549,7 +746,7 @@
         <div class="pc" role="img" aria-label="提供事業所連携の実績取込画面">
           <div class="wt">提供事業所連携</div>
           <div class="bd">
-            <div class="row"><span class="tab">計画出力（介護）</span><span class="m">1</span><span class="tab on hl">実績取込</span><span class="m">3</span><span class="b y hl">フォルダ</span><span class="b">CSV取込</span><span class="b">転送</span><span class="b">閉じる</span></div>
+            <div class="row"><span class="tab">計画出力（介護）</span><span class="grp"><span class="m">1</span><span class="tab on hl">実績取込</span></span><span class="grp"><span class="m">3</span><span class="b y hl">フォルダ</span></span><span class="b">CSV取込</span><span class="b">転送</span><span class="b">閉じる</span></div>
             <div class="row"><span class="m">2</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl">支援事業所</span><span class="in sel">（自分の居宅）</span><span class="lbl">処理年月</span><span class="in">R 8/12</span><span class="lbl">提供事業所番号</span><span class="in sel">（送ってきた事業所）</span></span></div>
           </div>
         </div>
@@ -568,7 +765,7 @@
         <div class="pc" role="img" aria-label="実績取込のCSV取込、利用者の選択、転送">
           <div class="wt">提供事業所連携</div>
           <div class="bd">
-            <div class="row"><span class="tab on">実績取込</span><span class="b y">フォルダ</span><span class="m">1</span><span class="b hl">CSV取込</span><span class="m">3</span><span class="b hl">転送</span><span class="b">閉じる</span></div>
+            <div class="row"><span class="tab on">実績取込</span><span class="b y">フォルダ</span><span class="grp"><span class="m">1</span><span class="b hl">CSV取込</span></span><span class="grp"><span class="m">3</span><span class="b hl">転送</span></span><span class="b">閉じる</span></div>
             <div class="row" style="align-items:flex-start"><span class="m">2</span>
               <table style="flex:1"><tr><th style="width:12%">選択</th><th>利用者名</th><th style="width:36%">サービス</th></tr>
               <tr class="on hl"><td>☑</td><td>見本 太郎</td><td>訪問介護</td></tr></table></div>
@@ -613,7 +810,7 @@
         <div class="pc" role="img" aria-label="計画出力で送り先を1つ選んでCSV出力">
           <div class="wt">提供事業所連携</div>
           <div class="bd">
-            <div class="row"><span class="tab on">計画出力（介護）</span><span class="tab">計画出力（予防）</span><span class="b y">一括出力</span><span class="m">3</span><span class="b o hl">CSV出力</span><span class="b y">フォルダ</span><span class="b">閉じる</span></div>
+            <div class="row"><span class="tab on">計画出力（介護）</span><span class="tab">計画出力（予防）</span><span class="b y">一括出力</span><span class="grp"><span class="m">3</span><span class="b o hl">CSV出力</span></span><span class="b y">フォルダ</span><span class="b">閉じる</span></div>
             <div class="row"><span class="m">1</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl">提供事業所番号</span><span class="in sel">（送り先）</span><span class="lbl">処理年月</span><span class="in">R 8/12</span></span></div>
             <div class="row" style="align-items:flex-start"><span class="m">2</span>
               <table style="flex:1"><tr><th style="width:16%">計画書</th><th class="hl" style="width:16%">利用票</th><th>利用者名</th></tr><tr><td>□</td><td class="hl">☑</td><td>見本 太郎</td></tr></table></div>
@@ -638,42 +835,12 @@
           <div class="bd">
             <div class="menu"><span>トップ</span><span>受信一覧</span><span>送信一覧</span><span class="on hl">新規作成 <span class="m" style="font-size:10px">1</span></span><span>下書き一覧</span><span>一括送信</span></div>
             <div class="row"><span class="m">3</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl bl">送信先事業所番号</span><span class="in">1100000011</span><span class="note">（自動で入る）</span></span></div>
-            <div class="row"><span class="m">2</span><span class="b hl">ファイルを選択</span><span class="note fn">UPPLAN_….csv ほか</span></div>
+            <div class="row"><span class="grp"><span class="m">2</span><span class="b hl">ファイルを選択</span></span><span class="note fn">UPPLAN_….csv ほか</span></div>
             <div class="row"><span class="lbl bl">メッセージ</span><span class="in" style="flex:1">12月分 提供票</span></div>
-            <div class="row" style="justify-content:flex-end"><span class="m">4</span><span class="b hl">送信</span></div>
+            <div class="row" style="justify-content:flex-end"><span class="grp"><span class="m">4</span><span class="b hl">送信</span></span></div>
           </div>
         </div>
         <div class="box warn"><span class="ttl">⚠ 宛先が違うとき</span><p>送りません。宛先は手で直せないので、添付をすべて外して、正しいファイルを選び直します。</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== 最初に1回だけ：初期設定 ===================== -->
-  <section class="section" id="s-init">
-    <h2><span class="num">最初に<br>1回</span>初期設定（管理者・本社が行う）</h2>
-    <p class="lead">ふだんの作業では使いません。新しいパソコンや、連携する事業所が増えたときに確認します。</p>
-
-    <div class="step no-shot">
-      <div>
-        <h3><span class="n">1</span><span class="role kyo">居宅</span> の初期設定</h3>
-        <ol>
-          <li><b>権限</b>：<span class="k">切替</span> → システム管理メニュー → システム管理 → セキュリティ管理 → 個人権限設定／グループ権限設定 で、「居宅・事業所連携」を有効にする（管理者権限が必要）。</li>
-          <li><b>様式</b>：<span class="k">設定</span> → 初期設定マスタ → 利用票 で、様式を「様式H」にして保存。</li>
-          <li><b>動作設定</b>：提供事業所連携 → 計画出力 → <span class="k">マスタ他</span> → <span class="k">動作設定</span> で、出力先・取込元になるフォルダ（ルートフォルダ）を選んで <span class="k">OK</span> → <span class="k">確定</span>。</li>
-          <li><b>事業所設定</b>：<span class="k">マスタ他</span> → <span class="k">事業所設定</span> で、連携するサービス事業所にチェックして <span class="k">保存</span>（<span class="k">利用歴のある事業所を選択</span> で自動でチェックできます）。</li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="step no-shot">
-      <div>
-        <h3><span class="n">2</span><span class="role svc">サービス</span> の初期設定</h3>
-        <ol>
-          <li><b>様式</b>：<span class="k">設定</span> → 初期設定マスタ → 請求 → 計画転送 を「様式H」にして保存。</li>
-          <li><b>動作設定</b>：提供票 → 居宅支援連携 → <span class="k">マスタ他</span> → <span class="k">動作設定</span> で、ルートフォルダを設定。職員ごとの設定なので、ログインする職員が変わったときも確認します。</li>
-          <li><b>事業所設定</b>：連携する居宅介護支援事業所にチェックして保存。</li>
-          <li><b>サテライト／枝番設定</b>：同じ事業所番号で複数の事業所があるときに、番号を割り当てます。</li>
-        </ol>
       </div>
     </div>
   </section>
