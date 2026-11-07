@@ -26,12 +26,21 @@
     return m ? m[1] : "";
   }
 
+  /* 番号で探す：「7」「07」「No.7」「Ｎｏ．７」「7番」などを番号として扱う */
+  function numberOf(q) {
+    var t = q.replace(/[０-９Ａ-Ｚａ-ｚ．]/g, function (ch) { return String.fromCharCode(ch.charCodeAt(0) - 0xFEE0); })
+             .toLowerCase().replace(/\s+/g, "").replace(/^(no\.?|№|#)/, "").replace(/番$/, "");
+    return /^\d{1,3}$/.test(t) ? parseInt(t, 10) : null;
+  }
+
   function apply() {
     var q = search ? search.value.trim().toLowerCase() : "";
+    var num = numberOf(q);
     var filtering = ready && (state.dept || state.type);
     var shown = 0;
     cards.forEach(function (c) {
-      var ok = !q || c.textContent.toLowerCase().indexOf(q) >= 0;
+      var ok = !q || (num !== null ? Number(c.getAttribute("data-no")) === num
+                                   : c.textContent.toLowerCase().indexOf(q) >= 0);
       if (c.classList.contains("soon")) ok = ok && !filtering && !q;
       else if (filtering) {
         var d = data[idOf(c)];

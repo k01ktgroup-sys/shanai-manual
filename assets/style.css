@@ -356,3 +356,10 @@ details > div { padding: 0 16px 12px; }
 }
 :root[data-theme="dark"] .who,
 :root[data-theme="dark"] .section > h2 .num { color: #1a1714; }
+
+/* ---------- マニュアル番号（一覧のカード右上） ---------- */
+.card .no {
+  position: absolute; top: 14px; right: 14px;
+  padding: 1px 10px; border-radius: 99px; border: 1px solid var(--line);
+  background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700; letter-spacing: .02em;
+}
