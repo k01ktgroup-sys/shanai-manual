@@ -87,7 +87,7 @@
           <li>利用票を開き、利用者と月を確認します。</li>
           <li><span class="no-c">1</span> <span class="k">行追加</span> を押します。「サービス選択」の画面が出ます。</li>
           <li><span class="no-c">2</span> サービス種別の「介護」にチェックし、右の欄で「福祉用具貸与」を選びます（開いたときは「訪問介護」などになっているので変えます。予防の人は「予防」にチェックし、「予防用具貸与」）。</li>
-          <li><span class="no-c">3</span> 「事業所」の欄（初めは「（未選択）」）で、実際に貸し出す <b>福祉用具の事業所</b> を選びます。右側に <span class="k">商品検索</span> と商品の一覧が出ます。</li>
+          <li><span class="no-c">3</span> 「事業所」の欄（初めは「（未選択）」）で、実際に貸し出す <b>福祉用具の事業所</b> を選びます。右側に「商品名称」「TAISコード等」の入力欄と、商品の一覧が出ます。</li>
         </ol>
         <figure class="pcshot"><a href="images/tais-a1.png" target="_blank" rel="noopener"><img src="images/tais-a1.png" alt="利用票の行追加ボタン" loading="lazy"></a></figure>
         <figure class="pcshot"><a href="images/tais-a2.png" target="_blank" rel="noopener"><img src="images/tais-a2.png" alt="サービス選択の画面。サービス種類と事業所を選ぶ" loading="lazy"></a><figcaption>事業所の番号と名前はぼかしています。</figcaption></figure>
@@ -98,12 +98,11 @@
       <div>
         <h3><span class="n">2</span>TAISコードで商品を探して選ぶ</h3>
         <ol>
-          <li><span class="no-c">1</span> 右側の「TAISコード等」の欄に、資料のコードを入れます（商品名でも探せます）。</li>
-          <li><span class="no-c">2</span> <span class="k">商品検索</span> を押します。</li>
-          <li><span class="no-c">3</span> コードが入っている商品の行をクリックします。</li>
-          <li><span class="no-c">4</span> 下の <b>商品名・コード・単位数</b> が、資料と同じか確認します。</li>
+          <li><span class="no-c">1</span> 右側の「TAISコード等」の欄に資料のコードを入れて、<span class="k">Enter</span> キーを押します（「商品名称」の欄に名前を入れて探すこともできます）。</li>
+          <li><span class="no-c">2</span> 下の一覧に出た、コードが入っている商品の行をクリックします。</li>
+          <li><span class="no-c">3</span> 下の <b>商品名・コード・単位数</b> が、資料と同じか確認します。</li>
         </ol>
-        <figure class="pcshot"><a href="images/tais-a3.png" target="_blank" rel="noopener"><img src="images/tais-a3.png" alt="商品検索の画面" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/tais-a3.png" target="_blank" rel="noopener"><img src="images/tais-a3.png" alt="TAISコード等の欄にコードを入れて商品を探す画面" loading="lazy"></a></figure>
         <div class="box warn"><span class="ttl">⚠ 注意</span>
           <ul>
             <li>「（車いす貸与）」のような <b>コードのない行は選ばない</b> でください。</li>
@@ -158,12 +157,11 @@
       <div>
         <h3><span class="n">2</span>TAISコードで探して選び直す</h3>
         <ol>
-          <li><span class="no-c">1</span> 「TAISコード等」の欄に、資料のコードを入れます。</li>
-          <li><span class="no-c">2</span> <span class="k">商品検索</span> を押します。</li>
-          <li><span class="no-c">3</span> 正しい商品の行をクリックします。</li>
-          <li><span class="no-c">4</span> 下の商品名とコードが変わったことを確認します。<b>単位数</b> も資料と同じか確認します。</li>
+          <li><span class="no-c">1</span> 「TAISコード等」の欄に資料のコードを入れて、<span class="k">Enter</span> キーを押します。</li>
+          <li><span class="no-c">2</span> 下の一覧に出た、正しい商品の行をクリックします。</li>
+          <li><span class="no-c">3</span> 下の商品名とコードが変わったことを確認します。<b>単位数</b> も資料と同じか確認します。</li>
         </ol>
-        <figure class="pcshot"><a href="images/tais-b3.png" target="_blank" rel="noopener"><img src="images/tais-b3.png" alt="修正画面での商品検索" loading="lazy"></a><figcaption>例：一覧は 250 なのに、下の単位数は前の 430 が残っています。</figcaption></figure>
+        <figure class="pcshot"><a href="images/tais-b3.png" target="_blank" rel="noopener"><img src="images/tais-b3.png" alt="修正画面で商品を探す" loading="lazy"></a><figcaption>例：一覧は 250 なのに、下の単位数は前の 430 が残っています。</figcaption></figure>
         <div class="box warn"><span class="ttl">⚠ 単位数は自動で変わらないことがあります</span><p>前の単位数が残ることがあります。資料と合わないときは確定せずに、担当者に確認します。</p></div>
       </div>
     </div>
@@ -259,7 +257,7 @@
         <ol>
           <li><span class="no-c">1</span> 福祉用具マスタに戻ったら 「ID」の見出しを押し、大きい番号が上に来るようにします（小さい順なら、もう一度押す）。</li>
           <li><span class="no-c">2</span> 上のほうにある追加した商品を選び、TAISコード・型番・種目・単位数を資料と見くらべます。</li>
-          <li><span class="k">閉じる</span> でサービス選択に戻り、<a href="#sa">作業 A の手順 2</a> の方法で商品を探して選びます。</li>
+          <li><span class="k">閉じる</span> でサービス選択に戻り、<a href="#sa">作業 A の手順 2</a> の方法（コードを入れて Enter）で商品を探して選びます。</li>
         </ol>
         <figure class="pcshot"><a href="images/tais-c6.png" target="_blank" rel="noopener"><img src="images/tais-c6.png" alt="IDの大きい順にした福祉用具マスタ" loading="lazy"></a></figure>
         <div class="box warn"><span class="ttl">⚠ 注意</span><p>一番上だからといって選ばず、必ずコードで確認します（ほかの人が同じころに登録していることがあります）。商品が出なくても、もう一度追加せず、事業所と種目を確認します。</p></div>
@@ -269,7 +267,7 @@
     <ul class="check">
       <li><label><input type="checkbox" id="cc-1"><span>本当に未登録か確認してから、［取込］→［読込］→［追加］した</span></label></li>
       <li><label><input type="checkbox" id="cc-2"><span>種目と、事業所に確認した単位数を入れて［保存］した</span></label></li>
-      <li><label><input type="checkbox" id="cc-3"><span>作業 A の商品検索で、その商品を選べた</span></label></li>
+      <li><label><input type="checkbox" id="cc-3"><span>作業 A の方法で探して、その商品を選べた</span></label></li>
     </ul>
   </section>
 
