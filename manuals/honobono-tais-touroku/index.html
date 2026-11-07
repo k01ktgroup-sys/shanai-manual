@@ -9,15 +9,19 @@
 <style>
   /* このマニュアルだけで使う */
   .pcshot { margin: 10px 0 0; }
-  .pcshot img { display: block; width: 100%; max-width: 860px; height: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
-  .pcshot + .pcshot { margin-top: 12px; }
+  .pcshot img { display: block; width: auto; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+  .pcshot + .pcshot { margin-top: 10px; }
   .pcshot figcaption { font-size: 13px; color: var(--sub); margin-top: 4px; }
-  .mk { display: inline-grid; place-items: center; min-width: 1.5em; height: 1.5em; padding: 0 3px; border-radius: 99px; background: #1565c0; color: #fff; font-size: .8em; font-weight: 700; line-height: 1; vertical-align: .1em; }
-  .pick { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 12px 0; }
+  .no-c { display: inline-grid; place-items: center; width: 1.45em; height: 1.45em; border: 2px solid #222; border-radius: 50%; background: #fff; color: #111; font-weight: 700; font-size: .8em; line-height: 1; vertical-align: .1em; }
+  .pick { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin: 12px 0; }
   .pick a { display: block; padding: 12px 14px; border: 2px solid var(--line); border-radius: 12px; background: var(--card); color: var(--text); text-decoration: none; }
   .pick a:hover { border-color: var(--brand); }
   .pick a b { display: block; font-size: 18px; margin-bottom: 2px; }
   .pick a small { color: var(--sub); font-size: 14px; }
+  .sub-h { font-size: 18px; margin: 22px 0 4px; padding: 6px 12px; border-radius: 8px; background: var(--brand-soft); color: var(--text); }
+  .flow { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 6px; }
+  .flow li { padding: 8px 12px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); }
+  .flow li small { display: block; color: var(--sub); }
   .code { font-family: Consolas, "Courier New", monospace; overflow-wrap: anywhere; }
 </style>
 </head>
@@ -34,228 +38,276 @@
 <main class="wrap">
   <div class="hero">
     <h1>福祉用具のTAISコードを登録する<br>（ほのぼのNEXT・ケアマネ）</h1>
-    <p>ほのぼのNEXT の「福祉用具マスタ（商品の一覧）」に、福祉用具の商品と TAISコードを <b>新しく登録する</b> 手順と、<b>登録済みの商品を直す</b> 手順です。</p>
-    <div class="meta"><span class="chip">No.06</span><span class="chip">対象：居宅のケアマネ</span><span class="chip">所要時間 1商品 約3分</span><span class="chip">2026年11月版</span></div>
+    <p>利用票に福祉用具を入れるとき、TAISコードの付いた商品を選ぶ手順です。新しく入れるとき・今ある行を直すとき・商品がまだ登録されていないときの3つに分けています。</p>
+    <div class="meta"><span class="chip">No.06</span><span class="chip">対象：居宅のケアマネ</span><span class="chip">1商品 約3分</span><span class="chip">2026年11月版</span></div>
   </div>
 
   <ul class="toc no-print">
-    <li><a href="#s0"><b>はじめに</b>なぜ登録するの？</a></li>
-    <li><a href="#s1"><b>STEP 1</b>福祉用具マスタを開く</a></li>
-    <li><a href="#s2"><b>STEP 2-A</b>新しく登録する</a></li>
-    <li><a href="#s2b"><b>STEP 2-B</b>登録済みを直す</a></li>
-    <li><a href="#s3"><b>STEP 3</b>利用票で確認する</a></li>
-    <li><a href="#s4"><b>参考</b>まとめて登録する</a></li>
-    <li><a href="#s5"><b>困ったとき</b></a></li>
+    <li><a href="#s0"><b>はじめに</b>どの作業か選ぶ</a></li>
+    <li><a href="#sa"><b>作業 A</b>利用票に新しく入れる</a></li>
+    <li><a href="#sb"><b>作業 B</b>今ある行の商品を直す</a></li>
+    <li><a href="#sc"><b>作業 C</b>商品を登録する（担当者）</a></li>
+    <li><a href="#sd"><b>参考</b>3つのマスタのちがい</a></li>
+    <li><a href="#se"><b>困ったとき</b></a></li>
   </ul>
 
+  <!-- ===================== はじめに ===================== -->
   <section class="section" id="s0">
     <h2>はじめに</h2>
-    <p><b>TAISコード</b>とは、福祉用具の商品ごとに付いている番号です（車いす・手すりなどの「商品の背番号」のようなもの）。</p>
-    <div class="box warn"><span class="ttl">⚠ 登録しないと印字されません</span>
-      <p>2025年度（令和7年4月）の制度改正で、<b>サービス利用票（第6表）</b>と<b>利用票別表（第7表）</b>に、福祉用具の「品目名」と「TAISコード」を印字する欄ができました。</p>
-      <p>福祉用具マスタに TAISコードが入っていない商品は、印字されません。<b>利用票を印刷する前に</b>登録してください。</p>
+    <p><b>TAISコード</b>とは、福祉用具の商品ごとに付いている番号です（車いす・手すりなどの「商品の背番号」）。形は <b>半角の 5けた-6けた</b>（例：<span class="code">00122-000574</span>）です。</p>
+    <div class="box warn"><span class="ttl">⚠ なぜ必要？</span>
+      <p>2025年度（令和7年4月）から、<b>サービス利用票（第6表）</b>と<b>利用票別表（第7表）</b>に、福祉用具の品目名と TAISコードを印字します。利用票では、<b>TAISコードの付いた商品</b> を選んでください。</p>
     </div>
-    <div class="box info"><span class="ttl">💡 始める前に</span>
-      <p>福祉用具の事業所に、正しい <b>商品名・型番・TAISコード・単位数</b> を聞いておきます。</p>
+    <div class="box info"><span class="ttl">💡 始める前に用意するもの</span>
+      <p>福祉用具の事業所からもらった資料（<b>商品名・TAISコード・型番・契約の単位数</b> がわかるもの）</p>
     </div>
 
-    <p><b>どちらの作業ですか？</b>（どちらも最初に STEP 1 をします）</p>
+    <p><b>どの作業ですか？</b></p>
     <div class="pick no-print">
-      <a href="#s2"><b>A. 新しく登録する</b><small>マスタにまだない商品を追加する</small></a>
-      <a href="#s2b"><b>B. 登録済みを直す</b><small>TAISコードが空いている・間違っている、名前を直す</small></a>
+      <a href="#sa"><b>A. 利用票に新しく入れる</b><small>福祉用具の行を新しく追加する</small></a>
+      <a href="#sb"><b>B. 今ある行の商品を直す</b><small>入っている商品を、TAISコードの付いた商品に選び直す</small></a>
+      <a href="#sc"><b>C. 商品が見つからない</b><small>マスタにまだない商品を登録する（事業所の登録担当者）</small></a>
     </div>
-    <p>画面の絵は、ソフトの会社（公式）の見本です。名前・番号は見本で、自社のデータではありません。青い <span class="mk">A</span> <span class="mk">B</span> の印が、下の説明と対応しています（黒い数字・赤い枠は公式の印です）。画像を押すと大きく表示できます。</p>
+
+    <div class="box info"><span class="ttl">💡 画像の見方</span>
+      <p>画像の <span class="no-c">1</span> <span class="no-c">2</span> … と赤い枠は、その手順の説明の番号と同じです。画像を押すと大きく表示できます。</p>
+      <p>画像はソフトの会社（公式）の見本と、実際の画面です。商品名・番号は例なので、そのまま写さないでください。</p>
+    </div>
   </section>
 
-  <section class="section" id="s1">
-    <h2><span class="num">STEP<br>1</span>福祉用具マスタを開く<span class="time">約1分</span></h2>
-    <p class="lead">利用票の画面から、福祉用具の商品一覧（福祉用具マスタ）を開きます。</p>
+  <!-- ===================== A ===================== -->
+  <section class="section" id="sa">
+    <h2><span class="num">作業<br>A</span>利用票に新しく入れる<span class="time">約3分</span></h2>
+    <p class="lead">登録されている商品を、TAISコードで探して選びます。商品を新しく作る必要はありません。</p>
 
     <div class="step no-shot">
       <div>
-        <h3><span class="n">1</span>利用票を開いて［行追加］</h3>
+        <h3><span class="n">1</span>［行追加］から始める</h3>
         <ol>
-          <li>メイン画面の <span class="k">↓</span> → <span class="k">ケアマネ</span> → <span class="k">利用・提供票</span> → <span class="k">利用票</span> を開きます。</li>
-          <li>利用者と月を確認します。</li>
-          <li><span class="mk">A</span> <span class="k">行追加</span> を押します。「サービス選択」の画面が出ます。</li>
+          <li>利用票を開き、利用者と月を確認します。</li>
+          <li><span class="no-c">1</span> <span class="k">行追加</span> を押します。「サービス選択」の画面が出ます。</li>
+          <li><span class="no-c">2</span> サービス種別の「介護」にチェックし、右の欄で「福祉用具貸与」を選びます（開いたときは「訪問介護」などになっているので変えます。予防の人は「予防」にチェックし、「予防用具貸与」）。</li>
+          <li><span class="no-c">3</span> 「事業所」の欄（初めは「（未選択）」）で、実際に貸し出す <b>福祉用具の事業所</b> を選びます。右側に <span class="k">商品検索</span> と商品の一覧が出ます。</li>
         </ol>
-        <figure class="pcshot"><a href="images/tais-01.png" target="_blank" rel="noopener"><img src="images/tais-01.png" alt="利用票の画面。行追加ボタン" loading="lazy"></a></figure>
-        <div class="box info"><span class="ttl">💡 マスタを開くために使います</span><p>ここではサービスの行は追加しません。登録が終わったら、サービス選択の画面は <span class="k">閉じる</span> で閉じます。</p></div>
+        <figure class="pcshot"><a href="images/tais-a1.png" target="_blank" rel="noopener"><img src="images/tais-a1.png" alt="利用票の行追加ボタン" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/tais-a2.png" target="_blank" rel="noopener"><img src="images/tais-a2.png" alt="サービス選択の画面。サービス種類と事業所を選ぶ" loading="lazy"></a><figcaption>事業所の番号と名前はぼかしています。</figcaption></figure>
       </div>
     </div>
 
     <div class="step no-shot">
       <div>
-        <h3><span class="n">2</span>事業所を選んで［福祉用具］</h3>
+        <h3><span class="n">2</span>TAISコードで商品を探して選ぶ</h3>
         <ol>
-          <li><span class="mk">A</span><span class="mk">B</span> <span class="k">介護</span> → <span class="k">福祉用具貸与</span> を選びます。予防の利用者は <span class="k">予防</span> → <span class="k">予防用具貸与</span> です。</li>
-          <li><span class="mk">C</span> 実際に貸し出す <b>福祉用具の事業所</b> を選びます。</li>
-          <li><span class="mk">D</span> <span class="k">福祉用具</span> を押します。「福祉用具マスタ」の画面が出ます。</li>
+          <li><span class="no-c">1</span> 右側の「TAISコード等」の欄に、資料のコードを入れます（商品名でも探せます）。</li>
+          <li><span class="no-c">2</span> <span class="k">商品検索</span> を押します。</li>
+          <li><span class="no-c">3</span> コードが入っている商品の行をクリックします。</li>
+          <li><span class="no-c">4</span> 下の <b>商品名・コード・単位数</b> が、資料と同じか確認します。</li>
         </ol>
-        <figure class="pcshot"><a href="images/tais-02.png" target="_blank" rel="noopener"><img src="images/tais-02.png" alt="サービス選択の画面。福祉用具貸与と事業所を選び、福祉用具ボタンを押す" loading="lazy"></a></figure>
-        <div class="box warn"><span class="ttl">⚠ マスタは事業所ごとに別です</span><p>介護と予防の両方で使う商品は、それぞれの事業所で登録が必要です。</p></div>
-      </div>
-    </div>
-
-    <ul class="check">
-      <li><label><input type="checkbox" id="c1-1"><span>「福祉用具マスタ」の画面が開いた</span></label></li>
-    </ul>
-  </section>
-
-  <section class="section" id="s2">
-    <h2><span class="num">STEP<br>2-A</span>新しい商品を登録する<span class="time">1商品 約2分</span></h2>
-    <p class="lead">マスタにまだない商品を追加します。すでにある商品を直すときは <a href="#s2b">STEP 2-B</a> へ。</p>
-
-    <div class="step no-shot">
-      <div>
-        <h3><span class="n">3</span>［新規］を押して、商品の名前などを入れる</h3>
-        <ol>
-          <li><span class="mk">B</span> 上の <b>事業者名</b> が、STEP 1 で選んだ事業所か確認します。</li>
-          <li><span class="mk">A</span> <span class="k">新規</span> を押します。</li>
-          <li><span class="mk">C</span> <b>区分</b>（貸し出しなら <span class="k">レンタル</span>）と、<b>福祉用具種目</b>（手すり・車いす など）を選びます。</li>
-          <li><span class="mk">D</span> <b>商品名称・略称・型番</b> を入れます。「＊」の付いた欄は必ず入れます。</li>
-        </ol>
-        <figure class="pcshot"><a href="images/tais-03.png" target="_blank" rel="noopener"><img src="images/tais-03.png" alt="福祉用具マスタ。新規を押して商品名などを入力する" loading="lazy"></a></figure>
-        <div class="box warn"><span class="ttl">⚠ 別の商品に交換したとき</span><p>今ある商品を書きかえず、<b>新しい商品として登録</b> します。</p></div>
-      </div>
-    </div>
-
-    <div class="step no-shot">
-      <div>
-        <h3><span class="n">4</span>TAISコードと単位数を入れて［保存］</h3>
-        <ol>
-          <li><span class="mk">A</span> <span class="k">TAISコード等</span> と <b>単位数</b> を入れます。</li>
-          <li>商品名・型番・種目・コード・単位数を、事業所から聞いた内容と見くらべます。</li>
-          <li><span class="mk">B</span><span class="mk">C</span> <span class="k">保存</span> → <span class="k">閉じる</span>。</li>
-          <li>サービス選択の画面で、登録した商品が選べるか確認します。</li>
-        </ol>
-        <figure class="pcshot"><a href="images/tais-04.png" target="_blank" rel="noopener"><img src="images/tais-04.png" alt="TAISコード等と単位数を入れて保存する" loading="lazy"></a><figcaption>画面の数字は見本です。そのまま写さないでください。</figcaption></figure>
-        <div class="box warn"><span class="ttl">⚠ 入力のしかた</span>
-          <p><b>5けた ＋ ハイフン（-）＋ 6けた</b> を、ハイフンもふくめて <b>すべて半角</b> で入れます。</p>
-          <p>形の例：<span class="code">00200-000454</span></p>
-          <p><span class="k">保存</span> が灰色で押せないときは、登録する権限がありません。総務部へ連絡してください。</p>
+        <figure class="pcshot"><a href="images/tais-a3.png" target="_blank" rel="noopener"><img src="images/tais-a3.png" alt="商品検索の画面" loading="lazy"></a></figure>
+        <div class="box warn"><span class="ttl">⚠ 注意</span>
+          <ul>
+            <li>「（車いす貸与）」のような <b>コードのない行は選ばない</b> でください。</li>
+            <li>見つからないときは、事業所・種類・入れたコードをもう一度確認します。それでも出ないときは <a href="#sc">作業 C</a>（登録担当者に相談）です。</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <ul class="check">
-      <li><label><input type="checkbox" id="c2-1"><span>TAISコードを半角「5けた-6けた」で入れた</span></label></li>
-      <li><label><input type="checkbox" id="c2-2"><span><span class="k">保存</span> して、サービス選択で商品が選べた</span></label></li>
-    </ul>
-    <p>このあと <a href="#s3">STEP 3</a> で利用票を確認します。</p>
-  </section>
-
-  <section class="section" id="s2b">
-    <h2><span class="num">STEP<br>2-B</span>登録済みの商品を直す<span class="time">1商品 約2分</span></h2>
-    <p class="lead">TAISコードが空いている・間違っている、商品名を直したい、というときの手順です。</p>
-
     <div class="step no-shot">
       <div>
-        <h3><span class="n">3</span>商品を選んで、直して［保存］</h3>
+        <h3><span class="n">3</span>［追加］→［閉じる］→ 利用票を［保存］</h3>
         <ol>
-          <li><span class="mk">A</span> 上の <b>事業者名</b> が正しいか確認します。</li>
-          <li><span class="mk">B</span> 一覧から、直したい商品をクリックします。<b><span class="k">新規</span> は押しません。</b></li>
-          <li><span class="mk">C</span><span class="mk">D</span> 下の欄で、商品名称や <span class="k">TAISコード等</span> を直します（半角 5けた-6けた）。</li>
-          <li><span class="mk">E</span> <span class="k">保存</span> を押します。</li>
-          <li>一度ほかの商品を選んでから戻り、直した内容が残っているか確認します。</li>
+          <li><span class="no-c">1</span> <span class="k">追加</span> を押します。ほかの商品も入れるときは、手順 2 をくり返します。</li>
+          <li><span class="no-c">2</span> 最後に <span class="k">閉じる</span> を押します。</li>
+          <li>利用票に正しい商品が出ているか確認し、利用する日・回数を入れます。</li>
+          <li><span class="no-c">3</span> 事業所・商品・単位数・予定を確認して、利用票の <span class="k">保存</span> を押します。</li>
         </ol>
-        <figure class="pcshot"><a href="images/tais-05.png" target="_blank" rel="noopener"><img src="images/tais-05.png" alt="福祉用具マスタ。一覧から商品を選び、TAISコード等を直して保存する" loading="lazy"></a></figure>
-        <div class="box warn"><span class="ttl">⚠ 取りちがえに注意</span>
-          <p>同じ名前の別の商品があります。<b>型番・種目・単位数</b> も見て、正しい商品か確認します。</p>
-          <p>マスタを直すと、同じ商品を使っている <b>ほかの利用者さんにも反映</b> されます。</p>
-        </div>
+        <figure class="pcshot"><a href="images/tais-a4.png" target="_blank" rel="noopener"><img src="images/tais-a4.png" alt="追加と閉じるボタン" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/tais-save.png" target="_blank" rel="noopener"><img src="images/tais-save.png" alt="利用票の保存ボタン" loading="lazy"></a></figure>
+        <p>商品を選んだだけでは登録されません。<span class="k">追加</span> まで押してください。</p>
       </div>
     </div>
 
     <ul class="check">
-      <li><label><input type="checkbox" id="c2b-1"><span>正しい商品を選んで直し、<span class="k">保存</span> した</span></label></li>
-      <li><label><input type="checkbox" id="c2b-2"><span>選び直して、直した内容が残っていた</span></label></li>
+      <li><label><input type="checkbox" id="ca-1"><span>TAISコードの付いた商品を選び、商品名・コード・単位数を資料と確認した</span></label></li>
+      <li><label><input type="checkbox" id="ca-2"><span>［追加］→［閉じる］のあと、利用票を［保存］した</span></label></li>
     </ul>
   </section>
 
-  <section class="section" id="s3">
-    <h2><span class="num">STEP<br>3</span>利用票で確認する</h2>
-    <p class="lead">登録・修正のあとは、利用票で使っている商品と、印刷・出力の結果を確認します。</p>
+  <!-- ===================== B ===================== -->
+  <section class="section" id="sb">
+    <h2><span class="num">作業<br>B</span>今ある行の商品を直す<span class="time">約3分</span></h2>
+    <p class="lead">正しい商品が登録されていれば、行を増やさずに［修正］で選び直します。商品が登録されていないときは、先に <a href="#sc">作業 C</a> です。</p>
 
     <div class="step no-shot">
       <div>
-        <h3><span class="n">5</span>利用票の商品と、出力を確認する</h3>
+        <h3><span class="n">1</span>直したい行を選んで［修正］</h3>
         <ol>
-          <li>利用票で選んでいる商品が、今回登録・修正した正しい商品か確認します。</li>
-          <li>第6表・第7表に、品目名と TAISコードが印字されるか、印刷プレビューで確認します。</li>
-          <li><span class="mk">A</span> 提供票のデータを送っている場合は、その利用票をもう一度 <span class="k">CSV出力</span> します（<a href="../careplan-data-renkei/index.html#s1">ケアプランデータ連携のマニュアル 作業①</a>）。</li>
+          <li>利用者・月を確認し、今の商品・単位数・日付と回数をメモしておきます。</li>
+          <li><span class="no-c">1</span> 直したい福祉用具の行を選び、<span class="k">修正</span> を押します。</li>
+          <li><span class="no-c">2</span> 開いた画面の <b>入力区分</b> が「修正」になっているか確認します。</li>
+          <li><span class="no-c">3</span> 福祉用具の事業所が正しいか確認します。</li>
         </ol>
-        <figure class="pcshot"><a href="images/tais-06.png" target="_blank" rel="noopener"><img src="images/tais-06.png" alt="利用票で選んでいる商品の確認" loading="lazy"></a></figure>
-        <figure class="pcshot"><a href="images/tais-07.png" target="_blank" rel="noopener"><img src="images/tais-07.png" alt="CSV出力し直す画面" loading="lazy"></a></figure>
-        <div class="box info"><span class="ttl">💡 名前を直したのに印字が変わらないとき</span><p>帳票の「用具名称」は、TAISコードをもとに「貸与価格の平均・上限マスタ」の商品名を使うことがあります。商品名称を直しただけでは、印字される名前が変わらないことがあります。</p></div>
-        <div class="box warn"><span class="ttl">⚠ TAISコードの警告が出たとき</span><p>その利用者さんが選んでいる商品と、マスタの内容を見くらべます。</p></div>
+        <figure class="pcshot"><a href="images/tais-b1.png" target="_blank" rel="noopener"><img src="images/tais-b1.png" alt="修正ボタン" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/tais-b2.png" target="_blank" rel="noopener"><img src="images/tais-b2.png" alt="入力区分が修正のサービス選択画面" loading="lazy"></a><figcaption>事業所の番号と名前はぼかしています。</figcaption></figure>
+        <div class="box warn"><span class="ttl">⚠ 「実績入力が完了しているため、サービスを変更できません」と出たら</span><p>そこで止めます。完了のチェックを自分で外さず、担当者に確認してください。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">2</span>TAISコードで探して選び直す</h3>
+        <ol>
+          <li><span class="no-c">1</span> 「TAISコード等」の欄に、資料のコードを入れます。</li>
+          <li><span class="no-c">2</span> <span class="k">商品検索</span> を押します。</li>
+          <li><span class="no-c">3</span> 正しい商品の行をクリックします。</li>
+          <li><span class="no-c">4</span> 下の商品名とコードが変わったことを確認します。<b>単位数</b> も資料と同じか確認します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/tais-b3.png" target="_blank" rel="noopener"><img src="images/tais-b3.png" alt="修正画面での商品検索" loading="lazy"></a><figcaption>例：一覧は 250 なのに、下の単位数は前の 430 が残っています。</figcaption></figure>
+        <div class="box warn"><span class="ttl">⚠ 単位数は自動で変わらないことがあります</span><p>前の単位数が残ることがあります。資料と合わないときは確定せずに、担当者に確認します。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">3</span>［確定］→［閉じる］→ 利用票を［保存］</h3>
+        <ol>
+          <li><span class="no-c">1</span> 商品名・TAISコード・単位数が正しければ <span class="k">確定</span> を押します（修正のときは <span class="k">追加</span> は灰色で使えません）。</li>
+          <li><span class="no-c">2</span> 画面が残っていたら <span class="k">閉じる</span> を押します。</li>
+          <li>利用票で、直した行の商品・単位数・日付・回数を確認します。同じ行が増えていないかも見ます。</li>
+          <li><span class="no-c">3</span> 利用票の <span class="k">保存</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/tais-b4.png" target="_blank" rel="noopener"><img src="images/tais-b4.png" alt="確定と閉じるボタン" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/tais-save.png" target="_blank" rel="noopener"><img src="images/tais-save.png" alt="利用票の保存ボタン" loading="lazy"></a></figure>
+        <div class="box info"><span class="ttl">💡 覚え方</span><p>新しく入れる＝<span class="k">追加</span>、今ある行を直す＝<span class="k">修正</span> → <span class="k">確定</span>。やめるときは確定せずに <span class="k">閉じる</span>。</p></div>
       </div>
     </div>
 
     <ul class="check">
-      <li><label><input type="checkbox" id="c3-1"><span>利用票で正しい商品を選んでいる</span></label></li>
-      <li><label><input type="checkbox" id="c3-2"><span>印刷プレビュー（または出力）で TAISコードを確認した</span></label></li>
+      <li><label><input type="checkbox" id="cb-1"><span>［修正］から正しい商品を選び直し、単位数も確認した</span></label></li>
+      <li><label><input type="checkbox" id="cb-2"><span>［確定］のあと、利用票を［保存］した</span></label></li>
     </ul>
-
-    <div class="box ok"><span class="ttl">🎉 完了</span>
-      <p>正しい商品と半角 5けた-6けた のコードが保存され、利用票で確認できたら完了です。</p>
-    </div>
   </section>
 
-  <section class="section" id="s4">
-    <h2><span class="num">参考</span>たくさんの商品をまとめて入れる</h2>
-    <p class="lead">登録済みの商品のTAISコードをまとめて入れたいときは、一覧の画面で入力できます。</p>
+  <!-- ===================== C ===================== -->
+  <section class="section" id="sc">
+    <h2><span class="num">作業<br>C</span>商品をマスタに登録する（登録担当者）<span class="time">約5分</span></h2>
+    <p class="lead">作業 A・B で探しても商品が出てこないときだけ行います。<b>事業所の登録担当者</b> が行ってください。</p>
+    <div class="box warn"><span class="ttl">⚠ 登録する前に</span>
+      <ul>
+        <li>商品の一覧（福祉用具マスタ）は、みんなで使う共有の一覧です。<b>同じ商品を2つ登録しない</b> よう、コードの空いた行なども含めて、本当にないか確認します。</li>
+        <li>商品名は手で入力しません。元の一覧から取り込みます。</li>
+      </ul>
+    </div>
 
     <div class="step no-shot">
       <div>
-        <h3><span class="n">1</span>［取込］を押す</h3>
+        <h3><span class="n">1</span>［福祉用具］でマスタを開く</h3>
         <ol>
-          <li>STEP 1 の手順で「福祉用具マスタ」を開きます。</li>
-          <li><span class="k">取込</span> をクリックします。「貸与価格の平均・上限マスタ取込」の画面が出ます。</li>
+          <li>作業 A の手順 1 で、サービス選択の画面を開きます。</li>
+          <li><span class="no-c">1</span> <span class="k">福祉用具</span> を押します。「福祉用具マスタ」が開きます。</li>
         </ol>
+        <figure class="pcshot"><a href="images/tais-c1.png" target="_blank" rel="noopener"><img src="images/tais-c1.png" alt="福祉用具ボタン" loading="lazy"></a></figure>
       </div>
     </div>
 
     <div class="step no-shot">
       <div>
-        <h3><span class="n">2</span>一覧に入力して保存する</h3>
+        <h3><span class="n">2</span>事業者を確認して［取込］→［読込］</h3>
         <ol>
-          <li><span class="k">TAISコード等</span> の列に、商品ごとに TAISコードを入力します。</li>
-          <li>右上の <span class="k">保存</span> をクリックします。</li>
+          <li><span class="no-c">1</span> 上の <b>事業者</b> が、貸し出す福祉用具の事業所か確認します。</li>
+          <li><span class="no-c">2</span> <span class="k">取込</span> を押します。</li>
+          <li><span class="no-c">3</span> 開いた画面の <span class="k">読込</span> を押します。</li>
         </ol>
-        <div class="box info"><span class="ttl">💡 探しやすくするには</span><p>列の見出し <span class="k">TAISコード等</span> や <span class="k">福祉用具種目</span> をクリックすると、並べかえができます。空いている商品をまとめて探せます。</p></div>
+        <figure class="pcshot"><a href="images/tais-c2.png" target="_blank" rel="noopener"><img src="images/tais-c2.png" alt="福祉用具マスタの事業者と取込ボタン" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/tais-c3.png" target="_blank" rel="noopener"><img src="images/tais-c3.png" alt="取込画面の読込ボタン" loading="lazy"></a></figure>
+        <div class="box info"><span class="ttl">💡 使わないボタン</span><p><span class="k">CSV取込</span>・<span class="k">CSV読込</span> は使いません。介護と予防の両方で使う商品は、それぞれの事業所で登録があるか確認します。</p></div>
       </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">3</span>元の一覧で商品を探して［追加］</h3>
+        <ol>
+          <li>上の欄で、TAISコード・商品名・型番を入れて探します。開始日（有効な期間）も確認します。</li>
+          <li><span class="no-c">1</span> 資料と TAISコード・型番・商品が同じ行の <b>「読込」</b> にチェックします。</li>
+          <li><span class="no-c">2</span> <span class="k">追加</span> を押し、確認の画面で内容を見て <span class="k">はい</span>。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/tais-c4.png" target="_blank" rel="noopener"><img src="images/tais-c4.png" alt="貸与価格の平均・上限マスタの一覧" loading="lazy"></a></figure>
+        <div class="box warn"><span class="ttl">⚠ 注意</span><p>押すのは <span class="k">追加</span> です（<span class="k">上書</span> ではありません）。同じ商品がないときは、似た商品を選ばずに確認します。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">4</span>種目と単位数を入れて［保存］→［閉じる］</h3>
+        <ol>
+          <li><span class="no-c">1</span> 「ID」の見出しを押して、追加した商品が見えるようにします。</li>
+          <li>下の横スクロールを右へ動かします。</li>
+          <li><span class="no-c">3</span> <b>福祉用具種目</b>（手すり・車いす など）を選びます。</li>
+          <li><span class="no-c">4</span> <b>変更後単位数</b> に、事業所に確認した単位数を入れます。</li>
+          <li><span class="no-c">5</span> 商品と単位数を確認して <span class="k">保存</span>、<span class="no-c">6</span> <span class="k">閉じる</span>。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/tais-c5.png" target="_blank" rel="noopener"><img src="images/tais-c5.png" alt="取込画面で種目と単位数を入れる" loading="lazy"></a><figcaption>公式の見本なので、②の印はありません（横スクロールの操作です）。300 などの数字は例です。</figcaption></figure>
+        <div class="box warn"><span class="ttl">⚠ 単位数に注意</span><p>追加した直後は、種目が空・単位数が 0 です。<b>全国平均貸与価格・上限価格を単位数として写さない</b> でください。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">5</span>マスタで、追加した商品を確認する</h3>
+        <ol>
+          <li><span class="no-c">1</span> 福祉用具マスタに戻ったら 「ID」の見出しを押し、大きい番号が上に来るようにします（小さい順なら、もう一度押す）。</li>
+          <li><span class="no-c">2</span> 上のほうにある追加した商品を選び、TAISコード・型番・種目・単位数を資料と見くらべます。</li>
+          <li><span class="k">閉じる</span> でサービス選択に戻り、<a href="#sa">作業 A の手順 2</a> の方法で商品を探して選びます。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/tais-c6.png" target="_blank" rel="noopener"><img src="images/tais-c6.png" alt="IDの大きい順にした福祉用具マスタ" loading="lazy"></a></figure>
+        <div class="box warn"><span class="ttl">⚠ 注意</span><p>一番上だからといって選ばず、必ずコードで確認します（ほかの人が同じころに登録していることがあります）。商品が出なくても、もう一度追加せず、事業所と種目を確認します。</p></div>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="cc-1"><span>本当に未登録か確認してから、［取込］→［読込］→［追加］した</span></label></li>
+      <li><label><input type="checkbox" id="cc-2"><span>種目と、事業所に確認した単位数を入れて［保存］した</span></label></li>
+      <li><label><input type="checkbox" id="cc-3"><span>作業 A の商品検索で、その商品を選べた</span></label></li>
+    </ul>
+  </section>
+
+  <!-- ===================== 参考 ===================== -->
+  <section class="section" id="sd">
+    <h2><span class="num">参考</span>3つのマスタのちがい</h2>
+    <p class="lead">操作には必要ありません。しくみを知りたいときに読んでください。</p>
+    <ol class="flow">
+      <li><b>貸与価格の平均・上限マスタ</b><small>元の商品情報。商品名・型番・TAISコード・平均価格・上限価格が入っています。</small></li>
+      <li><b>貸与価格の平均・上限マスタ取込</b><small>元の一覧から商品を選んで追加し、内容を確認して保存する画面（作業 C で使う）。</small></li>
+      <li><b>福祉用具マスタ</b><small>保存した商品・種目・単位数を、利用票で使います。事業所ごとに別です。</small></li>
+    </ol>
+    <div class="box info"><span class="ttl">💡 「取込」と「CSV読込」のちがい</span>
+      <ul>
+        <li><span class="k">取込</span>：元の一覧から商品を選んで、新しく追加する（平均価格・上限価格の更新にも使う）。</li>
+        <li><span class="k">CSV読込</span>：国が公表した価格のファイルを読んで、価格を更新する。新しい商品の追加はできません。</li>
+      </ul>
     </div>
   </section>
 
-  <section class="section" id="s5">
+  <!-- ===================== 困ったとき ===================== -->
+  <section class="section" id="se">
     <h2>困ったとき</h2>
     <div class="step no-shot">
       <div>
-        <h3>一覧に商品が出てこない</h3>
-        <p>まだ登録されていません。<a href="#s2">STEP 2-A</a> で新しく登録します。事業者名（STEP 1 で選んだ事業所）が正しいかも確認します。</p>
-      </div>
-    </div>
-    <div class="step no-shot">
-      <div>
-        <h3>TAISコードがわからない</h3>
-        <ol>
-          <li>STEP 1 の「サービス選択」画面で、<span class="k">全国平均貸与価格</span> または <span class="k">貸与価格上限</span> をクリックすると、「貸与価格の平均・上限マスタ」で確認できます。</li>
-          <li>テクノエイド協会のホームページでも調べられます：<a href="https://www.techno-aids.or.jp/tekisei/index.shtml#tab2_detial" target="_blank" rel="noopener">福祉用具の全国平均貸与価格・上限（テクノエイド協会）</a></li>
-          <li>それでもわからないときは、福祉用具の事業所に聞いてください。</li>
-        </ol>
-      </div>
-    </div>
-    <div class="step no-shot">
-      <div>
-        <h3>利用票の画面から行かずに開きたい</h3>
-        <p>利用票の画面の <span class="k">マスタ他</span> からも、福祉用具マスタを開けます。</p>
+        <ul>
+          <li><b>商品が見つからない</b>：事業所・サービスの種類（福祉用具貸与／予防用具貸与）・入れたコードを確認します。それでも出なければ、事業所の登録担当者に相談します（作業 C）。</li>
+          <li><b>TAISコードがわからない</b>：福祉用具の事業所に聞きます。テクノエイド協会のホームページでも調べられます：<a href="https://www.techno-aids.or.jp/tekisei/index.shtml#tab2_detial" target="_blank" rel="noopener">福祉用具の全国平均貸与価格・上限（テクノエイド協会）</a></li>
+          <li><b>印字を確かめたい</b>：利用票の印刷プレビューで、第6表・第7表に品目名と TAISコードが出ているか見ます。</li>
+          <li><b>提供票のデータを送っている</b>：直したあと、その利用票をもう一度 CSV出力します（<a href="../careplan-data-renkei/index.html#s1">ケアプランデータ連携 No.07 の作業①</a>）。</li>
+          <li><b>商品名を直したのに、印字の名前が変わらない</b>：帳票の用具名称は、TAISコードをもとに「貸与価格の平均・上限マスタ」の名前を使うことがあります。</li>
+        </ul>
       </div>
     </div>
     <div class="box hq"><span class="ttl">📞 わからないときの連絡先</span>
-      <p>総務部　担当：菊竹<br>電話：<a href="tel:09084907356">090-8490-7356</a></p>
+      <p>商品の登録：<b>事業所の登録担当者</b><br>操作でわからないこと：総務部　担当：菊竹<br>電話：<a href="tel:09084907356">090-8490-7356</a></p>
     </div>
-    <p style="font-size:14px;color:var(--sub)">参考：ほのぼのNEXT Q&amp;A「福祉用具の商品にTAISコードを登録したい。」（管理番号 NEXT07302）、NDソフトウェア公式サポートQ&amp;A（記事ID 4680・8420）。画面は公式サポート掲載の見本です（2026年11月7日確認）。</p>
+    <p style="font-size:14px;color:var(--sub)">参考：NDソフトウェア公式サポートQ&amp;A（記事ID 4680・8420・7802・2421・1867）、基本マニュアル「利用票・提供票作成編（居宅）」。画面は公式の見本と実機の検索画面です（2026年11月7日確認）。</p>
   </section>
 </main>
 
