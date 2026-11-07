@@ -10,7 +10,7 @@
 <body>
 <header class="site-head">
   <div class="wrap">
-    <a class="logo" href="index.html">📘 社内<span>マニュアル</span></a>
+    <a class="logo" href="index.html"><img class="logo-img" src="assets/kt-logo.svg" alt="KTグループ">社内<span>マニュアル</span></a>
   </div>
 </header>
 
@@ -28,8 +28,10 @@
   <p id="no-result" class="filter-note" hidden>あてはまるマニュアルがありません。ボタンの「全て」を押すと、すべて表示されます。</p>
 
   <div class="cards">
-    <!-- ▼ マニュアルを追加するときは、この <a class="card"> … </a> をコピーして書きかえてください ▼ -->
-    <a class="card" href="manuals/smartphone-kishuhenko/index.html">
+    <!-- ▼ マニュアルを追加するときは、この <a class="card …"> … </a> をコピーして書きかえてください
+         色とアイコン：c-phone 📱（スマホ）／c-print 🖨️（複合機）／c-care 💻（介護ソフト）／c-pc 🖥️（パソコン） ▼ -->
+    <a class="card c-phone" href="manuals/smartphone-kishuhenko/index.html">
+      <span class="card-ic" aria-hidden="true">📱</span>
       <span class="cat">スマートフォン</span>
       <h2>機種変更マニュアル<br>（SCV46 → Galaxy A25 5G）</h2>
       <p>古いスマホから新しいスマホへ、電話帳・写真・LINE・＋メッセージ・Gmailを引き継ぐ手順です。</p>
@@ -37,35 +39,40 @@
     </a>
     <!-- ▲ ここまで ▲ -->
 
-    <a class="card" href="manuals/fukugoki-smaho-print/index.html">
+    <a class="card c-print" href="manuals/fukugoki-smaho-print/index.html">
+      <span class="card-ic" aria-hidden="true">🖨️</span>
       <span class="cat">複合機・印刷</span>
       <h2>スマホで撮った写真を<br>複合機で印刷する</h2>
       <p>アプリ「RICOHカンタン入出力」で、スマホの写真を事業所の複合機（白黒）で印刷する手順です。</p>
       <span class="foot">はじめて 約15分・2回目から 約2分 ／ 更新 2026年10月</span>
     </a>
 
-    <a class="card" href="manuals/smartphone-update-pixel7a/index.html">
+    <a class="card c-phone" href="manuals/smartphone-update-pixel7a/index.html">
+      <span class="card-ic" aria-hidden="true">📱</span>
       <span class="cat">スマートフォン</span>
       <h2>ソフトウェアアップデート<br>（Google Pixel 7a・au）</h2>
       <p>Wi-Fiにつないで、スマホのソフトウェアを最新にする手順です。</p>
       <span class="foot">所要時間 約30分〜1時間 ／ 更新 2026年10月</span>
     </a>
 
-    <a class="card" href="manuals/smartphone-update-galaxya25/index.html">
+    <a class="card c-phone" href="manuals/smartphone-update-galaxya25/index.html">
+      <span class="card-ic" aria-hidden="true">📱</span>
       <span class="cat">スマートフォン</span>
       <h2>ソフトウェアアップデート<br>（Galaxy A25 5G・au）</h2>
       <p>Wi-Fiにつないで、スマホのソフトウェアを最新にする手順です。</p>
       <span class="foot">所要時間 約30分〜1時間 ／ 更新 2026年10月</span>
     </a>
 
-    <a class="card" href="manuals/smartphone-update-dignobx2/index.html">
+    <a class="card c-phone" href="manuals/smartphone-update-dignobx2/index.html">
+      <span class="card-ic" aria-hidden="true">📱</span>
       <span class="cat">スマートフォン</span>
       <h2>ソフトウェアアップデート<br>（DIGNO BX2・ソフトバンク）</h2>
       <p>Wi-Fiにつないで、スマホのソフトウェアを最新にする手順です。</p>
       <span class="foot">所要時間 約30分〜1時間 ／ 更新 2026年10月</span>
     </a>
 
-    <a class="card" href="manuals/honobono-tais-touroku/index.html">
+    <a class="card c-care" href="manuals/honobono-tais-touroku/index.html">
+      <span class="card-ic" aria-hidden="true">💻</span>
       <span class="cat">介護ソフト（ほのぼのNEXT）</span>
       <h2>福祉用具のTAISコードを登録する<br>（ケアマネ）</h2>
       <p>利用票（第6表・第7表）に福祉用具のTAISコードを印字するため、福祉用具マスタに登録する手順です。</p>
@@ -73,6 +80,7 @@
     </a>
 
     <a class="card soon" href="#">
+      <span class="card-ic" aria-hidden="true">⏳</span>
       <span class="cat">準備中</span>
       <h2>（次のマニュアル）</h2>
       <p>今後ここにマニュアルを追加していきます。</p>
