@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ケアプランデータ連携で提供票・実績をやりとりする</title>
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  /* このマニュアルだけで使う */
+  .pcshot { margin: 10px 0 0; }
+  .pcshot img { display: block; width: 100%; max-width: 860px; height: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+  .pcshot + .pcshot { margin-top: 12px; }
+  .pcshot figcaption { font-size: 13px; color: var(--sub); margin-top: 4px; }
+  .mk { display: inline-grid; place-items: center; min-width: 1.5em; height: 1.5em; padding: 0 3px; border-radius: 99px; background: #1565c0; color: #fff; font-size: .8em; font-weight: 700; line-height: 1; vertical-align: .1em; }
+  .role { display: inline-block; padding: 0 9px; border-radius: 99px; border: 2px solid; font-size: 14px; font-weight: 700; color: var(--text); white-space: nowrap; }
+  .role.kyo { border-color: var(--old); background: var(--old-soft); }
+  .role.svc { border-color: var(--new); background: var(--new-soft); }
+  .pick { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 12px 0; }
+  .pick a { display: block; padding: 12px 14px; border: 2px solid var(--line); border-radius: 12px; background: var(--card); color: var(--text); text-decoration: none; }
+  .pick a:hover { border-color: var(--brand); }
+  .pick a b { display: block; font-size: 18px; margin: 4px 0 2px; }
+  .pick a small { color: var(--sub); font-size: 14px; }
+  .sub-h { font-size: 18px; margin: 22px 0 4px; padding: 6px 12px; border-radius: 8px; background: var(--brand-soft); color: var(--text); }
+  .flow { list-style: none; padding: 0; margin: 10px 0; display: grid; gap: 6px; counter-reset: f; }
+  .flow li { padding: 8px 12px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); }
+  .src { font-size: 13px; color: var(--sub); }
+  .src a { color: var(--sub); overflow-wrap: anywhere; }
+  .fn { font-family: Consolas, "Courier New", monospace; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="../../index.html"><img class="logo-img" src="../../assets/kt-logo.svg" alt="KTグループ">社内<span>マニュアル</span></a>
+    <span class="spacer"></span>
+    <button class="btn-ghost no-print" id="print-page" type="button">🖨 印刷</button>
+    <a class="btn-ghost no-print" href="../../index.html">📚 一覧へ</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>ケアプランデータ連携で<br>提供票・実績をやりとりする</h1>
+    <p>ほのぼのNEXT と「ケアプランデータ連携システム」を使って、居宅介護支援事業所とサービス事業所の間で、提供票（予定）と実績のデータを送る・受け取る手順です。</p>
+    <div class="meta"><span class="chip">1つの事業所分 約10〜20分</span><span class="chip">2026年11月版</span></div>
+  </div>
+
+  <ul class="toc no-print">
+    <li><a href="#s0"><b>はじめに</b>流れと自分の作業</a></li>
+    <li><a href="#s-login"><b>共通</b>連携システムにログイン</a></li>
+    <li><a href="#s1"><b>作業 ①</b>居宅：予定を送る</a></li>
+    <li><a href="#s2"><b>作業 ②</b>サービス：予定を取り込む</a></li>
+    <li><a href="#s3"><b>作業 ③</b>サービス：実績を送る</a></li>
+    <li><a href="#s4"><b>作業 ④</b>居宅：実績を取り込む</a></li>
+    <li><a href="#s9"><b>困ったとき</b>連絡先</a></li>
+  </ul>
+
+  <!-- ===================== はじめに ===================== -->
+  <section class="section" id="s0">
+    <h2><span class="num">はじめに</span>毎月の流れと、自分の作業</h2>
+    <p class="lead">毎月、次の①〜④の順番でデータが行き来します。自分の事業所の作業だけ読めば大丈夫です。</p>
+
+    <ol class="flow">
+      <li><b>①</b> <span class="role kyo">居宅</span> ほのぼので提供票（予定）のデータを作り、送信準備ツールでまとめて、連携システムで<b>送る</b></li>
+      <li><b>②</b> <span class="role svc">サービス</span> 連携システムで予定を<b>受け取り</b>、ほのぼのに<b>取り込む</b></li>
+      <li><b>③</b> <span class="role svc">サービス</span> ほのぼので実績のデータを作り、連携システムで<b>送る</b></li>
+      <li><b>④</b> <span class="role kyo">居宅</span> 連携システムで実績を<b>受け取り</b>、ほのぼのに<b>取り込む</b></li>
+    </ol>
+
+    <p><b>自分の作業を選んでください：</b></p>
+    <div class="pick no-print">
+      <a href="#s1"><span class="role kyo">居宅</span><b>① 予定を送る</b><small>月のはじめ（提供票ができたら）</small></a>
+      <a href="#s2"><span class="role svc">サービス</span><b>② 予定を取り込む</b><small>居宅から届いたら</small></a>
+      <a href="#s3"><span class="role svc">サービス</span><b>③ 実績を送る</b><small>月末・月はじめ（実績が入ったら）</small></a>
+      <a href="#s4"><span class="role kyo">居宅</span><b>④ 実績を取り込む</b><small>サービス事業所から届いたら</small></a>
+    </div>
+
+    <div class="box info"><span class="ttl">💡 用意するもの</span>
+      <ul>
+        <li>ほのぼのNEXT と、ケアプランデータ連携システムが入ったパソコン（初期設定が済んでいるもの）</li>
+        <li>連携システムの <b>個人ユーザ</b> と <b>事業所ユーザ</b> のID・パスワード（本社から渡された一覧表）</li>
+        <li>相手の事業所の <b>事業所番号（10桁）</b> と、対象の月</li>
+      </ul>
+    </div>
+
+    <div class="box info"><span class="ttl">💡 「ケアプラン送信準備ツール」について</span>
+      <p>本社で用意したツールです。ほのぼので作った提供票のデータを、送り先ごとにまとめて、連携システムで一度に送れるようにします。</p>
+      <p>今のツールが使えるのは <b>① 居宅が予定（提供票）を送るとき だけ</b> です。②〜④（受け取り・実績）では使いません。</p>
+    </div>
+
+    <div class="box warn"><span class="ttl">⚠ 守ること</span>
+      <ul>
+        <li>データ（CSVファイル）の <b>名前や中身を書きかえない</b>。間違いがあったら、ほのぼのから出し直します。</li>
+        <li>データには利用者さんの情報が入っています。USBメモリやメールで持ち出さないでください。</li>
+        <li>ほのぼので「転送」と出てきますが、これは <b>ほのぼのの中に反映する操作</b> です。相手に送る操作ではありません。</li>
+        <li>このページの画面の絵は、ソフトの会社（公式）の見本です。名前・番号・年月は見本で、自社のデータではありません。青い <span class="mk">A</span> <span class="mk">B</span> の印は、下の説明と対応しています（黒い数字・赤い枠は公式の印です）。画像を押すと大きく表示できます。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== 共通：ログイン ===================== -->
+  <section class="section" id="s-login">
+    <h2><span class="num">共通</span>ケアプランデータ連携システムにログインする</h2>
+    <p class="lead">送る・受け取る、どちらの作業でも最初にこの操作をします。ログインは2回（個人 → 事業所）です。</p>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">1</span>連携システムを開いて、2回ログインする</h3>
+        <ol>
+          <li>デスクトップの <span class="k">ケアプランデータ連携システム</span> のアイコンをダブルクリックします。</li>
+          <li><span class="mk">A</span><span class="mk">B</span> <b>個人ユーザ</b> のIDとパスワードを入れて、<span class="k">ログイン</span> を押します。</li>
+          <li><span class="mk">C</span><span class="mk">D</span> 次に <b>事業所ユーザ</b> のIDとパスワードを入れて、<span class="k">ログイン</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/login-1.png" target="_blank" rel="noopener"><img src="images/login-1.png" alt="個人ユーザのログイン画面" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/login-2.png" target="_blank" rel="noopener"><img src="images/login-2.png" alt="事業所ユーザのログイン画面" loading="lazy"></a></figure>
+        <div class="box info"><span class="ttl">💡 途中でログインを求められたら</span><p>作業の途中で事業所のログイン画面が出たら、同じ事業所ユーザでログインします。IDがわからない・期限が切れたときは総務部へ連絡してください。</p></div>
+        <p>作業が終わったら、画面上の <span class="k">ログアウト</span> を押して終わります。</p>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="cl-1"><span>個人ユーザ・事業所ユーザの両方でログインできた</span></label></li>
+    </ul>
+  </section>
+
+  <!-- ===================== ① 居宅：予定を送る ===================== -->
+  <section class="section" id="s1">
+    <h2><span class="num">作業<br>①</span>居宅：提供票（予定）を送る</h2>
+    <p class="lead"><span class="role kyo">居宅</span> ほのぼのでデータを作る → ツールでまとめる → 連携システムで送る、の3段階です。</p>
+    <div class="box info"><span class="ttl">💡 始める前に</span><p>対象の月の <b>利用票</b> ができていること。福祉用具がある場合は、商品のTAISコードが登録されていること（<a href="../honobono-tais-touroku/index.html">TAISコードの登録マニュアル</a>）。</p></div>
+
+    <h3 class="sub-h">1. ほのぼので、送るデータ（CSV）を作る</h3>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">1</span>提供事業所連携を開く</h3>
+        <ol>
+          <li><span class="mk">A</span><span class="mk">B</span> メイン画面の <span class="k">↓</span> → <span class="k">ケアマネ</span> → <span class="k">利用・提供票</span> → <span class="k">提供事業所</span> を開きます。</li>
+          <li><span class="mk">C</span> <b>提供年月</b> に、送りたい提供票の月を入れます（「今月」ではなく、対象の月です）。</li>
+          <li><span class="mk">D</span> <span class="k">提供事業所連携</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h1-01.png" target="_blank" rel="noopener"><img src="images/h1-01.png" alt="ほのぼの 提供事業所の画面" loading="lazy"></a></figure>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">2</span>送り先と利用者を選んで、CSV出力</h3>
+        <ol>
+          <li><span class="mk">A</span> <span class="k">計画出力（介護）</span> を選びます。予防の予定は <span class="k">計画出力（予防）</span> です。</li>
+          <li><span class="mk">B</span><span class="mk">C</span> 自分の <b>支援事業所</b> と、送り先の <b>提供事業所番号</b> を選びます。</li>
+          <li><span class="mk">D</span> 対象の利用者の <b>「利用票」</b> の欄にチェックします（「計画書」ではありません）。</li>
+          <li><span class="mk">E</span> <span class="k">CSV出力</span> を押し、内容が正しければ <span class="k">OK</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h1-02.png" target="_blank" rel="noopener"><img src="images/h1-02.png" alt="提供事業所連携Hの画面" loading="lazy"></a></figure>
+        <div class="box warn"><span class="ttl">⚠ 利用者が出てこないとき</span><p>年月・両方の事業所・利用票ができているか を確認します。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">3</span>送り先ごとにくり返す</h3>
+        <ol>
+          <li>別の <b>提供事業所番号</b> に切りかえて、2 の操作をくり返します。</li>
+          <li><span class="mk">A</span> 確認したいときは、送り先を選んだまま <span class="k">フォルダ</span> を押します。予定のデータは <b>「yotei」</b> というフォルダにできます。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h1-03.png" target="_blank" rel="noopener"><img src="images/h1-03.png" alt="フォルダボタンの位置" loading="lazy"></a></figure>
+        <div class="box info"><span class="ttl">💡 中身を見たいとき（オンライン版）</span>
+          <p><span class="k">フォルダのパスをコピーして閉じる</span> を押す → 黄色いフォルダの <b>エクスプローラー</b> を開く → 上の <b>アドレスバー</b>（右上の検索欄ではない）で右クリック → <span class="k">貼り付け</span> → <span class="k">Enter</span> キー。</p>
+          <figure class="pcshot"><a href="images/h1-04.png" target="_blank" rel="noopener"><img src="images/h1-04.png" alt="フォルダパスの画面" loading="lazy"></a></figure>
+          <figure class="pcshot"><a href="images/h1-05.png" target="_blank" rel="noopener"><img src="images/h1-05.png" alt="エクスプローラーのアドレスバーに貼り付ける" loading="lazy"></a></figure>
+        </div>
+        <p>CSVを作っただけでは、まだ相手には届いていません。次へ進みます。</p>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c1-1"><span>送り先すべての分の CSV出力 ができた</span></label></li>
+    </ul>
+
+    <h3 class="sub-h">2. 送信準備ツールで、送るファイルをまとめる</h3>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">4</span>ツールを起動して、場所と月を入れる</h3>
+        <ol>
+          <li>「ケアプラン送信準備ツール」フォルダの <span class="k">ツールを起動.cmd</span> をダブルクリックします（置き場所は下の本社記入欄）。</li>
+          <li>青の <b>1</b>：<span class="k">保存場所を選ぶ</span> を押し、ほのぼのでデータを保存した <b>親フォルダ</b>（例：「提供票連携」）を選びます。</li>
+          <li>紫の <b>2</b>：<b>何月分か</b> を6桁（例：2026年11月 → <span class="fn">202611</span>）、<b>送る側の居宅の事業所番号</b> を10桁で入れます。</li>
+          <li><span class="k">送り先を一覧に出す</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/tool-1.png" target="_blank" rel="noopener"><img src="images/tool-1.png" alt="ケアプラン送信準備ツールの画面" loading="lazy"></a><figcaption>画面は下に続きがあります。マウスのホイールで動かします。</figcaption></figure>
+        <div class="box hq"><span class="ttl">📝 本社記入欄：ツールの置き場所</span><p>（ツールを置く場所が決まったら、ここに書きます）</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">5</span>送り先を確認して、チェックを付ける</h3>
+        <p>緑の <b>3</b> の一覧で、行の色を見ます。</p>
+        <ul>
+          <li><b>緑の行</b>（準備可）：そのまま送れます。最初からチェックが付いています。</li>
+          <li><b>黄色の行</b>（出力回が複数）：ほのぼので何回か出力しています。<b>どれを送るか担当者に確認して、1行だけ</b> チェックします。</li>
+          <li><b>赤の行</b>（不足・重複）：ファイルが足りません。ほのぼので出力し直すか、担当者に確認します。</li>
+        </ul>
+        <figure class="pcshot"><a href="images/tool-2.png" target="_blank" rel="noopener"><img src="images/tool-2.png" alt="色分けされた送り先の一覧" loading="lazy"></a></figure>
+        <p>事業所名が空いているときは、その欄をダブルクリックして名前を入れ、<span class="k">名前を覚える</span> を押します（次から自動で出ます）。わからないときは <span class="k">困ったとき</span> を押します。</p>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">6</span>ファイルをまとめて、場所を開く</h3>
+        <ol>
+          <li>オレンジの <b>4</b>：<span class="k">① 送るファイルをまとめる</span> を押します。</li>
+          <li>「準備できました」と出たら、<span class="k">② まとめた場所を開く</span> を押します。</li>
+          <li>開いたフォルダ（<b>添付用CSV</b>）に、送るCSVが入っています。この画面は開いたままにします。</li>
+        </ol>
+        <div class="box warn"><span class="ttl">⚠ まだ送っていません</span><p>ツールの「準備できました」は、送信の完了ではありません。次の連携システムで送ります。<br>「前と同じファイルを、もう一度準備する」には、ふだんはチェックを付けません。</p></div>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c1-2"><span>ツールで、送り先がすべて緑（または1行を選んだ黄色）になった</span></label></li>
+      <li><label><input type="checkbox" id="c1-3"><span>「添付用CSV」のフォルダを開けた</span></label></li>
+    </ul>
+
+    <h3 class="sub-h">3. 連携システムで、まとめて送る（一括送信）</h3>
+    <p>最初に <a href="#s-login">共通のログイン</a> をします。</p>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">7</span>「一括送信」を開いて、ファイルを選ぶ</h3>
+        <ol>
+          <li><span class="mk">A</span> 画面上の <span class="k">一括送信</span> を押します。</li>
+          <li><span class="mk">B</span> <span class="k">ファイルを選択</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-ikkatsu-03.png" target="_blank" rel="noopener"><img src="images/r-ikkatsu-03.png" alt="一括送信の画面" loading="lazy"></a></figure>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">8</span>「添付用CSV」の中のファイルを全部選ぶ</h3>
+        <ol>
+          <li><span class="mk">A</span> ツールで開いた <b>添付用CSV</b> のフォルダを開きます。</li>
+          <li>中のファイルを全部選びます（<span class="k">Ctrl</span> キーを押しながら1つずつクリック）。</li>
+          <li><span class="mk">B</span> <span class="k">開く</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-ikkatsu-04.png" target="_blank" rel="noopener"><img src="images/r-ikkatsu-04.png" alt="ファイルを選ぶ画面" loading="lazy"></a><figcaption>ファイル名は見本です。予定は「UPPLAN_」「UPSIKYU_」「UPHOSOKU_」で始まる3種類で1組です。</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">9</span>宛先ごとの一覧を確認する</h3>
+        <ol>
+          <li><span class="mk">A</span> すべての行で、<b>送信先の事業所番号</b>・<b>サービス種類</b>・<b>ファイル名</b> を確認します。</li>
+          <li>予定であること・対象の月・送る件数が合っているか確認します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-ikkatsu-05.png" target="_blank" rel="noopener"><img src="images/r-ikkatsu-05.png" alt="宛先ごとに分かれた一覧" loading="lazy"></a></figure>
+        <div class="box warn"><span class="ttl">⚠ 相手や内容が違う行があるとき</span><p>送らずに、ほのぼのの出力をやり直します。「ファイルエラー一覧を表示する」と出たら、押して原因を確認します。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">10</span>「一括送信」を押す</h3>
+        <ol>
+          <li><span class="mk">A</span> もう一度全部の行を確認してから、画面下の <span class="k">一括送信</span> を押します。</li>
+          <li>確認の画面で <span class="k">OK</span> を押し、終わるまで待ちます（途中でアプリを閉じない）。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-ikkatsu-06.png" target="_blank" rel="noopener"><img src="images/r-ikkatsu-06.png" alt="一括送信ボタン" loading="lazy"></a></figure>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">11</span>結果を確認する</h3>
+        <ol>
+          <li><span class="mk">A</span> 「送信完了」と、各行の成功・失敗を確認します。</li>
+          <li><span class="mk">B</span> <span class="k">OK</span> を押します。成功した行は消え、失敗した行だけが残ります。</li>
+          <li>最後に <span class="k">送信一覧</span> を開き、今回の送信日時・宛先・ファイル名があるか確認します（<a href="#st3-6">作業③の手順 9</a> と同じ画面）。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-ikkatsu-07.png" target="_blank" rel="noopener"><img src="images/r-ikkatsu-07.png" alt="送信完了の画面" loading="lazy"></a></figure>
+        <div class="box warn"><span class="ttl">⚠ 行が残ったとき</span><p>残った行の原因を確認します。成功した分まで <b>全部を送り直さない</b> でください（二重に届きます）。</p></div>
+      </div>
+    </div>
+
+    <div class="box info"><span class="ttl">💡 送り先が1か所だけのとき</span><p>一括送信ではなく <span class="k">新規作成</span> からでも送れます。やり方は <a href="#s3">作業③</a> の「連携システムで送る」と同じです（選ぶファイルが予定の3種類になります）。</p></div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c1-4"><span>送信一覧に、今回の送り先がすべて出ている</span></label></li>
+    </ul>
+    <div class="box ok"><span class="ttl">🎉 作業① 完了</span><p>送信一覧に正しい宛先で出ていれば完了です。<span class="k">ログアウト</span> して終わります。</p></div>
+  </section>
+
+  <!-- ===================== ② サービス：予定を取り込む ===================== -->
+  <section class="section" id="s2">
+    <h2><span class="num">作業<br>②</span>サービス：予定を受け取って、ほのぼのに取り込む</h2>
+    <p class="lead"><span class="role svc">サービス</span> 連携システムで受け取る → ほのぼのに取り込む、の2段階です。</p>
+
+    <h3 class="sub-h" id="recv">1. 連携システムで受け取る</h3>
+    <p>最初に <a href="#s-login">共通のログイン</a> をします。</p>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">1</span>受信一覧を開いて「更新」</h3>
+        <ol>
+          <li><span class="mk">A</span> 画面上の <span class="k">受信一覧</span> を開きます。</li>
+          <li><span class="mk">B</span> 画面下の <span class="k">更新</span> を押します。ログインを求められたら事業所ユーザでログインします。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-recv-03.png" target="_blank" rel="noopener"><img src="images/r-recv-03.png" alt="受信一覧の画面" loading="lazy"></a></figure>
+        <p>一覧を開いただけでは、パソコンに保存されていません。次の「データ取得」まで進めます。</p>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">2</span>送ってきた事業所とファイルを確認</h3>
+        <ol>
+          <li>一覧の <b>青い受信日時</b> を押して、詳しい画面を開きます。</li>
+          <li><span class="mk">A</span> <b>送信元</b> が、受け取る予定の事業所か確認します。</li>
+          <li><span class="mk">B</span> ファイル名・メッセージで、対象の月・種類を確認します。</li>
+          <li><span class="mk">C</span> <span class="k">戻る</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-recv-04.png" target="_blank" rel="noopener"><img src="images/r-recv-04.png" alt="受信の詳しい画面" loading="lazy"></a></figure>
+        <div class="box info"><span class="ttl">💡 ファイル名の見分け方</span>
+          <p>予定（作業②）：<span class="fn">UPPLAN_</span>・<span class="fn">UPSIKYU_</span>・<span class="fn">UPHOSOKU_</span> で始まる3つ<br>実績（作業④）：<span class="fn">UPJSK_</span> で始まるもの</p>
+          <p>違う種類や、心当たりのないものは取り込まず、送ってきた事業所に確認します。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">3</span>「未」の行を選んで「データ取得」</h3>
+        <ol>
+          <li><span class="mk">C</span> 右の <b>データ取得状況</b> が <b>「未」</b> の行をさがします。</li>
+          <li><span class="mk">A</span> その行の、<b>青い文字以外</b> の場所をクリックします（行が濃い緑になります）。</li>
+          <li><span class="mk">B</span> 左下の <span class="k">データ取得</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-recv-05.png" target="_blank" rel="noopener"><img src="images/r-recv-05.png" alt="データ取得ボタン" loading="lazy"></a></figure>
+        <div class="box warn"><span class="ttl">⚠ 注意</span><p>一度に選べるのは5件まで。「済」の行はもう一度は取れません。<span class="k">一括取得</span> は未取得の全部が対象になるので、ふだんは使いません。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">4</span>保存先を選んで、終わるまで待つ</h3>
+        <ol>
+          <li><span class="mk">A</span> 事業所で決めた <b>受信データの保存先フォルダ</b> を開きます。</li>
+          <li><span class="mk">B</span> <span class="k">フォルダーの選択</span> を押します。終わるまでアプリを閉じません。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-recv-06.png" target="_blank" rel="noopener"><img src="images/r-recv-06.png" alt="保存先を選ぶ画面" loading="lazy"></a></figure>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">5</span>できたフォルダの中を確認</h3>
+        <ol>
+          <li>保存先に「<b>受信日時14桁_送信元の事業所番号10桁</b>」という名前のフォルダができています。開きます。</li>
+          <li>中に、手順 2 のファイル（予定なら3つ）が入っているか確認します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-recv-07.png" target="_blank" rel="noopener"><img src="images/r-recv-07.png" alt="受信データのフォルダ" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/r-recv-08.png" target="_blank" rel="noopener"><img src="images/r-recv-08.png" alt="フォルダの中のCSV" loading="lazy"></a><figcaption>見本には別の種類のファイルも写っています。</figcaption></figure>
+        <div class="box info"><span class="ttl">💡 フォルダ名の日時</span><p>フォルダ名の日時は「受け取った日時」です。サービスを提供した月ではありません。</p></div>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c2-1"><span>受け取ったCSVが保存先のフォルダに入っている</span></label></li>
+    </ul>
+
+    <h3 class="sub-h">2. ほのぼのに取り込む</h3>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">6</span>CSVを「ルートフォルダ」にコピーする</h3>
+        <ol>
+          <li>受け取ったフォルダの <b>中のCSVファイル</b> を、ほのぼので決められた取り込み用の大元のフォルダ（ルートフォルダ）にコピーします。</li>
+          <li><b>フォルダごと入れない</b> でください。CSVは3つ一組でコピーします。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h2-01.png" target="_blank" rel="noopener"><img src="images/h2-01.png" alt="ルートフォルダにCSVを入れる" loading="lazy"></a><figcaption>「ケアプラン連携」は見本の名前です。</figcaption></figure>
+        <div class="box info"><span class="ttl">💡 ルートフォルダの場所がわからないとき</span><p>ほのぼのの「居宅支援連携H」→ <span class="k">マスタ他</span> → <span class="k">動作設定</span> で確認できます。職員ごとの設定なので、ログインする職員が変わったときも確認します。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">7</span>提供票から「居宅支援連携」を開く</h3>
+        <ol>
+          <li><span class="k">↓</span> → <span class="k">利用状況</span> → <span class="k">提供票</span>（または <span class="k">請求</span> → <span class="k">算定</span> → <span class="k">提供票</span>）を開きます。</li>
+          <li><span class="mk">A</span> <b>処理年月</b> を、受け取った予定の月にします。</li>
+          <li><span class="mk">B</span> <span class="k">居宅支援連携</span> を押します。「計画取込」の画面で操作します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h2-02.png" target="_blank" rel="noopener"><img src="images/h2-02.png" alt="提供票の画面" loading="lazy"></a></figure>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">8</span>相手の居宅を選んで「フォルダ」</h3>
+        <ol>
+          <li><span class="mk">A</span> 自分の <b>提供事業所</b> を選びます。</li>
+          <li><span class="mk">B</span> 相手の <b>支援事業所番号</b> を選び、<b>提供年月</b> を確認します。</li>
+          <li><span class="mk">C</span> <span class="k">フォルダ</span> を押します。CSVが相手の居宅ごとに振り分けられます。</li>
+          <li>「フォルダパス」の画面が出たら、閉じて次へ進みます（出た時点で振り分けは終わっています）。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h2-03.png" target="_blank" rel="noopener"><img src="images/h2-03.png" alt="居宅支援連携Hの計画取込" loading="lazy"></a></figure>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">9</span>「CSV取込」→「転送」</h3>
+        <ol>
+          <li><span class="mk">A</span> <span class="k">CSV取込</span> → <span class="k">はい</span>。結果を見て <span class="k">OK</span>。</li>
+          <li><span class="mk">C</span> 出てきた利用者・サービス・日付・回数を確認します。</li>
+          <li><span class="mk">B</span> <span class="k">転送</span> → 正しければ <span class="k">はい</span>。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h2-04.png" target="_blank" rel="noopener"><img src="images/h2-04.png" alt="CSV取込ボタン" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/h2-05.png" target="_blank" rel="noopener"><img src="images/h2-05.png" alt="取り込んだ内容と転送ボタン" loading="lazy"></a></figure>
+        <div class="box warn"><span class="ttl">⚠ 注意</span><p>取り込みに失敗したファイルがあるときは、転送せずに原因を確認します。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">10</span>（福祉用具だけ）商品を合わせる画面が出たとき</h3>
+        <p>福祉用具以外の事業所は、この手順を飛ばします。</p>
+        <ol>
+          <li><span class="mk">A</span> 相手の商品に合う、自分の事業所の商品と単位数を確認します。</li>
+          <li><span class="mk">B</span> 必要なら、通常・半額などの日割りの区分を確認します。</li>
+          <li><span class="mk">C</span> 正しい商品を選んで <span class="k">確定</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h2-06.png" target="_blank" rel="noopener"><img src="images/h2-06.png" alt="福祉用具の照合画面" loading="lazy"></a><figcaption>見本は居宅側の画面です。サービス側は「居宅支援連携福祉用具」と出ます。</figcaption></figure>
+        <div class="box warn"><span class="ttl">⚠ 色の意味</span><p>赤＝商品が決まっていない、黄色＝候補が複数。決まっていないまま進めず、わからなければ担当者に確認します。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">11</span>提供票の「計画取込」で反映する</h3>
+        <ol>
+          <li>提供票の画面に戻り、<span class="mk">A</span> <span class="k">計画取込</span> を押します。</li>
+          <li><span class="mk">A</span><span class="mk">B</span> 事業者名を選び、取り込む利用者にチェックします。</li>
+          <li><span class="mk">C</span> <span class="k">取込</span> を押し、終わったら <span class="k">閉じる</span>。</li>
+          <li>提供票・スケジュールの日付・サービス・回数が、受け取った内容と合っているか確認します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h2-07.png" target="_blank" rel="noopener"><img src="images/h2-07.png" alt="計画取込ボタン" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/h2-08.png" target="_blank" rel="noopener"><img src="images/h2-08.png" alt="計画取込の画面" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/h2-09.png" target="_blank" rel="noopener"><img src="images/h2-09.png" alt="取込ボタン" loading="lazy"></a><figcaption>計画取込の画面は、初期設定によって見え方が違うことがあります。</figcaption></figure>
+        <p>別の居宅の分は、支援事業所番号・提供年月を切りかえて、手順 8 からくり返します。</p>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c2-2"><span>「CSV取込」→「転送」ができた</span></label></li>
+      <li><label><input type="checkbox" id="c2-3"><span>「計画取込」で、提供票に予定が入った</span></label></li>
+    </ul>
+    <div class="box ok"><span class="ttl">🎉 作業② 完了</span><p>提供票・スケジュールに予定が入っていれば完了です。</p></div>
+  </section>
+
+  <!-- ===================== ③ サービス：実績を送る ===================== -->
+  <section class="section" id="s3">
+    <h2><span class="num">作業<br>③</span>サービス：実績を送る</h2>
+    <p class="lead"><span class="role svc">サービス</span> ほのぼので実績のデータを作る → 連携システムで送る、の2段階です。</p>
+    <div class="box info"><span class="ttl">💡 始める前に</span><p>作業②の「CSV取込」→「転送」が済んでいること。対象の月の実績が提供票に入っていること。<br>居宅から予定を受け取っていない利用者は、実績のデータを作れません。</p></div>
+
+    <h3 class="sub-h">1. ほのぼので、実績のデータ（CSV）を作る</h3>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">1</span>提供票から「居宅支援連携」を開く</h3>
+        <ol>
+          <li><span class="k">↓</span> → <span class="k">利用状況</span> → <span class="k">提供票</span> を開きます。</li>
+          <li><span class="mk">A</span> 処理年月を確認します。<span class="mk">B</span> <span class="k">居宅支援連携</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h2-02.png" target="_blank" rel="noopener"><img src="images/h2-02.png" alt="提供票の画面" loading="lazy"></a></figure>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">2</span>「実績出力」で実績を読み込む</h3>
+        <ol>
+          <li><span class="mk">A</span> <span class="k">実績出力</span> を選びます。</li>
+          <li><span class="mk">B</span><span class="mk">C</span> 自分の提供事業所・送り先の支援事業所番号・提供年月を確認します。</li>
+          <li><span class="mk">D</span> <span class="k">取込</span> を押し、<span class="k">はい</span>。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h3-02.png" target="_blank" rel="noopener"><img src="images/h3-02.png" alt="実績出力の画面" loading="lazy"></a></figure>
+        <div class="box info"><span class="ttl">💡 ここは「取込」</span><p>作業②の「CSV取込」とは別のボタンです。利用者が出ないときは、作業②の転送・年月・事業所を確認します。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">3</span>内容を確認して「CSV出力」</h3>
+        <ol>
+          <li><span class="mk">A</span> 利用者・サービス・日付・回数を確認します。</li>
+          <li><span class="mk">B</span> <span class="k">CSV出力</span> → 正しければ <span class="k">はい</span>。</li>
+          <li><span class="mk">C</span> <span class="k">フォルダ</span> を押すと、できた場所（<b>「jisseki」</b> フォルダ）がわかります。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h3-03.png" target="_blank" rel="noopener"><img src="images/h3-03.png" alt="実績の内容とCSV出力ボタン" loading="lazy"></a></figure>
+        <p>別の居宅の分は、相手を切りかえて手順 2 の <span class="k">取込</span> からくり返します。</p>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">4</span>できたファイルの場所を開く（オンライン版）</h3>
+        <ol>
+          <li><span class="k">フォルダのパスをコピーして閉じる</span> を押します。</li>
+          <li>黄色いフォルダの <b>エクスプローラー</b> を開きます。</li>
+          <li>上の <b>アドレスバー</b> で右クリック → <span class="k">貼り付け</span> → <span class="k">Enter</span> キー。</li>
+          <li>開いた <b>「jisseki」</b> フォルダに、<span class="fn">UPJSK_</span> で始まるCSVがあるか確認します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h3-04.png" target="_blank" rel="noopener"><img src="images/h3-04.png" alt="フォルダパスの画面" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/h1-05.png" target="_blank" rel="noopener"><img src="images/h1-05.png" alt="アドレスバーに貼り付ける" loading="lazy"></a><figcaption>見本は予定の「yotei」です。実績は「jisseki」を開きます。</figcaption></figure>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c3-1"><span>送り先すべての分の実績CSVができた</span></label></li>
+    </ul>
+
+    <h3 class="sub-h">2. 連携システムで送る</h3>
+    <p>最初に <a href="#s-login">共通のログイン</a> をします。</p>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">5</span>「新規作成」→「ファイルを選択」</h3>
+        <ol>
+          <li><span class="mk">A</span> 画面上の <span class="k">新規作成</span> を押します。</li>
+          <li><span class="mk">B</span> 添付の欄の <span class="k">ファイルを選択</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-send-03.png" target="_blank" rel="noopener"><img src="images/r-send-03.png" alt="新規作成の画面" loading="lazy"></a></figure>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">6</span>送るCSVを選んで「開く」</h3>
+        <ol>
+          <li><span class="mk">A</span> 手順 4 の「jisseki」フォルダを開き、<b>1つの送り先の分だけ</b> 選びます。</li>
+          <li><span class="mk">B</span> 選んだファイルを確認して <span class="k">開く</span>。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-send-04.png" target="_blank" rel="noopener"><img src="images/r-send-04.png" alt="ファイルを選ぶ画面" loading="lazy"></a><figcaption>ファイル名は見本です。</figcaption></figure>
+        <div class="box warn"><span class="ttl">⚠ 注意</span><p>別の月・別の送り先のファイルを混ぜないでください。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">7</span>宛先と添付を確認する</h3>
+        <ol>
+          <li><span class="mk">A</span> 自動で入った <b>送信先事業所番号</b> が、送りたい居宅の番号と合っているか確認します。</li>
+          <li><span class="mk">B</span> 添付が <span class="fn">UPJSK_</span> の実績CSVか、月・送り先が合っているか確認します。</li>
+          <li><span class="mk">C</span> 必要なら、メッセージに「○月分 実績」などと入れます。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-send-05.png" target="_blank" rel="noopener"><img src="images/r-send-05.png" alt="宛先と添付の確認" loading="lazy"></a><figcaption>見本には別の種類のデータが写っています。</figcaption></figure>
+        <div class="box warn"><span class="ttl">⚠ 宛先が違うとき</span><p>送りません。宛先は手で直せないので、添付をすべて外して、正しいファイルを選び直します。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">8</span>「送信」→「OK」</h3>
+        <ol>
+          <li><span class="mk">A</span> 右下の <span class="k">送信</span> を押します。</li>
+          <li>「送信確認」で、送り先・ファイル・メッセージをもう一度確認します。</li>
+          <li><span class="mk">B</span> 正しければ <span class="k">OK</span>。完了の画面でもう一度 <span class="k">OK</span>。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-send-06.png" target="_blank" rel="noopener"><img src="images/r-send-06.png" alt="送信ボタン" loading="lazy" style="max-width:365px"></a></figure>
+        <figure class="pcshot"><a href="images/r-send-07.png" target="_blank" rel="noopener"><img src="images/r-send-07.png" alt="送信確認の画面" loading="lazy"></a></figure>
+        <p>間違いに気づいたら <span class="k">キャンセル</span> で戻ります。</p>
+      </div>
+    </div>
+
+    <div class="step no-shot" id="st3-6">
+      <div>
+        <h3><span class="n">9</span>「送信一覧」で確認する</h3>
+        <ol>
+          <li><span class="mk">A</span> 画面上の <span class="k">送信一覧</span> を開きます。</li>
+          <li><span class="mk">B</span> 今回の送信日時・宛先・ファイル名を確認します。</li>
+          <li><span class="mk">C</span> 相手が受け取ったか見るときは <span class="k">更新</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/r-send-08.png" target="_blank" rel="noopener"><img src="images/r-send-08.png" alt="送信一覧の画面" loading="lazy"></a></figure>
+        <div class="box info"><span class="ttl">💡 「ダウンロード状況」の見方</span><p>「済」は相手が受け取った（ダウンロードした）ということです。相手のほのぼのに取り込まれたかどうかはわかりません。「未」のままでも、同じデータを何度も送らないでください。</p></div>
+      </div>
+    </div>
+
+    <div class="box info"><span class="ttl">💡 送り先がたくさんあるとき</span><p>連携システムの <span class="k">一括送信</span> で、まとめて送ることもできます（<a href="#s1">作業①</a> の手順 7〜11 と同じ操作。選ぶのは「jisseki」の実績CSVです）。</p></div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c3-2"><span>送信一覧に、今回の送り先がすべて出ている</span></label></li>
+    </ul>
+    <div class="box ok"><span class="ttl">🎉 作業③ 完了</span><p>送信一覧に正しい宛先で出ていれば完了です。<span class="k">ログアウト</span> して終わります。</p></div>
+  </section>
+
+  <!-- ===================== ④ 居宅：実績を取り込む ===================== -->
+  <section class="section" id="s4">
+    <h2><span class="num">作業<br>④</span>居宅：実績を受け取って、ほのぼのに取り込む</h2>
+    <p class="lead"><span class="role kyo">居宅</span> 連携システムで受け取る → ほのぼのに取り込む、の2段階です。</p>
+    <div class="box info"><span class="ttl">💡 始める前に</span><p>作業①で、その月・その事業所の予定を出力していること（出力していないと、取り込む利用者が出てきません）。</p></div>
+
+    <h3 class="sub-h">1. 連携システムで受け取る</h3>
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">1</span>作業②の「連携システムで受け取る」と同じ操作をする</h3>
+        <p><a href="#recv">作業② の手順 1〜5</a> と同じです。ちがうのは次の点だけです。</p>
+        <ul>
+          <li>送信元が、<b>サービス事業所</b> になっているか確認する</li>
+          <li>受け取るファイルは <span class="fn">UPJSK_</span> で始まる <b>実績</b> のCSV</li>
+        </ul>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c4-1"><span>受け取った実績CSVが、保存先のフォルダに入っている</span></label></li>
+    </ul>
+
+    <h3 class="sub-h">2. ほのぼのに取り込む</h3>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">2</span>CSVを「ルートフォルダ」にコピーする</h3>
+        <ol>
+          <li>受け取ったフォルダの <b>中のCSVファイル</b> を、ほのぼのの取り込み用の大元のフォルダ（ルートフォルダ）にコピーします。フォルダごとは入れません。</li>
+          <li>いくつかの事業所の分を、同じルートフォルダにまとめて入れてかまいません。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h4-01.png" target="_blank" rel="noopener"><img src="images/h4-01.png" alt="ルートフォルダにCSVを入れる" loading="lazy"></a><figcaption>「提供票連携」は見本の名前です。</figcaption></figure>
+        <div class="box info"><span class="ttl">💡 場所がわからないとき</span><p>「提供事業所連携H」→ <span class="k">マスタ他</span> → <span class="k">動作設定</span> で確認できます。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">3</span>提供事業所連携を開く</h3>
+        <ol>
+          <li><span class="mk">A</span><span class="mk">B</span> <span class="k">↓</span> → <span class="k">ケアマネ</span> → <span class="k">利用・提供票</span> → <span class="k">提供事業所</span> を開きます。</li>
+          <li><span class="mk">C</span> 実績の <b>提供年月</b> を入れます。</li>
+          <li><span class="mk">D</span> <span class="k">提供事業所連携</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h1-01.png" target="_blank" rel="noopener"><img src="images/h1-01.png" alt="提供事業所の画面" loading="lazy"></a></figure>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">4</span>「実績取込」で相手を選んで「フォルダ」</h3>
+        <ol>
+          <li><span class="mk">A</span> <span class="k">実績取込</span> を選びます。</li>
+          <li><span class="mk">B</span><span class="mk">C</span> 自分の支援事業所と、相手の提供事業所番号を選びます。</li>
+          <li><span class="mk">D</span> <span class="k">フォルダ</span> を押します。CSVが「jisseki」に振り分けられます。</li>
+          <li>「フォルダパス」の画面が出たら、閉じて次へ進みます。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h4-03.png" target="_blank" rel="noopener"><img src="images/h4-03.png" alt="実績取込の画面" loading="lazy"></a></figure>
+        <p>取り込みは、<b>1つのサービス事業所ずつ</b> 行います。</p>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">5</span>「CSV取込」→「転送」</h3>
+        <ol>
+          <li><span class="mk">A</span> <span class="k">CSV取込</span> → <span class="k">はい</span>。結果を見て <span class="k">OK</span>。</li>
+          <li>出てきた利用者・サービス・日付・回数を確認します。</li>
+          <li><span class="mk">B</span> 利用票を実績で計算したいときは <span class="k">転送後に実績で計算</span> を選びます（事業所の決まりに合わせます）。</li>
+          <li><span class="mk">C</span> <span class="k">転送</span> → <span class="k">はい</span>。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h4-04.png" target="_blank" rel="noopener"><img src="images/h4-04.png" alt="CSV取込ボタン" loading="lazy"></a></figure>
+        <figure class="pcshot"><a href="images/h4-05.png" target="_blank" rel="noopener"><img src="images/h4-05.png" alt="転送ボタン" loading="lazy"></a></figure>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">6</span>（福祉用具だけ）商品を合わせる画面が出たとき</h3>
+        <ol>
+          <li><span class="mk">A</span> 相手の商品に合う、自分の事業所の商品と単位数を確認します。</li>
+          <li><span class="mk">B</span> 必要なら、通常・半額などの日割りの区分を選びます。</li>
+          <li><span class="mk">C</span> 正しい商品に合わせて <span class="k">確定</span> を押します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h4-06.png" target="_blank" rel="noopener"><img src="images/h4-06.png" alt="福祉用具の照合画面" loading="lazy"></a></figure>
+        <div class="box warn"><span class="ttl">⚠ 注意</span><p>赤＝商品が決まっていない、黄色＝候補が複数。半額・日割りは自動で正しく選ばれるとは限りません。契約の内容に合わせて確認します。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">7</span>利用票の実績の欄を確認する</h3>
+        <ol>
+          <li><span class="mk">A</span><span class="mk">B</span> <span class="k">利用票</span> に戻り、利用者を選びます。</li>
+          <li><span class="mk">C</span> 実績の欄の日付・サービス・回数が、受け取った内容どおりか確認します。</li>
+          <li>別の事業所の分は、提供事業所番号を切りかえて、手順 4 からくり返します。</li>
+        </ol>
+        <figure class="pcshot"><a href="images/h4-07.png" target="_blank" rel="noopener"><img src="images/h4-07.png" alt="利用票の実績の欄" loading="lazy"></a></figure>
+        <div class="box warn"><span class="ttl">⚠ 福祉用具の実績の行が増えたとき</span><p>商品や単位数が合っていない可能性があります。自分で消さずに、担当者に確認してください。</p></div>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="c4-2"><span>「CSV取込」→「転送」ができた</span></label></li>
+      <li><label><input type="checkbox" id="c4-3"><span>利用票の実績の欄が、受け取った内容と合っている</span></label></li>
+    </ul>
+    <div class="box ok"><span class="ttl">🎉 作業④ 完了</span><p>利用票に実績が入り、内容を確認できたら完了です。</p></div>
+  </section>
+
+  <!-- ===================== 困ったとき ===================== -->
+  <section class="section" id="s9">
+    <h2><span class="num">困った<br>とき</span>よくあること・連絡先</h2>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">?</span>よくあること</h3>
+        <ul>
+          <li><b>ほのぼので利用者が出てこない</b>：年月・自分と相手の事業所・利用票（予定）ができているかを確認します。</li>
+          <li><b>送信準備ツールが起動しない</b>：「スクリプトの実行が制限」などと出たら、画面の写真を撮って総務部へ連絡してください。</li>
+          <li><b>ツールで赤の行が出る</b>：ほのぼので、その送り先の分をもう一度出力します。</li>
+          <li><b>連携システムで宛先が違う</b>：送らずに、添付を外してファイルを選び直します。</li>
+          <li><b>同じデータを2回送ってしまった</b>：自分で何かする前に、相手の事業所と総務部へ連絡してください。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box hq"><span class="ttl">📞 わからないときの連絡先</span>
+      <p>総務部　担当：菊竹<br>電話：<a href="tel:09084907356">090-8490-7356</a>（平日 9:00〜17:00）</p>
+    </div>
+
+    <p class="src">このページの画面は、NDソフトウェア公式サポートQ&A（記事ID 2890・2891・2893・2894）と、公式「ケアプランデータ連携システム操作マニュアル」2026年5月29日版（Ver1.2.0）の操作画面の見本を使い、社内向けにまとめ直したものです（2026年11月7日確認）。</p>
+  </section>
+</main>
+
+<footer class="site-foot">総務部 ／ <a href="../../index.html">マニュアル一覧へ戻る</a></footer>
+<script src="../../assets/manual.js"></script>
+</body>
+</html>
