@@ -2,6 +2,7 @@
    社内マニュアル 共通スクリプト
    ・チェックボックスの状態をこの端末に保存（ページを閉じても残る）
    ・セクション内のチェックが全部付いたら目次に ✔ を表示
+   ・右上の「更新」でチェックを外して読み込み直す
    ・一覧ページの検索・絞り込みは assets/top.js
    ========================================================= */
 (function () {
@@ -44,6 +45,15 @@
       save(state);
       document.querySelectorAll(".check input[type=checkbox]").forEach(function (b) { b.checked = false; });
       updateToc();
+    });
+  }
+
+  /* 右上の「更新」：チェックを全部外して、ページを読み込み直す（Ctrl+R と同じ） */
+  var refresh = document.getElementById("refresh-page");
+  if (refresh) {
+    refresh.addEventListener("click", function () {
+      try { localStorage.removeItem(key); } catch (e) { /* 保存できない環境でも読み込み直しは行う */ }
+      location.reload();
     });
   }
 

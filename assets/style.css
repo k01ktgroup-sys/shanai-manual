@@ -363,3 +363,17 @@ details > div { padding: 0 16px 12px; }
   padding: 1px 10px; border-radius: 99px; border: 1px solid var(--line);
   background: var(--bg); color: var(--sub); font-size: 13px; font-weight: 700; letter-spacing: .02em;
 }
+
+/* ---------- とくに目立たせる注意（返却前の確認など） ---------- */
+.box.must { background: var(--warn-soft); border: 3px solid var(--accent); border-left-width: 10px; padding: 16px 18px; margin: 18px 0; }
+.box.must .ttl { color: var(--warn); font-size: 22px; line-height: 1.4; margin-bottom: 6px; }
+.box.must ol { margin: 8px 0; padding-left: 1.4em; font-size: 19px; }
+.box.must li { margin: 6px 0; }
+.box.must .sub { color: var(--sub); font-size: 15px; font-weight: 400; }
+
+/* ---------- とても狭い画面：ヘッダーのボタンとロゴを小さく ---------- */
+@media (max-width: 380px) {
+  .site-head .wrap { gap: 4px; }
+  .site-head .logo-img { height: 24px; margin-right: 4px; }
+  .site-head .btn-ghost { font-size: 12px; padding: 4px 8px; }
+}

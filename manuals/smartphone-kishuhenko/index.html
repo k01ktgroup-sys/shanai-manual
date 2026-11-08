@@ -14,6 +14,7 @@
     <span class="spacer"></span>
     <button class="btn-ghost no-print" id="print-page" type="button">🖨 印刷</button>
     <a class="btn-ghost no-print" href="../../index.html">📚 一覧へ</a>
+    <button class="btn-ghost no-print" id="refresh-page" type="button" title="チェックを外して、ページを読み込み直します">🔄 更新</button>
   </div>
 </header>
 
@@ -132,40 +133,36 @@
     <div class="step">
       <div>
         <h3><span class="n">3</span>電話帳をGoogleに保存 <span class="who old">古いスマホ</span></h3>
-        <p>電話帳は、<b>Googleに保存されているものだけ</b> が新しいスマホに移ります。スマホの中だけに保存されている電話帳があれば、Googleへ移します。</p>
+        <p>電話帳をいったんファイルに書き出し（エクスポート）、それを Google に読み込み（インポート）ます。こうすると、<b>電話帳がすべて Google に保存され、新しいスマホに移ります。</b></p>
+        <p><b>書き出す（エクスポート）</b></p>
         <ol>
           <li><span class="k">連絡先</span> アプリを開きます。</li>
-          <li>左上の <span class="k">≡</span> → <span class="k">連絡先を管理</span> をタップします。</li>
-          <li>出てきた一覧を見ます。<b>「連絡先を移動」があるかどうか</b> で、やることが変わります。</li>
+          <li>左上の <span class="k">≡</span>（三本線）をタップします。</li>
+          <li><span class="k">連絡先を管理</span> をタップします。</li>
+          <li><span class="k">連絡先をインポート/エクスポート</span> をタップします。</li>
+          <li><span class="k">エクスポート</span> をタップします。</li>
+          <li><span class="k">内部ストレージ</span> にチェックを入れ、<span class="k">エクスポート</span> をタップします。</li>
+          <li><span class="k">OK</span> をタップします。</li>
         </ol>
-        <div class="box ok">
-          <span class="ttl">「連絡先を移動」がない場合（ほとんどの人）</span>
-          <p>一覧が <span class="k">連絡先を統合</span>・<span class="k">重複する連絡先を削除</span>・<span class="k">連絡先をインポート/エクスポート</span>・<span class="k">連絡先を同期</span> の4つだけなら、電話帳は <b>すでにGoogleに保存されています。</b>何もせずに、下の「同期がオンか確認」へ進んでください。</p>
-        </div>
-        <div class="box info">
-          <span class="ttl">「連絡先を移動」がある場合</span>
-          <ol>
-            <li><span class="k">連絡先を移動</span> をタップします。</li>
-            <li>「移動元」で <span class="k">端末</span> にチェックを入れます（「SIM」などほかの項目があれば、それにもチェック）。</li>
-            <li>「移動先」で <b>一覧表のGoogleアカウント</b> を選び、<span class="k">移動</span> をタップします。</li>
-          </ol>
-        </div>
-        <div class="box warn">
-          <span class="ttl">同期がオンか確認（全員）</span>
-          <p><span class="k">設定</span> → <span class="k">アカウントとバックアップ</span> → <span class="k">アカウントを管理</span> → <b>Googleアカウント</b> → <span class="k">アカウントを同期</span> で、<b>「連絡先」がオン（青色）</b> になっていることを確認します。</p>
-        </div>
+        <p><b>Google に読み込む（インポート）</b></p>
+        <ol start="8">
+          <li>同じ画面で <span class="k">インポート</span> をタップします。</li>
+          <li><span class="k">端末またはクラウドのストレージ</span> にチェックを入れます。</li>
+          <li><span class="k">ダウンロード</span> をタップします。</li>
+          <li><b>連絡先.vcf</b>（<b>日付がいちばん新しいもの</b>）にチェックを入れ、<span class="k">完了</span> をタップします。</li>
+          <li>保存先で <b>Google</b>（一覧表のGoogleアカウント）を選び、<span class="k">インポート</span> をタップします。</li>
+        </ol>
+        <div class="box ok"><p>これで、電話帳がすべて Google に保存されます。</p></div>
+        <div class="box warn"><p>「連絡先.vcf」が何個もあるときは、<b>今日の日付のもの</b> を選んでください。古いファイルを選ぶと、最近登録した人が入りません。</p></div>
       </div>
       <figure class="shot">
         <figcaption><span class="who old">古いスマホ</span></figcaption>
         <div class="phone old">
           <div class="sb"><span>10:08</span><span>📶 🔋</span></div>
-          <div class="app">← 連絡先を管理</div>
+          <div class="app">← 連絡先をインポート/エクスポート</div>
           <div class="body">
-            <div class="row">連絡先を統合</div>
-            <div class="row">重複する連絡先を削除</div>
-            <div class="row">連絡先をインポート/エクスポート</div>
-            <div class="row">連絡先を同期</div>
-            <div class="muted" style="margin-top:10px">この4つだけなら、電話帳はすでにGoogleに保存されています</div>
+            <div class="row tap"><span class="ico">⬇</span><div><b>インポート</b><small>2回目にタップ（Googleへ読み込む）</small></div></div>
+            <div class="row tap lbl-left"><span class="ico">⬆</span><div><b>エクスポート</b><small>はじめにタップ（ファイルに書き出す）</small></div></div>
           </div>
         </div>
       </figure>
@@ -205,6 +202,15 @@
     <div class="step">
       <div>
         <h3><span class="n">5</span>＋メッセージを保存 <span class="who old">古いスマホ</span></h3>
+        <div class="box warn">
+          <span class="ttl">先に確認：「Googleドライブ」アプリはありますか？</span>
+          <p>＋メッセージは Googleドライブに保存します。スマホに <span class="k">ドライブ</span> アプリが見つからないときは、先に入れてください。</p>
+          <ol>
+            <li><span class="k">Playストア</span> を開きます。</li>
+            <li>上の検索欄に「<b>Google ドライブ</b>」と入れてさがします。</li>
+            <li><span class="k">インストール</span> をタップします。（<span class="k">開く</span> と出たら、もう入っています）</li>
+          </ol>
+        </div>
         <ol>
           <li><span class="k">＋メッセージ</span> を開き、右下の <span class="k">マイページ</span> をタップします。</li>
           <li><span class="k">設定</span> → <span class="k">メッセージ</span> → <span class="k">バックアップ・復元</span> をタップします。</li>
@@ -229,7 +235,7 @@
     <ul class="check">
       <li><label><input type="checkbox" id="c1-0"><span>古いスマホがWi-Fiにつながった</span></label></li>
       <li><label><input type="checkbox" id="c1-1"><span>フォトが「バックアップ完了」になった</span></label></li>
-      <li><label><input type="checkbox" id="c1-c"><span>電話帳をGoogleに移した（または、すでにGoogleに保存されていた）</span></label></li>
+      <li><label><input type="checkbox" id="c1-c"><span>電話帳をエクスポートし、Googleにインポートした</span></label></li>
       <li><label><input type="checkbox" id="c1-2"><span>LINEのバックアップが今日の日付になった</span></label></li>
       <li><label><input type="checkbox" id="c1-3"><span>＋メッセージのバックアップをした</span></label></li>
     </ul>
@@ -990,10 +996,20 @@
       <li><label><input type="checkbox" id="c5-6"><span>フォトで前の写真が見られる</span></label></li>
     </ul>
 
+    <div class="box must">
+      <span class="ttl">📌 返却する前に、かならず</span>
+      <p>次の <b>2つの番号</b> を紙に書き、<b>はがれないように古いスマホに貼って</b> 返却してください。</p>
+      <ol>
+        <li><b>新しいスマホの本体に貼ってある黄色い付箋の番号</b></li>
+        <li><b>古いスマホを起動したときに入れるパスワード</b>（PIN・パターン・パスワードのどれか）<br><span class="sub">パターンの場合は、なぞる順番を絵で書いてください。</span></li>
+      </ol>
+      <p class="sub">紙はテープなどでしっかり留めてください。</p>
+    </div>
+
     <div class="box ok">
       <span class="ttl">🎉 おつかれさまでした</span>
       <ul>
-        <li>古いスマホは <b>初期化せず</b>、<b>古いSIMカードも入れたまま</b> 電源を切って、本社の指示どおりに返却してください。</li>
+        <li>古いスマホは <b>初期化せず</b>、<b>古いSIMカードも入れたまま</b> 電源を切って、上の紙を貼ったうえで、本社の指示どおりに返却してください。</li>
         <li>完了したら、総務部へ「機種変更が終わりました」と連絡してください。</li>
       </ul>
     </div>
