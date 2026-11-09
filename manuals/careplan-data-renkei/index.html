@@ -90,6 +90,7 @@
     <li><a href="#s2"><b>作業 ②</b>サービス：提供票を取り込む</a></li>
     <li><a href="#s3"><b>作業 ③</b>サービス：実績を送る</a></li>
     <li><a href="#s4"><b>作業 ④</b>居宅：実績を取り込む</a></li>
+    <li><a href="#s-bulk"><b>別の方法</b>居宅：一括出力</a></li>
     <li><a href="#s-one"><b>別の方法</b>1か所だけ送る</a></li>
     <li><a href="#s9"><b>困ったとき</b>連絡先</a></li>
   </ul>
@@ -100,7 +101,7 @@
     <p class="lead">毎月、次の①〜④の順番でデータが行き来します。自分の事業所の作業だけ読めば大丈夫です。</p>
 
     <ol class="flow">
-      <li><b>①</b> <span class="role kyo">居宅</span> 月のはじめ：ほのぼので提供票を<b>まとめて出力</b> → 送信準備ツールでまとめる → 連携システムで<b>一括送信</b></li>
+      <li><b>①</b> <span class="role kyo">居宅</span> 月のはじめ：ほのぼので送り先ごとに提供票を<b>出力</b> → 送信準備ツールでまとめる → 連携システムで<b>一括送信</b></li>
       <li><b>②</b> <span class="role svc">サービス</span> 連携システムで<b>受け取り</b> → ほのぼのに<b>取り込む</b>（CSV取込 → 転送）</li>
       <li><b>③</b> <span class="role svc">サービス</span> 月末〜翌月：ほのぼので実績を出力 → 送信準備ツールでまとめる → 連携システムで<b>一括送信</b></li>
       <li><b>④</b> <span class="role kyo">居宅</span> 連携システムで<b>受け取り</b> → ほのぼのに<b>取り込む</b>（CSV取込 → <b>転送</b>）</li>
@@ -108,7 +109,7 @@
 
     <p><b>自分の作業を選んでください：</b></p>
     <div class="pick no-print">
-      <a href="#s1"><span class="role kyo">居宅</span><b>① 提供票を送る</b><small>月のはじめ（まとめて送る）</small></a>
+      <a href="#s1"><span class="role kyo">居宅</span><b>① 提供票を送る</b><small>月のはじめ（送り先ごとに出力して、まとめて送る）</small></a>
       <a href="#s2"><span class="role svc">サービス</span><b>② 提供票を取り込む</b><small>居宅から届いたら</small></a>
       <a href="#s3"><span class="role svc">サービス</span><b>③ 実績を送る</b><small>月末〜翌月（まとめて送る）</small></a>
       <a href="#s4"><span class="role kyo">居宅</span><b>④ 実績を取り込む</b><small>サービス事業所から届いたら</small></a>
@@ -361,44 +362,52 @@
 
   <!-- ===================== ① 居宅：提供票を送る ===================== -->
   <section class="section" id="s1">
-    <h2><span class="num">作業<br>①</span>居宅：提供票（予定）をまとめて送る</h2>
-    <p class="lead"><span class="role kyo">居宅</span> ほのぼので一括出力 → 送信準備ツールでまとめる → 連携システムで一括送信、の3段階です。1か所だけ送るときは <a href="#s-one">別の方法</a> を見てください。</p>
+    <h2><span class="num">作業<br>①</span>居宅：提供票（予定）を送る</h2>
+    <p class="lead"><span class="role kyo">居宅</span> ほのぼので送り先ごとに出力 → 送信準備ツールでまとめる → 連携システムで一括送信、の3段階です。<br>全部の事業所分を一度に出力したいときは <a href="#s-bulk">別の方法（一括出力）</a>、1か所だけ送るときは <a href="#s-one">別の方法（新規作成）</a> を見てください。</p>
     <div class="box info"><span class="ttl">💡 始める前に</span><p>対象の月の <b>利用票</b> ができていること。福祉用具がある場合は、TAISコードの付いた商品を選んでいること（<a href="../honobono-tais-touroku/index.html">No.06 TAISコードのマニュアル</a>）。</p></div>
 
-    <h3 class="sub-h">1. ほのぼので、提供票をまとめて出力する</h3>
+    <h3 class="sub-h">1. ほのぼので、送り先ごとに提供票を出力する</h3>
 
     <div class="step no-shot">
       <div>
         <h3><span class="n">1</span>「提供事業所連携」の「計画出力」を開く</h3>
         <ol>
           <li>メイン画面の <span class="k">ケアマネ</span> → <span class="k">利用・提供票</span> → <span class="k">提供事業所</span> を開きます。</li>
-          <li><span class="k">提供事業所連携</span> を押し、<span class="m">1</span> 「計画出力」のタブを選びます。</li>
-          <li><span class="m">2</span> 「処理年月」（送りたい提供票の月）と、「支援事業所」（自分の居宅）を確認します。</li>
+          <li><span class="k">提供事業所連携</span> を押し、<span class="m">1</span> 「計画出力（介護）」のタブを選びます（予防の予定は「計画出力（予防）」）。</li>
         </ol>
       </div>
     </div>
 
     <div class="step no-shot">
       <div>
-        <h3><span class="n">2</span>［一括出力］で、全部の事業所分を出力する</h3>
+        <h3><span class="n">2</span>送り先の事業所を選んで［CSV出力］</h3>
         <ol>
-          <li><span class="m">3</span> 画面右上の <span class="k">一括出力</span> を押します。</li>
-          <li>確認の画面で内容を見て <span class="k">OK</span> を押します。送り先の事業所ごとにCSVが作られます。</li>
+          <li><span class="m">2</span> 「提供事業所番号」で <b>送り先のサービス事業所</b> を選びます。「処理年月」（送りたい提供票の月）と「支援事業所」（自分の居宅）も確認します。</li>
+          <li><span class="m">3</span> 送る利用者の <b>「利用票」</b> の欄にチェックします（「計画書」ではありません）。</li>
+          <li><span class="m">4</span> <span class="k">CSV出力</span> を押し、内容が正しければ <span class="k">OK</span> を押します。</li>
+          <li>別の送り先があるときは、「提供事業所番号」を切りかえて、この手順をくり返します。</li>
         </ol>
-        <div class="pc" role="img" aria-label="提供事業所連携の計画出力画面。処理年月と支援事業所を確認し、一括出力を押す">
+        <div class="pc" role="img" aria-label="提供事業所連携の計画出力画面。送り先の提供事業所番号を選び、利用票にチェックしてCSV出力">
           <div class="wt">提供事業所連携</div>
           <div class="bd">
-            <div class="row"><span class="grp"><span class="m">1</span><span class="tab on hl">計画出力（介護）</span></span><span class="tab">計画出力（予防）</span><span class="tab">実績取込</span><span class="grp"><span class="m">3</span><span class="b y hl">一括出力</span></span><span class="b o">CSV出力</span><span class="b y">フォルダ</span><span class="b v">ﾏｽﾀ他</span><span class="b">閉じる</span></div>
-            <div class="row"><span class="m">2</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl">処理年月</span><span class="in">R 8/12</span><span class="lbl">支援事業所</span><span class="in sel">（自分の居宅）</span></span></div>
-            <table><tr><th style="width:12%">利用票</th><th class="hide-s">利用者番号</th><th>利用者名</th></tr><tr><td>☑</td><td class="hide-s">0001</td><td>見本 太郎</td></tr></table>
+            <div class="row"><span class="grp"><span class="m">1</span><span class="tab on hl">計画出力（介護）</span></span><span class="tab">計画出力（予防）</span><span class="tab">実績取込</span><span class="b y">一括出力</span><span class="grp"><span class="m">4</span><span class="b o hl">CSV出力</span></span><span class="b y">フォルダ</span><span class="b v">ﾏｽﾀ他</span><span class="b">閉じる</span></div>
+            <div class="row"><span class="m">2</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl">提供事業所番号</span><span class="in sel">（送り先）</span><span class="lbl">処理年月</span><span class="in">R 8/12</span><span class="lbl">支援事業所</span><span class="in sel">（自分の居宅）</span></span></div>
+            <div class="row" style="align-items:flex-start"><span class="m">3</span>
+              <table style="flex:1"><tr><th style="width:16%">計画書</th><th class="hl" style="width:16%">利用票</th><th>利用者名</th></tr><tr><td>□</td><td class="hl">☑</td><td>見本 太郎</td></tr><tr><td>□</td><td class="hl">☑</td><td>見本 花子</td></tr></table></div>
           </div>
         </div>
-        <div class="box warn"><span class="ttl">⚠ 注意</span><p>処理するのは「今月」ではなく、<b>送りたい提供票の月</b> です。出力しただけでは、まだ相手には届いていません。</p></div>
+        <div class="box warn"><span class="ttl">⚠ 注意</span>
+          <ul>
+            <li>処理するのは「今月」ではなく、<b>送りたい提供票の月</b> です。</li>
+            <li>利用者が出てこないときは、月・自分と相手の事業所・利用票ができているかを確認します。</li>
+            <li>出力しただけでは、まだ相手には届いていません。次のツールと連携システムで送ります。</li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <ul class="check">
-      <li><label><input type="checkbox" id="c1-1"><span>［一括出力］で提供票のCSVを出力した</span></label></li>
+      <li><label><input type="checkbox" id="c1-1"><span>送り先すべての分を［CSV出力］した</span></label></li>
     </ul>
 
     <h3 class="sub-h" id="tool">2. 送信準備ツールで、送るファイルをまとめる</h3>
@@ -794,29 +803,51 @@
     <div class="box ok"><span class="ttl">🎉 作業④ 完了</span><p>利用票に実績が入り、内容を確認できたら完了です。</p></div>
   </section>
 
+  <!-- ===================== 別の方法：一括出力 ===================== -->
+  <section class="section" id="s-bulk">
+    <h2><span class="num">別の<br>方法</span>居宅：全部の事業所分を一度に出力する（一括出力）</h2>
+    <p class="lead"><span class="role kyo">居宅</span> 作業 ① の「1. 送り先ごとに出力する」の代わりに、全部の送り先の提供票を一度に出力する方法です。出力したあとは、作業 ① の「2. 送信準備ツール」からは同じです。</p>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">1</span>「計画出力」で［一括出力］</h3>
+        <ol>
+          <li><span class="k">ケアマネ</span> → <span class="k">利用・提供票</span> → <span class="k">提供事業所</span> → <span class="k">提供事業所連携</span> を押し、<span class="m">1</span> 「計画出力」のタブを選びます。</li>
+          <li><span class="m">2</span> 「処理年月」（送りたい提供票の月）と、「支援事業所」（自分の居宅）を確認します。</li>
+          <li><span class="m">3</span> 画面右上の <span class="k">一括出力</span> を押し、確認の画面で内容を見て <span class="k">OK</span> を押します。送り先の事業所ごとにCSVが作られます。</li>
+        </ol>
+        <div class="pc" role="img" aria-label="提供事業所連携の計画出力画面。処理年月と支援事業所を確認し、一括出力を押す">
+          <div class="wt">提供事業所連携</div>
+          <div class="bd">
+            <div class="row"><span class="grp"><span class="m">1</span><span class="tab on hl">計画出力（介護）</span></span><span class="tab">計画出力（予防）</span><span class="tab">実績取込</span><span class="grp"><span class="m">3</span><span class="b y hl">一括出力</span></span><span class="b o">CSV出力</span><span class="b y">フォルダ</span><span class="b v">ﾏｽﾀ他</span><span class="b">閉じる</span></div>
+            <div class="row"><span class="m">2</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl">処理年月</span><span class="in">R 8/12</span><span class="lbl">支援事業所</span><span class="in sel">（自分の居宅）</span></span></div>
+          </div>
+        </div>
+        <div class="box warn"><span class="ttl">⚠ 注意</span><p>事前設定の「事業所設定」でチェックした事業所が出力の対象になります。送りたくない事業所の分まで出力されていないか、次の送信準備ツールの一覧でよく確認してください。</p></div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">2</span>作業 ① の「2. 送信準備ツール」へ進む</h3>
+        <p><a href="#tool">作業 ① の手順 3</a> から同じように進めます（送信準備ツール → 連携システムで一括送信）。</p>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="cb-bulk-1"><span>［一括出力］で提供票を出力した</span></label></li>
+    </ul>
+  </section>
+
   <!-- ===================== 別の方法：1か所だけ送る ===================== -->
   <section class="section" id="s-one">
     <h2><span class="num">別の<br>方法</span>1か所だけ送るとき（個別に出力・新規作成で送信）</h2>
-    <p class="lead">出し直しなどで、1つの事業所にだけ送りたいときの方法です。ふだんは作業 ①・③ の「まとめて送る」方法を使います。</p>
+    <p class="lead">出し直しなどで、1つの事業所にだけ送りたいときの方法です。ふだんは作業 ①・③ の、送信準備ツールでまとめて一括送信する方法を使います。</p>
 
     <div class="step no-shot">
       <div>
         <h3><span class="n">1</span>ほのぼので、1つの事業所分だけ出力する</h3>
-        <p><b><span class="role kyo">居宅</span> 提供票のとき</b></p>
-        <ol>
-          <li><span class="k">提供事業所連携</span> の「計画出力（介護）」（予防は「計画出力（予防）」）で、<span class="m">1</span> 「提供事業所番号」（送り先）・処理年月・支援事業所を選びます。</li>
-          <li><span class="m">2</span> 送る利用者の「利用票」の欄にチェックします（「計画書」ではありません）。</li>
-          <li><span class="m">3</span> <span class="k">CSV出力</span> → <span class="k">OK</span>。<span class="k">フォルダ</span> で、<b>「yotei」</b> フォルダにCSVができたか確認できます。</li>
-        </ol>
-        <div class="pc" role="img" aria-label="計画出力で送り先を1つ選んでCSV出力">
-          <div class="wt">提供事業所連携</div>
-          <div class="bd">
-            <div class="row"><span class="tab on">計画出力（介護）</span><span class="tab">計画出力（予防）</span><span class="b y">一括出力</span><span class="grp"><span class="m">3</span><span class="b o hl">CSV出力</span></span><span class="b y">フォルダ</span><span class="b">閉じる</span></div>
-            <div class="row"><span class="m">1</span><span class="hl row" style="gap:5px;padding:2px 4px"><span class="lbl">提供事業所番号</span><span class="in sel">（送り先）</span><span class="lbl">処理年月</span><span class="in">R 8/12</span></span></div>
-            <div class="row" style="align-items:flex-start"><span class="m">2</span>
-              <table style="flex:1"><tr><th style="width:16%">計画書</th><th class="hl" style="width:16%">利用票</th><th>利用者名</th></tr><tr><td>□</td><td class="hl">☑</td><td>見本 太郎</td></tr></table></div>
-          </div>
-        </div>
+        <p><b><span class="role kyo">居宅</span> 提供票のとき</b>：<a href="#s1">作業 ① の手順 1〜2</a> で、送りたい事業所1つ分だけ［CSV出力］します。<span class="k">フォルダ</span> で、<b>「yotei」</b> フォルダにCSVができたか確認できます。</p>
         <p><b><span class="role svc">サービス</span> 実績のとき</b>：作業 ③ の手順 1 で、送り先の居宅1つ分だけ出力します。</p>
       </div>
     </div>
