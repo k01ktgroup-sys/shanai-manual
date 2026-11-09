@@ -64,7 +64,7 @@
 <main class="wrap">
   <div class="hero">
     <h1>福祉用具のTAISコードを登録する<br>（ほのぼのNEXT・ケアマネ）</h1>
-    <p>利用票に福祉用具を入れるとき、TAISコードの付いた商品を選ぶ手順です。新しく入れるとき・今ある行を直すとき・商品がまだ登録されていないときの3つに分けています。</p>
+    <p>利用票に福祉用具を入れるとき、TAISコードの付いた商品を選ぶ手順です。新しく入れるとき・今ある行を直すとき・商品がまだ登録されていないとき（取り込み／手入力）に分けています。</p>
     <div class="meta"><span class="chip">No.06</span><span class="chip">対象：居宅のケアマネ</span><span class="chip">1商品 約3分</span><span class="chip">2026年11月版</span></div>
   </div>
 
@@ -73,6 +73,7 @@
     <li><a href="#sa"><b>作業 A</b>利用票に新しく入れる</a></li>
     <li><a href="#sb"><b>作業 B</b>今ある行の商品を直す</a></li>
     <li><a href="#sc"><b>作業 C</b>商品を登録する（担当者）</a></li>
+    <li><a href="#sdd"><b>作業 D</b>手入力で登録する（担当者）</a></li>
     <li><a href="#sd"><b>参考</b>3つのマスタのちがい</a></li>
     <li><a href="#se"><b>困ったとき</b></a></li>
   </ul>
@@ -92,7 +93,8 @@
     <div class="pick no-print">
       <a href="#sa"><b>A. 利用票に新しく入れる</b><small>福祉用具の行を新しく追加する</small></a>
       <a href="#sb"><b>B. 今ある行の商品を直す</b><small>入っている商品を、TAISコードの付いた商品に選び直す</small></a>
-      <a href="#sc"><b>C. 商品が見つからない</b><small>マスタにまだない商品を登録する（事業所の登録担当者）</small></a>
+      <a href="#sc"><b>C. 商品が見つからない</b><small>貸与価格の平均・上限マスタから取り込んで登録する（事業所の登録担当者）</small></a>
+      <a href="#sdd"><b>D. どこにもない商品</b><small>C でも見つからない商品を、手入力で登録する（事業所の登録担当者）</small></a>
     </div>
 
     <div class="box info"><span class="ttl">💡 画面の絵の見方</span>
@@ -290,7 +292,7 @@
         <li>商品の一覧（福祉用具マスタ）は、みんなで使う共有の一覧です。同じ福祉用具の事業所・同じ商品でも、<b>居宅の事業所や利用者によって単位数（価格）がちがう</b> ことがあります。</li>
         <li>登録する前に、同じ TAISコードの商品がすでにないか、コードの空いた行もふくめて確認します。<b>同じ商品で、単位数も資料と同じもの</b> があれば、新しく登録せずにそれを使います。</li>
         <li>同じ商品はあるが単位数がちがうときは、<b>今ある商品の単位数を書きかえない</b> でください（その商品を使っているほかの利用者の利用票にも影響します）。どう登録するかは、登録担当者が判断します。</li>
-        <li>商品名は手で入力しません。「貸与価格の平均・上限マスタ読込」の画面から取り込みます。</li>
+        <li>商品名は手で入力せず、「貸与価格の平均・上限マスタ読込」の画面から取り込みます。この画面にもない商品だけ、<a href="#sdd">作業 D</a>（手入力）で登録します。</li>
       </ul>
     </div>
 
@@ -351,7 +353,7 @@
           <ul>
             <li>押すのは <span class="k">追加</span> です（<span class="k">上書</span> は使いません）。</li>
             <li>対象の月より後に始まる商品は選びません。</li>
-            <li>同じ商品が見つからないときは、似た商品を選ばずに確認します。</li>
+            <li>同じ商品が見つからないときは、似た商品を選ばずに、<a href="#sdd">作業 D</a>（手入力で登録）に進みます。</li>
           </ul>
         </div>
       </div>
@@ -407,6 +409,103 @@
       <li><label><input type="checkbox" id="cc-1"><span>同じ商品・同じ単位数のものがないか確認してから、［取込］→［読込］→［追加］した</span></label></li>
       <li><label><input type="checkbox" id="cc-2"><span>種目と、事業所に確認した単位数を入れて［保存］した</span></label></li>
       <li><label><input type="checkbox" id="cc-3"><span>作業 A の方法で探して、その商品を選べた</span></label></li>
+    </ul>
+  </section>
+
+  <!-- ===================== D ===================== -->
+  <section class="section" id="sdd">
+    <h2><span class="num">作業<br>D</span>マスタにない商品を手入力で登録する（登録担当者）<span class="time">約5分</span></h2>
+    <p class="lead">作業 C の「貸与価格の平均・上限マスタ読込」の画面でも見つからない商品だけ、福祉用具マスタに手で入力して登録します。<b>事業所の登録担当者</b> が行ってください。</p>
+    <div class="box warn"><span class="ttl">⚠ 先に確認すること</span>
+      <ul>
+        <li>必ず先に <a href="#sc">作業 C</a> で探してください。そこにある商品を手入力で登録すると、同じ商品が2つできてしまいます。</li>
+        <li>福祉用具の事業所の資料を見て、<b>商品名・型番・TAISコード・単位数</b> をそのまま入れます。</li>
+        <li>別の商品に交換したときは、今ある商品を書きかえず、新しく登録します。</li>
+      </ul>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">1</span>福祉用具マスタを開いて［新規］</h3>
+        <ol>
+          <li><a href="#sc">作業 C の手順 1</a> と同じく、サービス選択の <span class="k">福祉用具</span> を押して「福祉用具マスタ」を開きます。</li>
+          <li><span class="m">1</span> 「事業者」が、登録先の福祉用具の事業所か確認します。</li>
+          <li><span class="m">2</span> <span class="k">新規</span> を押します。下の欄が空になり、新しい商品を入れられるようになります。</li>
+        </ol>
+        <div class="pc" role="img" aria-label="福祉用具マスタ。事業者を確認して新規を押す">
+          <div class="wt">福祉用具マスタ</div>
+          <div class="bd">
+            <div class="row"><span class="m">2</span><span class="b hl">新規</span><span class="b g">行複写</span><span class="b p">保存</span><span class="b y">取込</span><span class="b y">CSV取込</span><span class="b o">印刷</span><span class="b">閉じる</span></div>
+            <div class="row"><span class="m">1</span><span class="hl row" style="gap:4px;padding:0 3px"><span class="lbl">事業者</span><span class="in">（福祉用具の事業所）</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">2</span>区分・種目・商品名を入れる</h3>
+        <ol>
+          <li><span class="m">1</span> 「区分」で <b>「レンタル」</b> を選びます。</li>
+          <li><span class="m">2</span> 「福祉用具種目」（手すり・車いす など）を選びます。</li>
+          <li><span class="m">3</span> 「商品名称」「略称」「型番」を、資料のとおりに入れます（「＊」の付いた欄は必ず入れます）。</li>
+        </ol>
+        <div class="pc" role="img" aria-label="福祉用具マスタの下の欄。区分、福祉用具種目、商品名称、略称、型番を入れる">
+          <div class="wt">福祉用具マスタ（下の欄）</div>
+          <div class="bd">
+            <div class="row"><span class="lbl bl">＊区分</span><span class="m">1</span><span class="in sel hl">レンタル</span><span class="lbl bl">福祉用具種目</span><span class="m">2</span><span class="in sel hl">手すり</span></div>
+            <div class="row" style="align-items:flex-start"><span class="m">3</span>
+              <div class="hl" style="flex:1;display:grid;gap:4px;padding:3px">
+                <div class="row"><span class="lbl bl" style="min-width:5.5em">＊商品名称</span><span class="in" style="flex:1">据置手すり（見本）</span></div>
+                <div class="row"><span class="lbl bl" style="min-width:5.5em">＊略称</span><span class="in" style="flex:1">据置手すり</span></div>
+                <div class="row"><span class="lbl bl" style="min-width:5.5em">型番</span><span class="in" style="flex:1">ABC-01</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">3</span>TAISコードと単位数を入れて［保存］→［閉じる］</h3>
+        <ol>
+          <li><span class="m">1</span> 「TAISコード等」に、資料のコードを <b>半角の 5けた-6けた</b>（ハイフンも半角）で入れます。</li>
+          <li><span class="m">2</span> 「単位数」に、福祉用具の事業所に確認した単位数を入れます。</li>
+          <li>商品名・型番・種目・コード・単位数を、資料と見くらべます。</li>
+          <li><span class="m">3</span> 上の <span class="k">保存</span> を押し、<span class="m">4</span> <span class="k">閉じる</span> を押します。</li>
+        </ol>
+        <div class="pc" role="img" aria-label="TAISコード等と単位数を入れて、保存、閉じる">
+          <div class="wt">福祉用具マスタ</div>
+          <div class="bd">
+            <div class="row"><span class="b">新規</span><span class="b g">行複写</span><span class="m">3</span><span class="b p hl">保存</span><span class="b y">取込</span><span class="m">4</span><span class="b hl">閉じる</span></div>
+            <div class="row"><span class="lbl bl">TAISコード等</span><span class="m">1</span><span class="in hl">01234-000567</span><span class="lbl bl">単位数</span><span class="m">2</span><span class="in hl" style="min-width:3em">300</span></div>
+          </div>
+        </div>
+        <div class="box warn"><span class="ttl">⚠ 注意</span>
+          <ul>
+            <li>画面の数字は見本です。そのまま写さないでください。</li>
+            <li>TAISコードがわからないときは、福祉用具の事業所に確認してから登録します。</li>
+            <li><span class="k">保存</span> が灰色で押せないときは、登録する権限がありません。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="step no-shot">
+      <div>
+        <h3><span class="n">4</span>利用票で選べるか確認する</h3>
+        <ol>
+          <li>サービス選択に戻り、<a href="#sa">作業 A の手順 2</a> の方法（「TAISコード等」に入れて Enter）で、登録した商品が出るか確認します。</li>
+          <li>出てきたら、作業 A（新しく入れる）または作業 B（今ある行を直す）の続きで選びます。</li>
+        </ol>
+      </div>
+    </div>
+
+    <ul class="check">
+      <li><label><input type="checkbox" id="cd-1"><span>作業 C で探しても見つからないことを確認した</span></label></li>
+      <li><label><input type="checkbox" id="cd-2"><span>［新規］から、区分・種目・商品名・TAISコード・単位数を入れて［保存］した</span></label></li>
+      <li><label><input type="checkbox" id="cd-3"><span>作業 A の方法で探して、その商品を選べた</span></label></li>
     </ul>
   </section>
 
